@@ -1,0 +1,44 @@
+# Operating-system files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor and IDE-local settings
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Vivado/Vitis transient files
+**/.Xil/
+*.jou
+*.log
+*.str
+*.dmp
+*.tmp
+*.wdb
+*.rpt
+*.rpx
+*.dcp
+
+# Software build products
+**/build/
+**/Debug/
+**/Release/
+*.o
+*.obj
+*.d
+*.a
+*.elf
+*.bin
+*.hex
+*.map
+
+# Python tooling
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Xilinx hardware artifacts (.xsa and .bit) and project files such as .xpr
+# are intentionally not ignored and can be committed to the repository.

@@ -1,0 +1,45 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"type": "tcf-debug",
+			"request": "launch",
+			"name": "app_mb_svf_player_app_hw_1",
+			"debugType": "baremetal-fpga",
+			"attachToRunningTargetOptions": {
+				"targetSetupMode": "standalone",
+				"executeScript": true,
+				"scriptPath": ""
+			},
+			"autoAttachProcessChildren": false,
+			"target": {
+				"targetConnectionId": "Local",
+				"peersIniPath": "../../_ide/.peers.ini",
+				"context": "fpga"
+			},
+			"pathMap": [],
+			"targetSetup": {
+				"resetSystem": true,
+				"programDevice": true,
+				"partialBitstream": false,
+				"skipRevisionCheck": false,
+				"device": {
+					"plDevice": "Digilent Nexys A7 -100T 210292BB3442A/2-xc7a100t",
+					"psDevice": "Digilent Nexys A7 -100T 210292BB3442A/undefined-undefined"
+				},
+				"bitstreamFile": "${workspaceFolder}\\app_mb_svf_player\\_ide\\bitstream\\design_1_wrapper.bit",
+				"downloadElf": [
+					{
+						"core": "microblaze_0",
+						"resetProcessor": true,
+						"elfFile": "${workspaceFolder}\\app_mb_svf_player\\build\\app_mb_svf_player.elf",
+						"stopAtEntry": false,
+						"isSelfRelocatingApp": false,
+						"relativeAddress": ""
+					}
+				]
+			},
+			"internalConsoleOptions": "neverOpen"
+		}
+	]
+}
