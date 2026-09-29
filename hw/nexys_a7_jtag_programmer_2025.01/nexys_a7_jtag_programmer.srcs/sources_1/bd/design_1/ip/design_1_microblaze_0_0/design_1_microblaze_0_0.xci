@@ -4,7 +4,7 @@
     "xci_name": "design_1_microblaze_0_0",
     "cell_name": "microblaze_0",
     "component_reference": "xilinx.com:ip:microblaze:11.0",
-    "ip_revision": "16",
+    "ip_revision": "15",
     "gen_directory": "../../../../../../nexys_a7_jtag_programmer.gen/sources_1/bd/design_1/ip/design_1_microblaze_0_0",
     "parameters": {
       "component_parameters": {
@@ -41,7 +41,6 @@
         "C_DC_AXI_MON": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "C_D_LMB": [ { "value": "1", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "C_D_LMB_PROTOCOL": [ { "value": "0", "value_permission": "bd_and_user", "resolve_type": "user", "format": "long", "usage": "all" } ],
-        "C_D_LMB_HAS_PROT": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "C_D_LMB_MON": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "C_M_AXI_IP_THREAD_ID_WIDTH": [ { "value": "1", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "C_M_AXI_IP_DATA_WIDTH": [ { "value": "32", "resolve_type": "user", "format": "long", "usage": "all" } ],
@@ -51,7 +50,6 @@
         "C_IC_AXI_MON": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "C_I_LMB": [ { "value": "1", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "C_I_LMB_PROTOCOL": [ { "value": "0", "value_permission": "bd_and_user", "resolve_type": "user", "format": "long", "usage": "all" } ],
-        "C_I_LMB_HAS_PROT": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "C_I_LMB_MON": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "C_TRACE": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "C_LOCKSTEP_SELECT": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "all" } ],
@@ -265,11 +263,9 @@
         "C_M_AXI_I_BUS_EXCEPTION": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_D_LMB": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_D_LMB_PROTOCOL": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "C_D_LMB_HAS_PROT": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_D_AXI": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_I_LMB": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_I_LMB_PROTOCOL": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "C_I_LMB_HAS_PROT": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_I_AXI": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "G_TEMPLATE_LIST": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_USE_MSR_INSTR": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
@@ -400,26 +396,26 @@
         "C_M_AXI_DC_BUSER_WIDTH": [ { "value": "1", "format": "long", "usage": "all" } ]
       },
       "project_parameters": {
-        "ARCHITECTURE": [ { "value": "artix7", "resolve_type": "generated", "usage": "all" } ],
-        "BASE_BOARD_PART": [ { "value": "digilentinc.com:nexys-a7-100t:part0:1.3", "resolve_type": "generated", "usage": "all" } ],
-        "BOARD_CONNECTIONS": [ { "value": "", "resolve_type": "generated", "usage": "all" } ],
-        "DEVICE": [ { "value": "xc7a100t", "resolve_type": "generated", "usage": "all" } ],
-        "PACKAGE": [ { "value": "csg324", "resolve_type": "generated", "usage": "all" } ],
-        "PREFHDL": [ { "value": "VERILOG", "resolve_type": "generated", "usage": "all" } ],
-        "SILICON_REVISION": [ { "value": "", "resolve_type": "generated", "usage": "all" } ],
-        "SIMULATOR_LANGUAGE": [ { "value": "MIXED", "resolve_type": "generated", "usage": "all" } ],
-        "SPEEDGRADE": [ { "value": "-1", "resolve_type": "generated", "usage": "all" } ],
-        "STATIC_POWER": [ { "value": "", "resolve_type": "generated", "usage": "all" } ],
-        "TEMPERATURE_GRADE": [ { "value": "", "resolve_type": "generated", "usage": "all" } ]
+        "ARCHITECTURE": [ { "value": "artix7" } ],
+        "BASE_BOARD_PART": [ { "value": "digilentinc.com:nexys-a7-100t:part0:1.3" } ],
+        "BOARD_CONNECTIONS": [ { "value": "" } ],
+        "DEVICE": [ { "value": "xc7a100t" } ],
+        "PACKAGE": [ { "value": "csg324" } ],
+        "PREFHDL": [ { "value": "VERILOG" } ],
+        "SILICON_REVISION": [ { "value": "" } ],
+        "SIMULATOR_LANGUAGE": [ { "value": "MIXED" } ],
+        "SPEEDGRADE": [ { "value": "-1" } ],
+        "STATIC_POWER": [ { "value": "" } ],
+        "TEMPERATURE_GRADE": [ { "value": "" } ]
       },
       "runtime_parameters": {
         "IPCONTEXT": [ { "value": "IP_Integrator" } ],
-        "IPREVISION": [ { "value": "16" } ],
+        "IPREVISION": [ { "value": "15" } ],
         "MANAGED": [ { "value": "TRUE" } ],
         "OUTPUTDIR": [ { "value": "../../../../../../nexys_a7_jtag_programmer.gen/sources_1/bd/design_1/ip/design_1_microblaze_0_0" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
         "SHAREDDIR": [ { "value": "../../ipshared" } ],
-        "SWVERSION": [ { "value": "2025.2" } ],
+        "SWVERSION": [ { "value": "2025.1" } ],
         "SYNTHESISFLOW": [ { "value": "OUT_OF_CONTEXT" } ]
       }
     },
@@ -607,7 +603,6 @@
             "ADDR_WIDTH": [ { "value": "32", "value_permission": "bd", "resolve_type": "generated", "format": "long", "usage": "all" } ],
             "DATA_WIDTH": [ { "value": "32", "value_permission": "bd", "resolve_type": "dependent", "format": "long", "usage": "all" } ],
             "PROTOCOL": [ { "value": "STANDARD", "value_permission": "bd", "resolve_type": "dependent", "usage": "all" } ],
-            "HAS_PROT": [ { "value": "0", "value_src": "default_prop", "value_permission": "bd", "resolve_type": "generated", "usage": "all" } ],
             "READ_WRITE_MODE": [ { "value": "READ_WRITE", "value_src": "constant", "value_permission": "bd", "usage": "all" } ]
           },
           "port_maps": {
@@ -633,7 +628,6 @@
             "ADDR_WIDTH": [ { "value": "32", "value_permission": "bd", "resolve_type": "dependent", "format": "long", "usage": "all" } ],
             "DATA_WIDTH": [ { "value": "32", "value_permission": "bd", "resolve_type": "dependent", "format": "long", "usage": "all" } ],
             "PROTOCOL": [ { "value": "STANDARD", "value_permission": "bd", "resolve_type": "dependent", "usage": "all" } ],
-            "HAS_PROT": [ { "value": "0", "value_src": "default_prop", "value_permission": "bd", "resolve_type": "generated", "usage": "all" } ],
             "READ_WRITE_MODE": [ { "value": "READ_ONLY", "value_src": "constant", "value_permission": "bd", "usage": "all" } ]
           },
           "port_maps": {
@@ -909,10 +903,17 @@
     "contents": {
       "cpus": {
         "microblaze": {
-          "address_space_refs": "Data"
+          "address_space_refs": "Data",
+          "parameters": {
+            "endian": [ { "value": "little" } ],
+            "elf_class": [ { "value": "32-bit" } ],
+            "instance_path": [ { "value": "" } ],
+            "bootloop_file": [ { "value": "data/mb_bootloop_le.elf" } ],
+            "processor_type": [ { "value": "MICROBLAZE_LE" } ],
+            "is_visible": [ { "value": "true" } ]
+          }
         }
       }
     }
-  },
-  "checksum": "779959d9"
+  }
 }

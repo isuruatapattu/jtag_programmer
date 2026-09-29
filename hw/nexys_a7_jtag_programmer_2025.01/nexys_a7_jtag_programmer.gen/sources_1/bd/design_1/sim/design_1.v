@@ -1,9 +1,9 @@
 //Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
-//Tool Version: Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
-//Date        : Tue Aug 18 14:16:09 2026
-//Host        : DESKTOP-SD8DC1R running 64-bit major release  (build 9200)
+//Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
+//Date        : Wed Aug 19 11:51:17 2026
+//Host        : gruk running 64-bit Rocky Linux release 8.10 (Green Obsidian)
 //Command     : generate_target design_1.bd
 //Design      : design_1
 //Purpose     : IP block netlist
@@ -513,7 +513,7 @@ module design_1
         .Dbg_Update_0(microblaze_0_debug_UPDATE),
         .Debug_SYS_Rst(mdm_1_debug_sys_rst));
   (* BMM_INFO_PROCESSOR = "microblaze-le > design_1 microblaze_0_local_memory/dlmb_bram_if_cntlr" *) 
-  (* KEEP_HIERARCHY = "YES" *) 
+  (* KEEP_HIERARCHY = "yes" *) 
   design_1_microblaze_0_0 microblaze_0
        (.Byte_Enable(microblaze_0_dlmb_1_BE),
         .Clk(microblaze_0_Clk),
@@ -825,7 +825,7 @@ module microblaze_0_local_memory_imp_1K0VQXK
   wire [0:3]microblaze_0_ilmb_cntlr_WE;
 
   (* BMM_INFO_ADDRESS_SPACE = "byte  0x00000000 32 > design_1 microblaze_0_local_memory/lmb_bram" *) 
-  (* KEEP_HIERARCHY = "YES" *) 
+  (* KEEP_HIERARCHY = "yes" *) 
   design_1_dlmb_bram_if_cntlr_0 dlmb_bram_if_cntlr
        (.BRAM_Addr_A(microblaze_0_dlmb_cntlr_ADDR),
         .BRAM_Clk_A(microblaze_0_dlmb_cntlr_CLK),

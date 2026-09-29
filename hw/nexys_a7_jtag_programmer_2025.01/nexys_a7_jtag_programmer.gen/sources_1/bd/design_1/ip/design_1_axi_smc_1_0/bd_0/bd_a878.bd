@@ -8,7 +8,7 @@
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "scoped": "true",
       "synth_flow_mode": "None",
-      "tool_version": "2025.2",
+      "tool_version": "2025.1",
       "validated": "true"
     },
     "design_tree": {
@@ -200,12 +200,6 @@
             "value": "END_POINT",
             "value_src": "auto"
           }
-        },
-        "hdl_attributes": {
-          "LOCKED": {
-            "value": "FALSE",
-            "value_src": "default"
-          }
         }
       },
       "S01_AXI": {
@@ -347,12 +341,6 @@
             "value": "END_POINT",
             "value_src": "auto"
           }
-        },
-        "hdl_attributes": {
-          "LOCKED": {
-            "value": "FALSE",
-            "value_src": "default"
-          }
         }
       },
       "M00_AXI": {
@@ -477,13 +465,7 @@
             "value_src": "default"
           }
         },
-        "memory_map_ref": "M00_AXI",
-        "hdl_attributes": {
-          "LOCKED": {
-            "value": "FALSE",
-            "value_src": "default"
-          }
-        }
+        "memory_map_ref": "M00_AXI"
       }
     },
     "ports": {
@@ -629,13 +611,18 @@
         },
         "components": {
           "one": {
-            "vlnv": "xilinx.com:inline_hdl:ilconstant:1.0"
+            "vlnv": "xilinx.com:ip:xlconstant:1.1",
+            "ip_revision": "10",
+            "xci_name": "bd_a878_one_0",
+            "xci_path": "ip/ip_0/bd_a878_one_0.xci",
+            "inst_hier_path": "clk_map/one",
+            "has_run_ip_tcl": "true"
           },
           "psr0": {
             "vlnv": "xilinx.com:ip:proc_sys_reset:5.0",
             "ip_revision": "17",
             "xci_name": "bd_a878_psr0_0",
-            "xci_path": "ip\\ip_1\\bd_a878_psr0_0.xci",
+            "xci_path": "ip/ip_1/bd_a878_psr0_0.xci",
             "inst_hier_path": "clk_map/psr0",
             "has_run_ip_tcl": "true",
             "parameters": {
@@ -651,7 +638,7 @@
             "vlnv": "xilinx.com:ip:proc_sys_reset:5.0",
             "ip_revision": "17",
             "xci_name": "bd_a878_psr_aclk_0",
-            "xci_path": "ip\\ip_2\\bd_a878_psr_aclk_0.xci",
+            "xci_path": "ip/ip_2/bd_a878_psr_aclk_0.xci",
             "inst_hier_path": "clk_map/psr_aclk",
             "has_run_ip_tcl": "true",
             "parameters": {
@@ -667,7 +654,7 @@
             "vlnv": "xilinx.com:ip:proc_sys_reset:5.0",
             "ip_revision": "17",
             "xci_name": "bd_a878_psr_aclk1_0",
-            "xci_path": "ip\\ip_3\\bd_a878_psr_aclk1_0.xci",
+            "xci_path": "ip/ip_3/bd_a878_psr_aclk1_0.xci",
             "inst_hier_path": "clk_map/psr_aclk1",
             "has_run_ip_tcl": "true",
             "parameters": {
@@ -740,167 +727,77 @@
           "S00_SC_AR": {
             "mode": "Slave",
             "vlnv_bus_definition": "xilinx.com:interface:sc:1.0",
-            "vlnv": "xilinx.com:interface:sc_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:sc_rtl:1.0"
           },
           "S01_SC_AR": {
             "mode": "Slave",
             "vlnv_bus_definition": "xilinx.com:interface:sc:1.0",
-            "vlnv": "xilinx.com:interface:sc_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:sc_rtl:1.0"
           },
           "M00_SC_AR": {
             "mode": "Master",
             "vlnv_bus_definition": "xilinx.com:interface:sc:1.0",
-            "vlnv": "xilinx.com:interface:sc_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:sc_rtl:1.0"
           },
           "S00_SC_R": {
             "mode": "Slave",
             "vlnv_bus_definition": "xilinx.com:interface:sc:1.0",
-            "vlnv": "xilinx.com:interface:sc_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:sc_rtl:1.0"
           },
           "M00_SC_R": {
             "mode": "Master",
             "vlnv_bus_definition": "xilinx.com:interface:sc:1.0",
-            "vlnv": "xilinx.com:interface:sc_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:sc_rtl:1.0"
           },
           "M01_SC_R": {
             "mode": "Master",
             "vlnv_bus_definition": "xilinx.com:interface:sc:1.0",
-            "vlnv": "xilinx.com:interface:sc_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:sc_rtl:1.0"
           },
           "S00_SC_AW": {
             "mode": "Slave",
             "vlnv_bus_definition": "xilinx.com:interface:sc:1.0",
-            "vlnv": "xilinx.com:interface:sc_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:sc_rtl:1.0"
           },
           "S01_SC_AW": {
             "mode": "Slave",
             "vlnv_bus_definition": "xilinx.com:interface:sc:1.0",
-            "vlnv": "xilinx.com:interface:sc_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:sc_rtl:1.0"
           },
           "M00_SC_AW": {
             "mode": "Master",
             "vlnv_bus_definition": "xilinx.com:interface:sc:1.0",
-            "vlnv": "xilinx.com:interface:sc_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:sc_rtl:1.0"
           },
           "S00_SC_W": {
             "mode": "Slave",
             "vlnv_bus_definition": "xilinx.com:interface:sc:1.0",
-            "vlnv": "xilinx.com:interface:sc_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:sc_rtl:1.0"
           },
           "S01_SC_W": {
             "mode": "Slave",
             "vlnv_bus_definition": "xilinx.com:interface:sc:1.0",
-            "vlnv": "xilinx.com:interface:sc_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:sc_rtl:1.0"
           },
           "M00_SC_W": {
             "mode": "Master",
             "vlnv_bus_definition": "xilinx.com:interface:sc:1.0",
-            "vlnv": "xilinx.com:interface:sc_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:sc_rtl:1.0"
           },
           "S00_SC_B": {
             "mode": "Slave",
             "vlnv_bus_definition": "xilinx.com:interface:sc:1.0",
-            "vlnv": "xilinx.com:interface:sc_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:sc_rtl:1.0"
           },
           "M00_SC_B": {
             "mode": "Master",
             "vlnv_bus_definition": "xilinx.com:interface:sc:1.0",
-            "vlnv": "xilinx.com:interface:sc_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:sc_rtl:1.0"
           },
           "M01_SC_B": {
             "mode": "Master",
             "vlnv_bus_definition": "xilinx.com:interface:sc:1.0",
-            "vlnv": "xilinx.com:interface:sc_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:sc_rtl:1.0"
           }
         },
         "ports": {
@@ -916,9 +813,9 @@
         "components": {
           "ar_switchboard": {
             "vlnv": "xilinx.com:ip:sc_switchboard:1.0",
-            "ip_revision": "9",
+            "ip_revision": "8",
             "xci_name": "bd_a878_arsw_0",
-            "xci_path": "ip\\ip_4\\bd_a878_arsw_0.xci",
+            "xci_path": "ip/ip_4/bd_a878_arsw_0.xci",
             "inst_hier_path": "switchboards/ar_switchboard",
             "has_run_ip_tcl": "true",
             "parameters": {
@@ -994,9 +891,9 @@
           },
           "r_switchboard": {
             "vlnv": "xilinx.com:ip:sc_switchboard:1.0",
-            "ip_revision": "9",
+            "ip_revision": "8",
             "xci_name": "bd_a878_rsw_0",
-            "xci_path": "ip\\ip_5\\bd_a878_rsw_0.xci",
+            "xci_path": "ip/ip_5/bd_a878_rsw_0.xci",
             "inst_hier_path": "switchboards/r_switchboard",
             "has_run_ip_tcl": "true",
             "parameters": {
@@ -1064,9 +961,9 @@
           },
           "aw_switchboard": {
             "vlnv": "xilinx.com:ip:sc_switchboard:1.0",
-            "ip_revision": "9",
+            "ip_revision": "8",
             "xci_name": "bd_a878_awsw_0",
-            "xci_path": "ip\\ip_6\\bd_a878_awsw_0.xci",
+            "xci_path": "ip/ip_6/bd_a878_awsw_0.xci",
             "inst_hier_path": "switchboards/aw_switchboard",
             "has_run_ip_tcl": "true",
             "parameters": {
@@ -1142,9 +1039,9 @@
           },
           "w_switchboard": {
             "vlnv": "xilinx.com:ip:sc_switchboard:1.0",
-            "ip_revision": "9",
+            "ip_revision": "8",
             "xci_name": "bd_a878_wsw_0",
-            "xci_path": "ip\\ip_7\\bd_a878_wsw_0.xci",
+            "xci_path": "ip/ip_7/bd_a878_wsw_0.xci",
             "inst_hier_path": "switchboards/w_switchboard",
             "has_run_ip_tcl": "true",
             "parameters": {
@@ -1220,9 +1117,9 @@
           },
           "b_switchboard": {
             "vlnv": "xilinx.com:ip:sc_switchboard:1.0",
-            "ip_revision": "9",
+            "ip_revision": "8",
             "xci_name": "bd_a878_bsw_0",
-            "xci_path": "ip\\ip_8\\bd_a878_bsw_0.xci",
+            "xci_path": "ip/ip_8/bd_a878_bsw_0.xci",
             "inst_hier_path": "switchboards/b_switchboard",
             "has_run_ip_tcl": "true",
             "parameters": {
@@ -1399,24 +1296,12 @@
           "s_axi": {
             "mode": "Slave",
             "vlnv_bus_definition": "xilinx.com:interface:aximm:1.0",
-            "vlnv": "xilinx.com:interface:aximm_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:aximm_rtl:1.0"
           },
           "m_axi": {
             "mode": "Master",
             "vlnv_bus_definition": "xilinx.com:interface:aximm:1.0",
-            "vlnv": "xilinx.com:interface:aximm_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:aximm_rtl:1.0"
           }
         },
         "ports": {
@@ -1432,9 +1317,9 @@
         "components": {
           "s00_mmu": {
             "vlnv": "xilinx.com:ip:sc_mmu:1.0",
-            "ip_revision": "16",
+            "ip_revision": "15",
             "xci_name": "bd_a878_s00mmu_0",
-            "xci_path": "ip\\ip_9\\bd_a878_s00mmu_0.xci",
+            "xci_path": "ip/ip_9/bd_a878_s00mmu_0.xci",
             "inst_hier_path": "s00_entry_pipeline/s00_mmu",
             "has_run_ip_tcl": "true",
             "parameters": {
@@ -1547,9 +1432,9 @@
           },
           "s00_transaction_regulator": {
             "vlnv": "xilinx.com:ip:sc_transaction_regulator:1.0",
-            "ip_revision": "12",
+            "ip_revision": "11",
             "xci_name": "bd_a878_s00tr_0",
-            "xci_path": "ip\\ip_10\\bd_a878_s00tr_0.xci",
+            "xci_path": "ip/ip_10/bd_a878_s00tr_0.xci",
             "inst_hier_path": "s00_entry_pipeline/s00_transaction_regulator",
             "has_run_ip_tcl": "true",
             "parameters": {
@@ -1623,9 +1508,9 @@
           },
           "s00_si_converter": {
             "vlnv": "xilinx.com:ip:sc_si_converter:1.0",
-            "ip_revision": "16",
+            "ip_revision": "15",
             "xci_name": "bd_a878_s00sic_0",
-            "xci_path": "ip\\ip_11\\bd_a878_s00sic_0.xci",
+            "xci_path": "ip/ip_11/bd_a878_s00sic_0.xci",
             "inst_hier_path": "s00_entry_pipeline/s00_si_converter",
             "has_run_ip_tcl": "true",
             "parameters": {
@@ -1696,7 +1581,7 @@
                 "value": "128"
               },
               "SPLIT_WRAP_NARROW": {
-                "value": "1"
+                "value": "0"
               },
               "SUPPORTS_NARROW": {
                 "value": "0"
@@ -1787,9 +1672,9 @@
       },
       "s00_axi2sc": {
         "vlnv": "xilinx.com:ip:sc_axi2sc:1.0",
-        "ip_revision": "11",
+        "ip_revision": "10",
         "xci_name": "bd_a878_s00a2s_0",
-        "xci_path": "ip\\ip_12\\bd_a878_s00a2s_0.xci",
+        "xci_path": "ip/ip_12/bd_a878_s00a2s_0.xci",
         "inst_hier_path": "s00_axi2sc",
         "has_run_ip_tcl": "true",
         "parameters": {
@@ -1908,112 +1793,52 @@
           "M_SC_AR": {
             "mode": "Master",
             "vlnv_bus_definition": "xilinx.com:interface:sc:1.0",
-            "vlnv": "xilinx.com:interface:sc_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:sc_rtl:1.0"
           },
           "S_SC_AR": {
             "mode": "Slave",
             "vlnv_bus_definition": "xilinx.com:interface:sc:1.0",
-            "vlnv": "xilinx.com:interface:sc_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:sc_rtl:1.0"
           },
           "M_SC_R": {
             "mode": "Master",
             "vlnv_bus_definition": "xilinx.com:interface:sc:1.0",
-            "vlnv": "xilinx.com:interface:sc_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:sc_rtl:1.0"
           },
           "S_SC_R": {
             "mode": "Slave",
             "vlnv_bus_definition": "xilinx.com:interface:sc:1.0",
-            "vlnv": "xilinx.com:interface:sc_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:sc_rtl:1.0"
           },
           "M_SC_AW": {
             "mode": "Master",
             "vlnv_bus_definition": "xilinx.com:interface:sc:1.0",
-            "vlnv": "xilinx.com:interface:sc_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:sc_rtl:1.0"
           },
           "S_SC_AW": {
             "mode": "Slave",
             "vlnv_bus_definition": "xilinx.com:interface:sc:1.0",
-            "vlnv": "xilinx.com:interface:sc_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:sc_rtl:1.0"
           },
           "M_SC_W": {
             "mode": "Master",
             "vlnv_bus_definition": "xilinx.com:interface:sc:1.0",
-            "vlnv": "xilinx.com:interface:sc_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:sc_rtl:1.0"
           },
           "S_SC_W": {
             "mode": "Slave",
             "vlnv_bus_definition": "xilinx.com:interface:sc:1.0",
-            "vlnv": "xilinx.com:interface:sc_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:sc_rtl:1.0"
           },
           "M_SC_B": {
             "mode": "Master",
             "vlnv_bus_definition": "xilinx.com:interface:sc:1.0",
-            "vlnv": "xilinx.com:interface:sc_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:sc_rtl:1.0"
           },
           "S_SC_B": {
             "mode": "Slave",
             "vlnv_bus_definition": "xilinx.com:interface:sc:1.0",
-            "vlnv": "xilinx.com:interface:sc_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:sc_rtl:1.0"
           }
         },
         "ports": {
@@ -2037,9 +1862,9 @@
         "components": {
           "s00_ar_node": {
             "vlnv": "xilinx.com:ip:sc_node:1.0",
-            "ip_revision": "19",
+            "ip_revision": "18",
             "xci_name": "bd_a878_sarn_0",
-            "xci_path": "ip\\ip_13\\bd_a878_sarn_0.xci",
+            "xci_path": "ip/ip_13/bd_a878_sarn_0.xci",
             "inst_hier_path": "s00_nodes/s00_ar_node",
             "has_run_ip_tcl": "true",
             "parameters": {
@@ -2209,9 +2034,9 @@
           },
           "s00_r_node": {
             "vlnv": "xilinx.com:ip:sc_node:1.0",
-            "ip_revision": "19",
+            "ip_revision": "18",
             "xci_name": "bd_a878_srn_0",
-            "xci_path": "ip\\ip_14\\bd_a878_srn_0.xci",
+            "xci_path": "ip/ip_14/bd_a878_srn_0.xci",
             "inst_hier_path": "s00_nodes/s00_r_node",
             "has_run_ip_tcl": "true",
             "parameters": {
@@ -2384,9 +2209,9 @@
           },
           "s00_aw_node": {
             "vlnv": "xilinx.com:ip:sc_node:1.0",
-            "ip_revision": "19",
+            "ip_revision": "18",
             "xci_name": "bd_a878_sawn_0",
-            "xci_path": "ip\\ip_15\\bd_a878_sawn_0.xci",
+            "xci_path": "ip/ip_15/bd_a878_sawn_0.xci",
             "inst_hier_path": "s00_nodes/s00_aw_node",
             "has_run_ip_tcl": "true",
             "parameters": {
@@ -2556,9 +2381,9 @@
           },
           "s00_w_node": {
             "vlnv": "xilinx.com:ip:sc_node:1.0",
-            "ip_revision": "19",
+            "ip_revision": "18",
             "xci_name": "bd_a878_swn_0",
-            "xci_path": "ip\\ip_16\\bd_a878_swn_0.xci",
+            "xci_path": "ip/ip_16/bd_a878_swn_0.xci",
             "inst_hier_path": "s00_nodes/s00_w_node",
             "has_run_ip_tcl": "true",
             "parameters": {
@@ -2728,9 +2553,9 @@
           },
           "s00_b_node": {
             "vlnv": "xilinx.com:ip:sc_node:1.0",
-            "ip_revision": "19",
+            "ip_revision": "18",
             "xci_name": "bd_a878_sbn_0",
-            "xci_path": "ip\\ip_17\\bd_a878_sbn_0.xci",
+            "xci_path": "ip/ip_17/bd_a878_sbn_0.xci",
             "inst_hier_path": "s00_nodes/s00_b_node",
             "has_run_ip_tcl": "true",
             "parameters": {
@@ -3012,24 +2837,12 @@
           "s_axi": {
             "mode": "Slave",
             "vlnv_bus_definition": "xilinx.com:interface:aximm:1.0",
-            "vlnv": "xilinx.com:interface:aximm_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:aximm_rtl:1.0"
           },
           "m_axi": {
             "mode": "Master",
             "vlnv_bus_definition": "xilinx.com:interface:aximm:1.0",
-            "vlnv": "xilinx.com:interface:aximm_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:aximm_rtl:1.0"
           }
         },
         "ports": {
@@ -3045,9 +2858,9 @@
         "components": {
           "s01_mmu": {
             "vlnv": "xilinx.com:ip:sc_mmu:1.0",
-            "ip_revision": "16",
+            "ip_revision": "15",
             "xci_name": "bd_a878_s01mmu_0",
-            "xci_path": "ip\\ip_18\\bd_a878_s01mmu_0.xci",
+            "xci_path": "ip/ip_18/bd_a878_s01mmu_0.xci",
             "inst_hier_path": "s01_entry_pipeline/s01_mmu",
             "has_run_ip_tcl": "true",
             "parameters": {
@@ -3154,9 +2967,9 @@
           },
           "s01_transaction_regulator": {
             "vlnv": "xilinx.com:ip:sc_transaction_regulator:1.0",
-            "ip_revision": "12",
+            "ip_revision": "11",
             "xci_name": "bd_a878_s01tr_0",
-            "xci_path": "ip\\ip_19\\bd_a878_s01tr_0.xci",
+            "xci_path": "ip/ip_19/bd_a878_s01tr_0.xci",
             "inst_hier_path": "s01_entry_pipeline/s01_transaction_regulator",
             "has_run_ip_tcl": "true",
             "parameters": {
@@ -3230,9 +3043,9 @@
           },
           "s01_si_converter": {
             "vlnv": "xilinx.com:ip:sc_si_converter:1.0",
-            "ip_revision": "16",
+            "ip_revision": "15",
             "xci_name": "bd_a878_s01sic_0",
-            "xci_path": "ip\\ip_20\\bd_a878_s01sic_0.xci",
+            "xci_path": "ip/ip_20/bd_a878_s01sic_0.xci",
             "inst_hier_path": "s01_entry_pipeline/s01_si_converter",
             "has_run_ip_tcl": "true",
             "parameters": {
@@ -3303,7 +3116,7 @@
                 "value": "128"
               },
               "SPLIT_WRAP_NARROW": {
-                "value": "1"
+                "value": "0"
               },
               "SUPPORTS_NARROW": {
                 "value": "0"
@@ -3394,9 +3207,9 @@
       },
       "s01_axi2sc": {
         "vlnv": "xilinx.com:ip:sc_axi2sc:1.0",
-        "ip_revision": "11",
+        "ip_revision": "10",
         "xci_name": "bd_a878_s01a2s_0",
-        "xci_path": "ip\\ip_21\\bd_a878_s01a2s_0.xci",
+        "xci_path": "ip/ip_21/bd_a878_s01a2s_0.xci",
         "inst_hier_path": "s01_axi2sc",
         "has_run_ip_tcl": "true",
         "parameters": {
@@ -3486,46 +3299,22 @@
           "M_SC_AR": {
             "mode": "Master",
             "vlnv_bus_definition": "xilinx.com:interface:sc:1.0",
-            "vlnv": "xilinx.com:interface:sc_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:sc_rtl:1.0"
           },
           "S_SC_AR": {
             "mode": "Slave",
             "vlnv_bus_definition": "xilinx.com:interface:sc:1.0",
-            "vlnv": "xilinx.com:interface:sc_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:sc_rtl:1.0"
           },
           "M_SC_R": {
             "mode": "Master",
             "vlnv_bus_definition": "xilinx.com:interface:sc:1.0",
-            "vlnv": "xilinx.com:interface:sc_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:sc_rtl:1.0"
           },
           "S_SC_R": {
             "mode": "Slave",
             "vlnv_bus_definition": "xilinx.com:interface:sc:1.0",
-            "vlnv": "xilinx.com:interface:sc_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:sc_rtl:1.0"
           }
         },
         "ports": {
@@ -3549,9 +3338,9 @@
         "components": {
           "s01_ar_node": {
             "vlnv": "xilinx.com:ip:sc_node:1.0",
-            "ip_revision": "19",
+            "ip_revision": "18",
             "xci_name": "bd_a878_sarn_1",
-            "xci_path": "ip\\ip_22\\bd_a878_sarn_1.xci",
+            "xci_path": "ip/ip_22/bd_a878_sarn_1.xci",
             "inst_hier_path": "s01_nodes/s01_ar_node",
             "has_run_ip_tcl": "true",
             "parameters": {
@@ -3721,9 +3510,9 @@
           },
           "s01_r_node": {
             "vlnv": "xilinx.com:ip:sc_node:1.0",
-            "ip_revision": "19",
+            "ip_revision": "18",
             "xci_name": "bd_a878_srn_1",
-            "xci_path": "ip\\ip_23\\bd_a878_srn_1.xci",
+            "xci_path": "ip/ip_23/bd_a878_srn_1.xci",
             "inst_hier_path": "s01_nodes/s01_r_node",
             "has_run_ip_tcl": "true",
             "parameters": {
@@ -3954,9 +3743,9 @@
       },
       "m00_sc2axi": {
         "vlnv": "xilinx.com:ip:sc_sc2axi:1.0",
-        "ip_revision": "11",
+        "ip_revision": "10",
         "xci_name": "bd_a878_m00s2a_0",
-        "xci_path": "ip\\ip_24\\bd_a878_m00s2a_0.xci",
+        "xci_path": "ip/ip_24/bd_a878_m00s2a_0.xci",
         "inst_hier_path": "m00_sc2axi",
         "has_run_ip_tcl": "true",
         "parameters": {
@@ -4074,112 +3863,52 @@
           "M_SC_AR": {
             "mode": "Master",
             "vlnv_bus_definition": "xilinx.com:interface:sc:1.0",
-            "vlnv": "xilinx.com:interface:sc_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:sc_rtl:1.0"
           },
           "S_SC_AR": {
             "mode": "Slave",
             "vlnv_bus_definition": "xilinx.com:interface:sc:1.0",
-            "vlnv": "xilinx.com:interface:sc_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:sc_rtl:1.0"
           },
           "M_SC_R": {
             "mode": "Master",
             "vlnv_bus_definition": "xilinx.com:interface:sc:1.0",
-            "vlnv": "xilinx.com:interface:sc_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:sc_rtl:1.0"
           },
           "S_SC_R": {
             "mode": "Slave",
             "vlnv_bus_definition": "xilinx.com:interface:sc:1.0",
-            "vlnv": "xilinx.com:interface:sc_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:sc_rtl:1.0"
           },
           "M_SC_AW": {
             "mode": "Master",
             "vlnv_bus_definition": "xilinx.com:interface:sc:1.0",
-            "vlnv": "xilinx.com:interface:sc_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:sc_rtl:1.0"
           },
           "S_SC_AW": {
             "mode": "Slave",
             "vlnv_bus_definition": "xilinx.com:interface:sc:1.0",
-            "vlnv": "xilinx.com:interface:sc_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:sc_rtl:1.0"
           },
           "M_SC_W": {
             "mode": "Master",
             "vlnv_bus_definition": "xilinx.com:interface:sc:1.0",
-            "vlnv": "xilinx.com:interface:sc_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:sc_rtl:1.0"
           },
           "S_SC_W": {
             "mode": "Slave",
             "vlnv_bus_definition": "xilinx.com:interface:sc:1.0",
-            "vlnv": "xilinx.com:interface:sc_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:sc_rtl:1.0"
           },
           "M_SC_B": {
             "mode": "Master",
             "vlnv_bus_definition": "xilinx.com:interface:sc:1.0",
-            "vlnv": "xilinx.com:interface:sc_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:sc_rtl:1.0"
           },
           "S_SC_B": {
             "mode": "Slave",
             "vlnv_bus_definition": "xilinx.com:interface:sc:1.0",
-            "vlnv": "xilinx.com:interface:sc_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:sc_rtl:1.0"
           }
         },
         "ports": {
@@ -4203,9 +3932,9 @@
         "components": {
           "m00_ar_node": {
             "vlnv": "xilinx.com:ip:sc_node:1.0",
-            "ip_revision": "19",
+            "ip_revision": "18",
             "xci_name": "bd_a878_m00arn_0",
-            "xci_path": "ip\\ip_25\\bd_a878_m00arn_0.xci",
+            "xci_path": "ip/ip_25/bd_a878_m00arn_0.xci",
             "inst_hier_path": "m00_nodes/m00_ar_node",
             "has_run_ip_tcl": "true",
             "parameters": {
@@ -4375,9 +4104,9 @@
           },
           "m00_r_node": {
             "vlnv": "xilinx.com:ip:sc_node:1.0",
-            "ip_revision": "19",
+            "ip_revision": "18",
             "xci_name": "bd_a878_m00rn_0",
-            "xci_path": "ip\\ip_26\\bd_a878_m00rn_0.xci",
+            "xci_path": "ip/ip_26/bd_a878_m00rn_0.xci",
             "inst_hier_path": "m00_nodes/m00_r_node",
             "has_run_ip_tcl": "true",
             "parameters": {
@@ -4547,9 +4276,9 @@
           },
           "m00_aw_node": {
             "vlnv": "xilinx.com:ip:sc_node:1.0",
-            "ip_revision": "19",
+            "ip_revision": "18",
             "xci_name": "bd_a878_m00awn_0",
-            "xci_path": "ip\\ip_27\\bd_a878_m00awn_0.xci",
+            "xci_path": "ip/ip_27/bd_a878_m00awn_0.xci",
             "inst_hier_path": "m00_nodes/m00_aw_node",
             "has_run_ip_tcl": "true",
             "parameters": {
@@ -4719,9 +4448,9 @@
           },
           "m00_w_node": {
             "vlnv": "xilinx.com:ip:sc_node:1.0",
-            "ip_revision": "19",
+            "ip_revision": "18",
             "xci_name": "bd_a878_m00wn_0",
-            "xci_path": "ip\\ip_28\\bd_a878_m00wn_0.xci",
+            "xci_path": "ip/ip_28/bd_a878_m00wn_0.xci",
             "inst_hier_path": "m00_nodes/m00_w_node",
             "has_run_ip_tcl": "true",
             "parameters": {
@@ -4894,9 +4623,9 @@
           },
           "m00_b_node": {
             "vlnv": "xilinx.com:ip:sc_node:1.0",
-            "ip_revision": "19",
+            "ip_revision": "18",
             "xci_name": "bd_a878_m00bn_0",
-            "xci_path": "ip\\ip_29\\bd_a878_m00bn_0.xci",
+            "xci_path": "ip/ip_29/bd_a878_m00bn_0.xci",
             "inst_hier_path": "m00_nodes/m00_b_node",
             "has_run_ip_tcl": "true",
             "parameters": {
@@ -5178,24 +4907,12 @@
           "s_axi": {
             "mode": "Slave",
             "vlnv_bus_definition": "xilinx.com:interface:aximm:1.0",
-            "vlnv": "xilinx.com:interface:aximm_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:aximm_rtl:1.0"
           },
           "m_axi": {
             "mode": "Master",
             "vlnv_bus_definition": "xilinx.com:interface:aximm:1.0",
-            "vlnv": "xilinx.com:interface:aximm_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:aximm_rtl:1.0"
           }
         },
         "ports": {
@@ -5211,9 +4928,9 @@
         "components": {
           "m00_exit": {
             "vlnv": "xilinx.com:ip:sc_exit:1.0",
-            "ip_revision": "18",
+            "ip_revision": "17",
             "xci_name": "bd_a878_m00e_0",
-            "xci_path": "ip\\ip_30\\bd_a878_m00e_0.xci",
+            "xci_path": "ip/ip_30/bd_a878_m00e_0.xci",
             "inst_hier_path": "m00_exit_pipeline/m00_exit",
             "has_run_ip_tcl": "true",
             "parameters": {

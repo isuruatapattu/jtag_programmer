@@ -5,8 +5,6 @@
 	compatible = "xlnx,nexys-a7-100t";
 	device_id = "7a100t";
 	#address-cells = <1>;
-	variant = "artix7";
-	model = "Microblaze";
 	#size-cells = <1>;
 	slrcount = <1>;
 	family = "microblaze";
@@ -16,7 +14,7 @@
 		xlnx,ip-name = "lmb_bram_if_cntlr";
 		device_type = "memory";
 		memory_type = "memory";
-		reg = <0x0 0x20000>;
+		reg = <0x00000000 0x20000>;
 	};
 	mig_7series_0_memory: memory@80000000 {
 		compatible = "xlnx,mig-7series-4.2";

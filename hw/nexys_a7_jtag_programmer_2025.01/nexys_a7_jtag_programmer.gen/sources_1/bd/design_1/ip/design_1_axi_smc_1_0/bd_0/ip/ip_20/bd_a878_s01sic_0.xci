@@ -2,9 +2,9 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "bd_a878_s01sic_0",
-    "cell_name": "s01_si_converter",
+    "cell_name": "s01_entry_pipeline/s01_si_converter",
     "component_reference": "xilinx.com:ip:sc_si_converter:1.0",
-    "ip_revision": "16",
+    "ip_revision": "15",
     "gen_directory": ".",
     "parameters": {
       "component_parameters": {
@@ -37,7 +37,7 @@
         "HAS_ACLKEN": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "SINGLE_ISSUING": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "AXILITE_CONV": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "all" } ],
-        "SPLIT_WRAP_NARROW": [ { "value": "1", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "SPLIT_WRAP_NARROW": [ { "value": "0", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "SEP000_RDATA_WIDTH": [ { "value": "128", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "SEP000_WDATA_WIDTH": [ { "value": "128", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "SEP000_PROTOCOL": [ { "value": "AXI4", "value_src": "user", "resolve_type": "user", "usage": "all" } ],
@@ -1351,31 +1351,31 @@
         "C_SINGLE_ISSUING": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_NUM_READ_OUTSTANDING": [ { "value": "2", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_NUM_WRITE_OUTSTANDING": [ { "value": "2", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "C_SPLIT_WRAP_NARROW": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_SPLIT_WRAP_NARROW": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_READ_ACCEPTANCE": [ { "value": "32", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_WRITE_ACCEPTANCE": [ { "value": "32", "resolve_type": "generated", "format": "long", "usage": "all" } ]
       },
       "project_parameters": {
-        "ARCHITECTURE": [ { "value": "artix7", "resolve_type": "generated", "usage": "all" } ],
-        "BASE_BOARD_PART": [ { "value": "digilentinc.com:nexys-a7-100t:part0:1.3", "resolve_type": "generated", "usage": "all" } ],
-        "BOARD_CONNECTIONS": [ { "value": "", "resolve_type": "generated", "usage": "all" } ],
-        "DEVICE": [ { "value": "xc7a100t", "resolve_type": "generated", "usage": "all" } ],
-        "PACKAGE": [ { "value": "csg324", "resolve_type": "generated", "usage": "all" } ],
-        "PREFHDL": [ { "value": "VERILOG", "resolve_type": "generated", "usage": "all" } ],
-        "SILICON_REVISION": [ { "value": "", "resolve_type": "generated", "usage": "all" } ],
-        "SIMULATOR_LANGUAGE": [ { "value": "MIXED", "resolve_type": "generated", "usage": "all" } ],
-        "SPEEDGRADE": [ { "value": "-1", "resolve_type": "generated", "usage": "all" } ],
-        "STATIC_POWER": [ { "value": "", "resolve_type": "generated", "usage": "all" } ],
-        "TEMPERATURE_GRADE": [ { "value": "", "resolve_type": "generated", "usage": "all" } ]
+        "ARCHITECTURE": [ { "value": "artix7" } ],
+        "BASE_BOARD_PART": [ { "value": "digilentinc.com:nexys-a7-100t:part0:1.3" } ],
+        "BOARD_CONNECTIONS": [ { "value": "" } ],
+        "DEVICE": [ { "value": "xc7a100t" } ],
+        "PACKAGE": [ { "value": "csg324" } ],
+        "PREFHDL": [ { "value": "VERILOG" } ],
+        "SILICON_REVISION": [ { "value": "" } ],
+        "SIMULATOR_LANGUAGE": [ { "value": "MIXED" } ],
+        "SPEEDGRADE": [ { "value": "-1" } ],
+        "STATIC_POWER": [ { "value": "" } ],
+        "TEMPERATURE_GRADE": [ { "value": "" } ]
       },
       "runtime_parameters": {
         "IPCONTEXT": [ { "value": "IP_Integrator" } ],
-        "IPREVISION": [ { "value": "16" } ],
+        "IPREVISION": [ { "value": "15" } ],
         "MANAGED": [ { "value": "TRUE" } ],
         "OUTPUTDIR": [ { "value": "." } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
         "SHAREDDIR": [ { "value": "../../../../../ipshared" } ],
-        "SWVERSION": [ { "value": "2025.2" } ],
+        "SWVERSION": [ { "value": "2025.1" } ],
         "SYNTHESISFLOW": [ { "value": "GLOBAL" } ]
       }
     },
@@ -1571,6 +1571,5 @@
         }
       }
     }
-  },
-  "checksum": "824ac24f"
+  }
 }

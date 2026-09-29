@@ -21,11 +21,31 @@ Desktop.ini
 *.rpt
 *.rpx
 *.dcp
+*.vcd
+*.fst
+*.fsdb
+*.ghw
+
+# Vivado generated project data (implementation, IP products, simulation)
+*.cache/
+*.gen/
+*.hw/
+*.ip_user_files/
+*.runs/
+*.sim/
 
 # Software build products
 **/build/
+**/build_configs/
 **/Debug/
 **/Release/
+**/export/
+**/libsrc/
+**/logs/
+**/hw/sdt/
+.rigel_lopper/
+**/_ide/logs/
+**/_ide/.wsdata/
 *.o
 *.obj
 *.d
@@ -34,6 +54,8 @@ Desktop.ini
 *.bin
 *.hex
 *.map
+*.pdi
+vitisWorkspace.json
 
 # Python tooling
 __pycache__/

@@ -1,0 +1,4 @@
+domain_path: /users2/athapatt/my_ws/jtag_programmer/sw/zcu102/ws_20260819/pf_zynq/zynqmp_fsbl/zynqmp_fsbl_bsp
+app_src_dir: /tools/Xilinx/2025.1/Vitis/data/embeddedsw/lib/sw_apps/zynqmp_fsbl
+template: zynqmp_fsbl
+lang: c

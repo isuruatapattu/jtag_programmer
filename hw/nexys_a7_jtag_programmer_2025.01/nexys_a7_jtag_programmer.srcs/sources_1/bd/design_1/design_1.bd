@@ -7,7 +7,7 @@
       "name": "design_1",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "Hierarchical",
-      "tool_version": "2025.2",
+      "tool_version": "2025.1",
       "validated": "true"
     },
     "design_tree": {
@@ -83,12 +83,6 @@
           },
           "TIMEPERIOD_PS": {
             "value": "1250",
-            "value_src": "default"
-          }
-        },
-        "hdl_attributes": {
-          "LOCKED": {
-            "value": "FALSE",
             "value_src": "default"
           }
         },
@@ -177,12 +171,6 @@
         "mode": "Master",
         "vlnv_bus_definition": "xilinx.com:interface:uart:1.0",
         "vlnv": "xilinx.com:interface:uart_rtl:1.0",
-        "hdl_attributes": {
-          "LOCKED": {
-            "value": "FALSE",
-            "value_src": "default"
-          }
-        },
         "port_maps": {
           "RxD": {
             "physical_name": "usb_uart_rxd",
@@ -198,12 +186,6 @@
         "mode": "Master",
         "vlnv_bus_definition": "xilinx.com:interface:gpio:1.0",
         "vlnv": "xilinx.com:interface:gpio_rtl:1.0",
-        "hdl_attributes": {
-          "LOCKED": {
-            "value": "FALSE",
-            "value_src": "default"
-          }
-        },
         "port_maps": {
           "TRI_O": {
             "physical_name": "led_16bits_tri_o",
@@ -217,12 +199,6 @@
         "mode": "Master",
         "vlnv_bus_definition": "xilinx.com:interface:gpio:1.0",
         "vlnv": "xilinx.com:interface:gpio_rtl:1.0",
-        "hdl_attributes": {
-          "LOCKED": {
-            "value": "FALSE",
-            "value_src": "default"
-          }
-        },
         "port_maps": {
           "TRI_I": {
             "physical_name": "dip_switches_16bits_0_tri_i",
@@ -288,7 +264,7 @@
         "vlnv": "xilinx.com:ip:mig_7series:4.2",
         "ip_revision": "2",
         "xci_name": "design_1_mig_7series_0_0",
-        "xci_path": "ip\\design_1_mig_7series_0_0\\design_1_mig_7series_0_0.xci",
+        "xci_path": "ip/design_1_mig_7series_0_0/design_1_mig_7series_0_0.xci",
         "inst_hier_path": "mig_7series_0",
         "has_run_ip_tcl": "true",
         "parameters": {
@@ -318,9 +294,9 @@
       },
       "util_ds_buf_0": {
         "vlnv": "xilinx.com:ip:util_ds_buf:2.2",
-        "ip_revision": "9",
+        "ip_revision": "8",
         "xci_name": "design_1_util_ds_buf_0_0",
-        "xci_path": "ip\\design_1_util_ds_buf_0_0\\design_1_util_ds_buf_0_0.xci",
+        "xci_path": "ip/design_1_util_ds_buf_0_0/design_1_util_ds_buf_0_0.xci",
         "inst_hier_path": "util_ds_buf_0",
         "has_run_ip_tcl": "true",
         "parameters": {
@@ -331,9 +307,9 @@
       },
       "clk_wiz_0": {
         "vlnv": "xilinx.com:ip:clk_wiz:6.0",
-        "ip_revision": "17",
+        "ip_revision": "16",
         "xci_name": "design_1_clk_wiz_0_0",
-        "xci_path": "ip\\design_1_clk_wiz_0_0\\design_1_clk_wiz_0_0.xci",
+        "xci_path": "ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.xci",
         "inst_hier_path": "clk_wiz_0",
         "has_run_ip_tcl": "true",
         "parameters": {
@@ -388,7 +364,7 @@
         "vlnv": "xilinx.com:ip:axi_uartlite:2.0",
         "ip_revision": "39",
         "xci_name": "design_1_axi_uartlite_0_0",
-        "xci_path": "ip\\design_1_axi_uartlite_0_0\\design_1_axi_uartlite_0_0.xci",
+        "xci_path": "ip/design_1_axi_uartlite_0_0/design_1_axi_uartlite_0_0.xci",
         "inst_hier_path": "axi_uartlite_0",
         "has_run_ip_tcl": "true",
         "parameters": {
@@ -404,7 +380,7 @@
         "vlnv": "xilinx.com:ip:axi_gpio:2.0",
         "ip_revision": "37",
         "xci_name": "design_1_axi_gpio_0_0",
-        "xci_path": "ip\\design_1_axi_gpio_0_0\\design_1_axi_gpio_0_0.xci",
+        "xci_path": "ip/design_1_axi_gpio_0_0/design_1_axi_gpio_0_0.xci",
         "inst_hier_path": "axi_gpio_0",
         "has_run_ip_tcl": "true",
         "parameters": {
@@ -435,7 +411,7 @@
         "vlnv": "xilinx.com:ip:axi_gpio:2.0",
         "ip_revision": "37",
         "xci_name": "design_1_axi_gpio_1_0",
-        "xci_path": "ip\\design_1_axi_gpio_1_0\\design_1_axi_gpio_1_0.xci",
+        "xci_path": "ip/design_1_axi_gpio_1_0/design_1_axi_gpio_1_0.xci",
         "inst_hier_path": "axi_gpio_1",
         "has_run_ip_tcl": "true",
         "parameters": {
@@ -452,9 +428,9 @@
       },
       "microblaze_0": {
         "vlnv": "xilinx.com:ip:microblaze:11.0",
-        "ip_revision": "16",
+        "ip_revision": "15",
         "xci_name": "design_1_microblaze_0_0",
-        "xci_path": "ip\\design_1_microblaze_0_0\\design_1_microblaze_0_0.xci",
+        "xci_path": "ip/design_1_microblaze_0_0/design_1_microblaze_0_0.xci",
         "inst_hier_path": "microblaze_0",
         "has_run_ip_tcl": "true",
         "parameters": {
@@ -622,24 +598,12 @@
           "DLMB": {
             "mode": "MirroredMaster",
             "vlnv_bus_definition": "xilinx.com:interface:lmb:1.0",
-            "vlnv": "xilinx.com:interface:lmb_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:lmb_rtl:1.0"
           },
           "ILMB": {
             "mode": "MirroredMaster",
             "vlnv_bus_definition": "xilinx.com:interface:lmb:1.0",
-            "vlnv": "xilinx.com:interface:lmb_rtl:1.0",
-            "hdl_attributes": {
-              "LOCKED": {
-                "value": "FALSE",
-                "value_src": "default"
-              }
-            }
+            "vlnv": "xilinx.com:interface:lmb_rtl:1.0"
           }
         },
         "ports": {
@@ -655,9 +619,9 @@
         "components": {
           "dlmb_v10": {
             "vlnv": "xilinx.com:ip:lmb_v10:3.0",
-            "ip_revision": "16",
+            "ip_revision": "15",
             "xci_name": "design_1_dlmb_v10_0",
-            "xci_path": "ip\\design_1_dlmb_v10_0\\design_1_dlmb_v10_0.xci",
+            "xci_path": "ip/design_1_dlmb_v10_0/design_1_dlmb_v10_0.xci",
             "inst_hier_path": "microblaze_0_local_memory/dlmb_v10",
             "has_run_ip_tcl": "true",
             "interface_ports": {
@@ -690,9 +654,9 @@
           },
           "ilmb_v10": {
             "vlnv": "xilinx.com:ip:lmb_v10:3.0",
-            "ip_revision": "16",
+            "ip_revision": "15",
             "xci_name": "design_1_ilmb_v10_0",
-            "xci_path": "ip\\design_1_ilmb_v10_0\\design_1_ilmb_v10_0.xci",
+            "xci_path": "ip/design_1_ilmb_v10_0/design_1_ilmb_v10_0.xci",
             "inst_hier_path": "microblaze_0_local_memory/ilmb_v10",
             "has_run_ip_tcl": "true",
             "interface_ports": {
@@ -725,9 +689,9 @@
           },
           "dlmb_bram_if_cntlr": {
             "vlnv": "xilinx.com:ip:lmb_bram_if_cntlr:4.0",
-            "ip_revision": "27",
+            "ip_revision": "26",
             "xci_name": "design_1_dlmb_bram_if_cntlr_0",
-            "xci_path": "ip\\design_1_dlmb_bram_if_cntlr_0\\design_1_dlmb_bram_if_cntlr_0.xci",
+            "xci_path": "ip/design_1_dlmb_bram_if_cntlr_0/design_1_dlmb_bram_if_cntlr_0.xci",
             "inst_hier_path": "microblaze_0_local_memory/dlmb_bram_if_cntlr",
             "has_run_ip_tcl": "true",
             "parameters": {
@@ -758,9 +722,9 @@
           },
           "ilmb_bram_if_cntlr": {
             "vlnv": "xilinx.com:ip:lmb_bram_if_cntlr:4.0",
-            "ip_revision": "27",
+            "ip_revision": "26",
             "xci_name": "design_1_ilmb_bram_if_cntlr_0",
-            "xci_path": "ip\\design_1_ilmb_bram_if_cntlr_0\\design_1_ilmb_bram_if_cntlr_0.xci",
+            "xci_path": "ip/design_1_ilmb_bram_if_cntlr_0/design_1_ilmb_bram_if_cntlr_0.xci",
             "inst_hier_path": "microblaze_0_local_memory/ilmb_bram_if_cntlr",
             "has_run_ip_tcl": "true",
             "parameters": {
@@ -781,9 +745,9 @@
           },
           "lmb_bram": {
             "vlnv": "xilinx.com:ip:blk_mem_gen:8.4",
-            "ip_revision": "12",
+            "ip_revision": "11",
             "xci_name": "design_1_lmb_bram_0",
-            "xci_path": "ip\\design_1_lmb_bram_0\\design_1_lmb_bram_0.xci",
+            "xci_path": "ip/design_1_lmb_bram_0/design_1_lmb_bram_0.xci",
             "inst_hier_path": "microblaze_0_local_memory/lmb_bram",
             "has_run_ip_tcl": "true",
             "parameters": {
@@ -857,9 +821,9 @@
       },
       "mdm_1": {
         "vlnv": "xilinx.com:ip:mdm:3.2",
-        "ip_revision": "29",
+        "ip_revision": "28",
         "xci_name": "design_1_mdm_1_0",
-        "xci_path": "ip\\design_1_mdm_1_0\\design_1_mdm_1_0.xci",
+        "xci_path": "ip/design_1_mdm_1_0/design_1_mdm_1_0.xci",
         "inst_hier_path": "mdm_1",
         "has_run_ip_tcl": "true"
       },
@@ -867,7 +831,7 @@
         "vlnv": "xilinx.com:ip:proc_sys_reset:5.0",
         "ip_revision": "17",
         "xci_name": "design_1_rst_clk_wiz_0_100M_0",
-        "xci_path": "ip\\design_1_rst_clk_wiz_0_100M_0\\design_1_rst_clk_wiz_0_100M_0.xci",
+        "xci_path": "ip/design_1_rst_clk_wiz_0_100M_0/design_1_rst_clk_wiz_0_100M_0.xci",
         "inst_hier_path": "rst_clk_wiz_0_100M",
         "has_run_ip_tcl": "true",
         "parameters": {
@@ -881,9 +845,9 @@
       },
       "axi_smc": {
         "vlnv": "xilinx.com:ip:smartconnect:1.0",
-        "ip_revision": "28",
+        "ip_revision": "27",
         "xci_name": "design_1_axi_smc_0",
-        "xci_path": "ip\\design_1_axi_smc_0\\design_1_axi_smc_0.xci",
+        "xci_path": "ip/design_1_axi_smc_0/design_1_axi_smc_0.xci",
         "inst_hier_path": "axi_smc",
         "has_run_ip_tcl": "true",
         "parameters": {
@@ -1020,9 +984,9 @@
       },
       "axi_smc_1": {
         "vlnv": "xilinx.com:ip:smartconnect:1.0",
-        "ip_revision": "28",
+        "ip_revision": "27",
         "xci_name": "design_1_axi_smc_1_0",
-        "xci_path": "ip\\design_1_axi_smc_1_0\\design_1_axi_smc_1_0.xci",
+        "xci_path": "ip/design_1_axi_smc_1_0/design_1_axi_smc_1_0.xci",
         "inst_hier_path": "axi_smc_1",
         "has_run_ip_tcl": "true",
         "parameters": {
@@ -1129,7 +1093,7 @@
         "vlnv": "xilinx.com:ip:proc_sys_reset:5.0",
         "ip_revision": "17",
         "xci_name": "design_1_rst_mig_7series_0_81M_0",
-        "xci_path": "ip\\design_1_rst_mig_7series_0_81M_0\\design_1_rst_mig_7series_0_81M_0.xci",
+        "xci_path": "ip/design_1_rst_mig_7series_0_81M_0/design_1_rst_mig_7series_0_81M_0.xci",
         "inst_hier_path": "rst_mig_7series_0_81M",
         "has_run_ip_tcl": "true"
       }
