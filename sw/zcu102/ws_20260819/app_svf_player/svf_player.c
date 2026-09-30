@@ -401,7 +401,7 @@ static int play_embedded_svf(XGpio *Gpio)
 static int play_led_demo_svf(XGpio *Gpio)
 {
     xil_printf("Starting visible LED SVF demo. TDO checks are ignored.\r\n");
-    xil_printf("Connect LEDs to JA1=TCK, JA2=TMS, JA3=TDI.\r\n");
+    xil_printf("Connect LEDs to J55.1=TCK, J55.3=TMS, J55.5=TDI.\r\n");
     return play_svf_buffer(Gpio, led_demo_svf, (u32)(sizeof(led_demo_svf) - 1U),
                            LED_DEMO_EDGE_DELAY_US, 1);
 }
@@ -423,10 +423,10 @@ static char read_uart_command(void)
 static void print_menu(void)
 {
     xil_printf("\r\nCommands:\r\n");
-    xil_printf("  p - play embedded SVF over JA JTAG\r\n");
+    xil_printf("  p - play embedded SVF over J55 JTAG\r\n");
     xil_printf("  d - visible LED SVF demo with no target attached\r\n");
-    xil_printf("  t - run one JA output LED test pattern\r\n");
-    xil_printf("  r - reset JA outputs low\r\n");
+    xil_printf("  t - run one J55 output LED test pattern\r\n");
+    xil_printf("  r - reset J55 outputs low\r\n");
     xil_printf("Input: ");
 }
 
@@ -439,14 +439,14 @@ int main(void)
 
     status = init_ja_gpio(&JaGpio);
     if (status != XST_SUCCESS) {
-        xil_printf("JA GPIO init failed\r\n");
+        xil_printf("J55 GPIO init failed\r\n");
         while (1);
     }
 
     configure_ja_gpio(&JaGpio);
 
-    xil_printf("MicroBlaze SVF player ready.\r\n");
-    xil_printf("JA1=TCK, JA2=TMS, JA3=TDI, JA7=TDO.\r\n");
+    xil_printf("ZCU102 SVF player ready.\r\n");
+    xil_printf("J55.1=TCK, J55.3=TMS, J55.5=TDI, J55.7=TDO.\r\n");
     print_svf_blob_info();
 
     while (1) {
@@ -460,11 +460,11 @@ int main(void)
         } else if ((command == 'd') || (command == 'D')) {
             (void)play_led_demo_svf(&JaGpio);
         } else if ((command == 't') || (command == 'T')) {
-            xil_printf("Running JA output test once.\r\n");
+            xil_printf("Running J55 output test once.\r\n");
             test_ja_outputs(&JaGpio);
         } else if ((command == 'r') || (command == 'R')) {
             configure_ja_gpio(&JaGpio);
-            xil_printf("JA outputs reset low.\r\n");
+            xil_printf("J55 outputs reset low.\r\n");
         } else {
             xil_printf("Unknown command.\r\n");
         }
