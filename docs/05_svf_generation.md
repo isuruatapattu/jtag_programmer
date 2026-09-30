@@ -69,8 +69,9 @@ Check the new file before embedding it:
 Replace both copies, or the two programmers will embed different payloads:
 
 ```text
-sw/nexys_a7/ws_20260818/app_mb_svf_player/assets/nexys_a7_01.svf
-sw/zcu102/ws_20260819/app_svf_player/assets/nexys_a7_01.svf
+sw/nexys_a7/app_mb_svf_player/assets/nexys_a7_01.svf
+sw/nexys_a7/app_mb_jtag_verifier/assets/nexys_a7_01.svf
+sw/zcu102/app_svf_player/assets/nexys_a7_01.svf
 ```
 
 Rebuild the application. CMake regenerates `svf_blob.generated.S` from `svf_blob.S` and the assembler includes the file with `.incbin`. There is no runtime download of the SVF.
@@ -82,7 +83,7 @@ $env:Path = 'C:\AMDDesignTools\2025.2\Vitis\gnu\microblaze\nt\bin;' + $env:Path
 cmake --build build
 ```
 
-Run that from `sw/nexys_a7/ws_20260818/app_mb_svf_player`, after the Vitis CMake build directory exists.
+Run that from `sw/nexys_a7/app_mb_svf_player`, after the Vitis CMake build directory exists.
 
 A full link prints a `text` size a little larger than the SVF, because the file is linked into `.rodata`, and a `bss` size above 32 MiB, because the heap is reserved there. The recorded Nexys A7 link line for this SVF is:
 

@@ -5,9 +5,9 @@ This is the path that configures a target Nexys A7-100T from the embedded SVF. T
 ## 1. Build and download the programmer
 
 1. Open `hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.xpr` (or the ZCU102 project) and confirm the bitstream is current. [03 Vivado design](03_vivado_design.md) lists the IP and the address map.
-2. Open the matching Vitis workspace:
-   - `sw/nexys_a7/ws_20260818` for the Nexys A7
-   - `sw/zcu102/ws_20260819` for the ZCU102
+2. Build the matching programmer:
+   - Nexys A7 application `sw/nexys_a7/app_mb_svf_player`, against platform `sw/nexys_a7/ws_20260819/pf_nexys_a7`
+   - ZCU102 application `sw/zcu102/app_svf_player`, against platform `sw/zcu102/ws_20260819/pf_zynq`
 3. Build the platform, then the SVF player. If the SVF asset changed, follow [05 SVF generation](05_svf_generation.md) first.
 4. Program the programmer FPGA with its own bitstream and run the player ELF. On the Nexys A7 that download uses J6 on the programmer, not J10 on the target.
 

@@ -30,7 +30,7 @@ Both applications embed that file at build time. Changing the bitstream means ge
 |---|---|---|
 | Project | `hw/nexys_a7_jtag_programmer` and `hw/nexys_a7_jtag_programmer_2025.01` | `hw/zcu102_jtag_programmer` |
 | CPU | MicroBlaze | Cortex-A53, standalone domain |
-| Application | `sw/nexys_a7/ws_20260818/app_mb_svf_player` | `sw/zcu102/ws_20260819/app_svf_player` |
+| Application | `sw/nexys_a7/app_mb_svf_player` | `sw/zcu102/app_svf_player` |
 | JTAG connector | Pmod JA | Pmod J55 |
 | Program memory | 128 MiB DDR2 at `0x80000000` | PS DDR (`psu_ddr_0`) |
 | Console | Board USB-UART (AXI UART Lite) | PS UART, 115200 baud |
@@ -43,8 +43,12 @@ The player source is the same design on both platforms: dual-channel AXI GPIO, c
 hw/nexys_a7_jtag_programmer/             Vivado project
 hw/nexys_a7_jtag_programmer_2025.01/     Recreate Tcl for the 2025.1 flow
 hw/zcu102_jtag_programmer/               ZCU102 project and J55 constraints
-sw/nexys_a7/ws_20260818/                 Vitis workspace, platform, MicroBlaze app
-sw/zcu102/ws_20260819/                   Vitis workspace and Cortex-A53 app
+sw/nexys_a7/app_mb_svf_player/           MicroBlaze SVF player
+sw/nexys_a7/app_mb_jtag_verifier/        MicroBlaze JTAG verifier
+sw/nexys_a7/ws_20260819/                 Vitis workspace and pf_nexys_a7 platform
+sw/zcu102/app_svf_player/                Cortex-A53 SVF player
+sw/zcu102/app_hello_world/               Cortex-A53 hello world
+sw/zcu102/ws_20260819/                   Vitis workspace and pf_zynq platform
 docs/                                    This documentation
 ```
 

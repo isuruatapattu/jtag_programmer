@@ -24,4 +24,4 @@ Figures:
 - [Wiring](images/wiring_diagram.png)
 - [Block diagram](images/vivado/block_design.png)
 
-The Nexys A7 application also has a source-level walkthrough in [`sw/nexys_a7/ws_20260818/app_mb_svf_player/README.md`](../sw/nexys_a7/ws_20260818/app_mb_svf_player/README.md).
+The Nexys A7 player sources are in `sw/nexys_a7/app_mb_svf_player`. A source-level walkthrough is in [`sw/nexys_a7/ws_20260818/app_mb_svf_player/README.md`](../sw/nexys_a7/ws_20260818/app_mb_svf_player/README.md).

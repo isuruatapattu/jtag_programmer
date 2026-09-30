@@ -1,4 +1,0 @@
-domain_path: C:\dev\projects\jtag_programmer\sw\nexys_a7\ws_20260818\pf_nexys_a7\export\pf_nexys_a7\sw\standalone_microblaze_0
-app_src_dir: C:\AMDDesignTools\2025.2\Vitis\data\embeddedsw\lib\sw_apps\empty_application
-template: empty_application
-lang: c

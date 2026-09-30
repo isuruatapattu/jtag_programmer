@@ -62,7 +62,7 @@ After implementation:
 
 1. Generate the bitstream.
 2. Export the hardware platform (`.xsa`) including the bitstream.
-3. Point the Vitis platform `sw/nexys_a7/ws_20260818/pf_nexys_a7` at that export if the hardware changed.
+3. Point the Vitis platform `sw/nexys_a7/ws_20260819/pf_nexys_a7` at that export if the hardware changed.
 4. Rebuild `app_mb_svf_player` so `xparameters.h` matches the new address map.
 
 A JTAG-only GPIO change that keeps `axi_gpio_0` at `0x40000000` does not require player source edits. A new address does.

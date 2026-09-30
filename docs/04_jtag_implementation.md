@@ -2,7 +2,7 @@
 
 `libxsvf` parses SVF text. It does not know about MicroBlaze, Cortex-A53, AXI, or Pmod pins. The application supplies a `struct libxsvf_host`: a byte source for the SVF, a function that pulses TCK, and a heap allocator. Both `app_mb_svf_player/svf_player.c` and `app_svf_player/svf_player.c` implement that host the same way.
 
-The line-by-line commentary for the Nexys A7 file is in the [application README](../sw/nexys_a7/ws_20260818/app_mb_svf_player/README.md). This page is the hardware-facing contract.
+The line-by-line commentary for the Nexys A7 file is in the [application README](../sw/nexys_a7/ws_20260818/app_mb_svf_player/README.md). Player sources are in `sw/nexys_a7/app_mb_svf_player`. This page is the hardware-facing contract.
 
 ## Pin bits
 
