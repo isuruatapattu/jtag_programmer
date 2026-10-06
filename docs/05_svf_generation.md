@@ -23,7 +23,7 @@ SDR 32 TDI (00000000) TDO (03631093) MASK (0fffffff) ;
 // config/jprog
 SIR 6 TDI (0b) ;
 SIR 6 TDI (14) ;
-RUNTEST 0.100000 SEC;
+RUNTEST 1E-1 SEC;
 RUNTEST 10000 TCK;
 SIR 6 TDI (14) TDO (11) MASK (31) ;
 // config/slr
@@ -63,6 +63,7 @@ Check the new file before embedding it:
 - `HIR`, `TIR`, `HDR`, and `TDR` are 0.
 - A configuration `SDR` of tens of millions of bits is present.
 - The file ends with the startup and status commands, not with a truncated shift.
+- No `RUNTEST` value has a decimal point. Vivado writes the init delay as `RUNTEST 0.100000 SEC;`, and the bundled libxsvf rejects that with `SVF Syntax Error` right after the IDCODE check. Rewrite it as `RUNTEST 1E-1 SEC;`, which is the same 0.1 s.
 
 ## Install it in the applications
 
@@ -92,4 +93,4 @@ text    data      bss      dec      hex filename
 7747420    1624 33571276 41320320 2767f80 app_mb_svf_player.elf
 ```
 
-At startup the player prints the blob address and size. For this asset the size is 7,712,741 bytes. A different size means a different file was embedded, or the link did not pick up the regenerated assembly.
+At startup the player prints the blob address and size. For this asset the size is 7,682,571 bytes, or 7,712,737 bytes if the checkout converted it to CRLF line endings. A different size means a different file was embedded, or the link did not pick up the regenerated assembly.

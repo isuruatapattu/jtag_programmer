@@ -8,7 +8,7 @@ Work in this order. Most `p` failures are the IDCODE compare, and the earlier co
 |---|---|
 | No banner | Wrong serial port, or the ELF is not running. Nexys A7 USB-UART follows the AXI UART Lite baud (board preset 9600). ZCU102 PS UART is 115200. |
 | `JA GPIO init failed` and the CPU sits in a loop | `XPAR_XGPIO_0_BASEADDR` does not match the hardware. Rebuild the Vitis platform from the current XSA. |
-| Blob size is not 7,712,741 | The linked SVF is not `assets/nexys_a7_01.svf`. Rebuild after replacing the asset. CMake generates `svf_blob.generated.S` in the build directory. |
+| Blob size is not 7,682,571 (7,712,737 with CRLF line endings) | The linked SVF is not `assets/nexys_a7_01.svf`. Rebuild after replacing the asset. CMake generates `svf_blob.generated.S` in the build directory. |
 | Menu prints `JA1=TCK` on the ZCU102 | Expected. That string is compiled in. Use J55.1 / J55.3 / J55.5 / J55.7. |
 
 ## 2. Outputs (`t`, then `d`)
@@ -53,4 +53,4 @@ A mismatch after a long run, with a large TCK count, means IDCODE and the init p
 
 `rc=0` with DONE off means the status compare in the SVF was satisfied and the board indicator was not. Confirm you are looking at the target DONE LED (callout 6), not an LED on the programmer, and that PROG was not pressed. If DONE lights and then goes out, JP1 is loading another image or PROG was pressed.
 
-`rc=0` with the wrong design running means the ELF still contains an older SVF. Compare the printed blob size with 7,712,741 and rebuild against the asset you just generated.
+`rc=0` with the wrong design running means the ELF still contains an older SVF. Compare the printed blob size with 7,682,571 (7,712,737 with CRLF line endings) and rebuild against the asset you just generated.

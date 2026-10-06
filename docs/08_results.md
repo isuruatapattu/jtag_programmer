@@ -11,7 +11,7 @@ These are the outcomes the player and the checked-in SVF are built to produce. A
 | IDCODE | `0x03631093`, mask `0x0FFFFFFF` (XC7A100T, revision ignored) |
 | Requested TCK | 10 MHz, not enforced by the player |
 | Configuration shift | 30,606,304 bits |
-| File size embedded by the player | 7,712,741 bytes |
+| File size embedded by the player | 7,682,571 bytes (7,712,737 with CRLF line endings) |
 | Recorded Nexys A7 ELF | `text` 7,747,420, `data` 1,624, `bss` 33,571,276 |
 
 The `text` size tracks the SVF because `.incbin` places the file in `.rodata`. The `bss` size tracks the 32 MiB heap reservation. Both are expected for this asset. See [05 SVF generation](05_svf_generation.md).

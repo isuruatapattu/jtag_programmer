@@ -24,7 +24,15 @@
 
 #define JA_TEST_DELAY_US 300000
 #define LED_DEMO_EDGE_DELAY_US 100000
+#define SLOW_EDGE_DELAY_US 20U
+#define INPUT_SETTLE_US 10U
 #define STATUS_PRINT_LIMIT 96
+
+#define PROBE_IR_BITS 6U
+#define PROBE_DR_BITS 32U
+#define PROBE_CAPTURE_BITS (PROBE_IR_BITS + PROBE_DR_BITS)
+#define XC7A100T_IDCODE 0x03631093U
+#define IDCODE_VERSION_MASK 0x0FFFFFFFU
 
 extern const u8 nexys_a7_01_svf_start[];
 extern const u8 nexys_a7_01_svf_end[];
@@ -44,6 +52,8 @@ struct svf_player_ctx {
     int ignore_tdo;
     int first_mismatch_expected;
     int first_mismatch_actual;
+    u32 capture_count;
+    u8 capture[PROBE_CAPTURE_BITS];
 };
 
 static const u8 led_demo_svf[] =
@@ -58,6 +68,20 @@ static const u8 led_demo_svf[] =
     "RUNTEST 8 TCK;\n"
     "SIR 6 TDI (14);\n"
     "SDR 16 TDI (55aa);\n"
+    "STATE RESET;\n";
+
+/*
+ * TDI is all ones during the IDCODE shift. IDCODE ignores TDI, but a TAP left
+ * in BYPASS echoes it, so the two cases read back as different values.
+ */
+static const u8 jtag_probe_svf[] =
+    "TRST OFF;\n"
+    "ENDIR IDLE;\n"
+    "ENDDR IDLE;\n"
+    "STATE RESET;\n"
+    "STATE IDLE;\n"
+    "SIR 6 TDI (09) RMASK (3f);\n"
+    "SDR 32 TDI (ffffffff) RMASK (ffffffff);\n"
     "STATE RESET;\n";
 
 static int mb_svf_pulse_tck(struct libxsvf_host *h, int tms, int tdi, int tdo,
@@ -158,6 +182,7 @@ static int mb_svf_setup(struct libxsvf_host *h)
     ctx->first_mismatch_clock = 0;
     ctx->first_mismatch_expected = -1;
     ctx->first_mismatch_actual = -1;
+    ctx->capture_count = 0;
 
     configure_ja_gpio(ctx->gpio);
     svf_write_outputs(ctx);
@@ -250,6 +275,10 @@ static int mb_svf_pulse_tck(struct libxsvf_host *h, int tms, int tdi, int tdo,
     should_read_tdo = (tdo >= 0) || (rmask != 0);
     if (should_read_tdo) {
         line_tdo = svf_read_tdo(ctx);
+        if ((rmask != 0) && (ctx->capture_count < PROBE_CAPTURE_BITS)) {
+            ctx->capture[ctx->capture_count] = (u8)line_tdo;
+            ctx->capture_count++;
+        }
         if (tdo >= 0) {
             ctx->tdo_check_count++;
             if ((ctx->ignore_tdo == 0) && (line_tdo != tdo)) {
@@ -360,42 +389,55 @@ static void print_svf_blob_info(void)
     }
 }
 
-static int play_svf_buffer(XGpio *Gpio, const u8 *svf_data, u32 svf_size,
-                           u32 edge_delay_us, int ignore_tdo)
+static int play_svf_ctx(struct svf_player_ctx *ctx, XGpio *Gpio,
+                        const u8 *svf_data, u32 svf_size, u32 edge_delay_us,
+                        int ignore_tdo)
 {
-    struct svf_player_ctx ctx;
     struct libxsvf_host host;
     int rc;
 
-    memset(&ctx, 0, sizeof(ctx));
-    ctx.gpio = Gpio;
-    ctx.svf_data = svf_data;
-    ctx.svf_size = svf_size;
-    ctx.edge_delay_us = edge_delay_us;
-    ctx.ignore_tdo = ignore_tdo;
+    memset(ctx, 0, sizeof(*ctx));
+    ctx->gpio = Gpio;
+    ctx->svf_data = svf_data;
+    ctx->svf_size = svf_size;
+    ctx->edge_delay_us = edge_delay_us;
+    ctx->ignore_tdo = ignore_tdo;
 
-    init_svf_host(&host, &ctx);
+    init_svf_host(&host, ctx);
 
     rc = libxsvf_play(&host, LIBXSVF_MODE_SVF);
 
     xil_printf("SVF playback finished with rc=%d\r\n", rc);
     xil_printf("TCK clocks: %u, TDI bits: %u, TDO checks: %u\r\n",
-               ctx.clock_count, ctx.tdi_bit_count, ctx.tdo_check_count);
+               ctx->clock_count, ctx->tdi_bit_count, ctx->tdo_check_count);
 
-    if (ctx.tdo_mismatch_count != 0U) {
+    if (ctx->tdo_mismatch_count != 0U) {
         xil_printf("TDO mismatches: %u, first at TCK %u expected %d actual %d\r\n",
-                   ctx.tdo_mismatch_count, ctx.first_mismatch_clock,
-                   ctx.first_mismatch_expected, ctx.first_mismatch_actual);
+                   ctx->tdo_mismatch_count, ctx->first_mismatch_clock,
+                   ctx->first_mismatch_expected, ctx->first_mismatch_actual);
     }
 
     return rc;
 }
 
-static int play_embedded_svf(XGpio *Gpio)
+static int play_svf_buffer(XGpio *Gpio, const u8 *svf_data, u32 svf_size,
+                           u32 edge_delay_us, int ignore_tdo)
+{
+    struct svf_player_ctx ctx;
+
+    return play_svf_ctx(&ctx, Gpio, svf_data, svf_size, edge_delay_us,
+                        ignore_tdo);
+}
+
+static int play_embedded_svf(XGpio *Gpio, u32 edge_delay_us)
 {
     xil_printf("Starting embedded SVF playback.\r\n");
+    if (edge_delay_us != 0U) {
+        xil_printf("Edge delay: %u us.\r\n", edge_delay_us);
+    }
     print_svf_blob_info();
-    return play_svf_buffer(Gpio, nexys_a7_01_svf_start, get_svf_size(), 0, 0);
+    return play_svf_buffer(Gpio, nexys_a7_01_svf_start, get_svf_size(),
+                           edge_delay_us, 0);
 }
 
 static int play_led_demo_svf(XGpio *Gpio)
@@ -404,6 +446,94 @@ static int play_led_demo_svf(XGpio *Gpio)
     xil_printf("Connect LEDs to J55.1=TCK, J55.3=TMS, J55.5=TDI.\r\n");
     return play_svf_buffer(Gpio, led_demo_svf, (u32)(sizeof(led_demo_svf) - 1U),
                            LED_DEMO_EDGE_DELAY_US, 1);
+}
+
+static u32 read_inputs_with_tck(XGpio *Gpio, u32 tck)
+{
+    XGpio_DiscreteWrite(Gpio, JA_OUT_CHANNEL, tck);
+    usleep(INPUT_SETTLE_US);
+    return XGpio_DiscreteRead(Gpio, JA_IN_CHANNEL) & JA_IN_MASK;
+}
+
+static void print_tdo_levels(XGpio *Gpio)
+{
+    u32 tck_low;
+    u32 tck_high;
+
+    tck_low = read_inputs_with_tck(Gpio, 0x00000000);
+    tck_high = read_inputs_with_tck(Gpio, JA_BIT_TCK);
+    XGpio_DiscreteWrite(Gpio, JA_OUT_CHANNEL, 0x00000000);
+
+    xil_printf("J55 inputs with TCK low:  0x%x  TDO(J55.7)=%d\r\n", tck_low,
+               ((tck_low & JA_BIT_TDO) != 0U) ? 1 : 0);
+    xil_printf("J55 inputs with TCK high: 0x%x  TDO(J55.7)=%d\r\n", tck_high,
+               ((tck_high & JA_BIT_TDO) != 0U) ? 1 : 0);
+    xil_printf("With a jumper from J55.1 to J55.7, TDO must read 0 then 1.\r\n");
+}
+
+static u32 capture_to_word(const struct svf_player_ctx *ctx, u32 first,
+                           u32 count)
+{
+    u32 value = 0U;
+    u32 i;
+
+    for (i = 0U; i < count; i++) {
+        if (ctx->capture[first + i] != 0U) {
+            value |= (1U << i);
+        }
+    }
+
+    return value;
+}
+
+static void run_jtag_probe(XGpio *Gpio, u32 edge_delay_us)
+{
+    struct svf_player_ctx ctx;
+    u32 ir;
+    u32 idcode;
+    int rc;
+
+    xil_printf("\r\nProbe with %u us edge delay:\r\n", edge_delay_us);
+    rc = play_svf_ctx(&ctx, Gpio, jtag_probe_svf,
+                      (u32)(sizeof(jtag_probe_svf) - 1U), edge_delay_us, 1);
+
+    if ((rc < 0) || (ctx.capture_count != PROBE_CAPTURE_BITS)) {
+        xil_printf("Probe incomplete: captured %u of %u TDO bits.\r\n",
+                   ctx.capture_count, PROBE_CAPTURE_BITS);
+        return;
+    }
+
+    ir = capture_to_word(&ctx, 0U, PROBE_IR_BITS);
+    idcode = capture_to_word(&ctx, PROBE_IR_BITS, PROBE_DR_BITS);
+
+    xil_printf("IR capture: 0x%02x  (low two bits must be 01)\r\n", ir);
+    xil_printf("IDCODE:     0x%08x  (XC7A100T reads 0x?3631093)\r\n", idcode);
+
+    if ((idcode & IDCODE_VERSION_MASK) == XC7A100T_IDCODE) {
+        xil_printf("Result: TAP and TDO path work.\r\n");
+    } else if ((ir == 0U) && (idcode == 0U)) {
+        xil_printf("Result: TDO never went high. TDO is not connected, the "
+                   "target is off or not being clocked, or something holds "
+                   "J55.7 low.\r\n");
+    } else if ((ir == 0x3FU) && (idcode == 0xFFFFFFFFU)) {
+        xil_printf("Result: TDO never went low. TDO is open or pulled high, "
+                   "or the target is not being clocked.\r\n");
+    } else if (idcode == 0xFFFFFFFEU) {
+        xil_printf("Result: TDI came straight back, so the TAP is in BYPASS "
+                   "and the IR load failed. Check TCK and TMS.\r\n");
+    } else if ((ir & 0x3U) == 0x1U) {
+        xil_printf("Result: the TAP shifts, but this is not an XC7A100T "
+                   "IDCODE.\r\n");
+    } else {
+        xil_printf("Result: TDO toggles but the bits are wrong.\r\n");
+    }
+}
+
+static void probe_target(XGpio *Gpio)
+{
+    xil_printf("Probing the J55 JTAG target at full speed, then slowly.\r\n");
+    run_jtag_probe(Gpio, 0U);
+    run_jtag_probe(Gpio, SLOW_EDGE_DELAY_US);
 }
 
 static char read_uart_command(void)
@@ -424,6 +554,10 @@ static void print_menu(void)
 {
     xil_printf("\r\nCommands:\r\n");
     xil_printf("  p - play embedded SVF over J55 JTAG\r\n");
+    xil_printf("  s - play embedded SVF with a %u us edge delay\r\n",
+               SLOW_EDGE_DELAY_US);
+    xil_printf("  j - probe the target: print raw IR capture and IDCODE\r\n");
+    xil_printf("  i - read TDO on J55.7 with TCK low, then high\r\n");
     xil_printf("  d - visible LED SVF demo with no target attached\r\n");
     xil_printf("  t - run one J55 output LED test pattern\r\n");
     xil_printf("  r - reset J55 outputs low\r\n");
@@ -456,7 +590,13 @@ int main(void)
         command = read_uart_command();
 
         if ((command == 'p') || (command == 'P')) {
-            (void)play_embedded_svf(&JaGpio);
+            (void)play_embedded_svf(&JaGpio, 0U);
+        } else if ((command == 's') || (command == 'S')) {
+            (void)play_embedded_svf(&JaGpio, SLOW_EDGE_DELAY_US);
+        } else if ((command == 'j') || (command == 'J')) {
+            probe_target(&JaGpio);
+        } else if ((command == 'i') || (command == 'I')) {
+            print_tdo_levels(&JaGpio);
         } else if ((command == 'd') || (command == 'D')) {
             (void)play_led_demo_svf(&JaGpio);
         } else if ((command == 't') || (command == 'T')) {

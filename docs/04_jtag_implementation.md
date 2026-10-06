@@ -93,4 +93,4 @@ _STACK_SIZE = 0x4000
 
 The 32 MiB heap is required. `libxsvf` reads a whole command before executing it, and the configuration command is an `SDR` of 30,606,304 bits. A default heap cannot hold that command buffer and the parsed bit arrays.
 
-The C code sees the blob through linker symbols `nexys_a7_01_svf_start` and `nexys_a7_01_svf_end`. The size printed at startup is the difference of those addresses. The application notes record 7,712,741 bytes for this file.
+The C code sees the blob through linker symbols `nexys_a7_01_svf_start` and `nexys_a7_01_svf_end`. The size printed at startup is the difference of those addresses. For the checked-in file that is 7,682,571 bytes, or 7,712,737 with CRLF line endings.

@@ -1,14 +1,14 @@
 # MicroBlaze JTAG Verifier
 
-This application is the counterpart to `app_mb_svf_player`. The player board turns its JA Pmod header into a software JTAG master and generates TCK/TMS/TDI. This application runs on a second Nexys A7 board, captures those signals, acts as the JTAG target, and checks that what actually arrived on the wires matches the SVF file.
+This application is the counterpart to the ZCU102 SVF player in `sw/zcu102/app_svf_player/svf_player.c`. The player turns ZCU102 PMOD header J55 into a software JTAG master and generates TCK, TMS, and TDI. This application runs on a Nexys A7, captures those signals, acts as the JTAG target, and checks that what arrived on the wires matches the SVF file.
 
-Both boards use the `pf_nexys_a7` platform in `sw/nexys_a7/ws_20260819` and bundled `external/libxsvf` sources. In this testing phase the same SVF file is embedded into both executables.
+The verifier uses the `pf_nexys_a7` platform in `sw/nexys_a7/ws_20260819` and bundled `external/libxsvf` sources. In this testing phase the same SVF file is embedded into both executables.
 
 ## Core Idea
 
 The verifier does not implement a JTAG TAP state machine of its own and it does not write a second SVF parser. It runs the *same* `libxsvf_play()` over the *same* SVF bytes as the player, but its `pulse_tck` callback is inverted:
 
-| | `app_mb_svf_player` | `app_mb_jtag_verifier` |
+| | ZCU102 `app_svf_player` | Nexys A7 `app_mb_jtag_verifier` |
 |---|---|---|
 | TCK | drives the pulse | waits for the pulse |
 | TMS | drives the expected value | samples and compares |
@@ -25,68 +25,81 @@ So the verifier compares `tms`/`tdi` against the pins and drives `tdo` onto the 
 
 ## Hardware Connections
 
-Both boards run the same hardware design, so AXI GPIO channel 1 (JA1..JA4) is always the output channel and channel 2 (JA7..JA10) is always the input channel. The verifier therefore receives the JTAG inputs on JA7..JA9 and sends TDO back out on JA1.
+Both designs use a dual-channel AXI GPIO: channel 1 is the 4-bit output port and channel 2 is the 4-bit input port. The bit assignments in `svf_player.c` and `jtag_verifier.c` match the constraints.
 
-| Signal | Player pin | Direction | Verifier pin |
+On the ZCU102 (`hw/zcu102_jtag_programmer`, `jtag_pins.xdc`), `jtag_out[0..2]` is GPIO channel 1 and `jtag_in[0]` is GPIO channel 2 bit 0:
+
+| Signal | J55 pin | FPGA pin | GPIO |
 |---|---|---|---|
-| TCK | JA1 (out) | player to verifier | JA7 (in) |
-| TMS | JA2 (out) | player to verifier | JA8 (in) |
-| TDI | JA3 (out) | player to verifier | JA9 (in) |
-| TDO | JA7 (in) | verifier to player | JA1 (out) |
-| GND | GND | common | GND |
+| TCK | J55.1 | A20 | channel 1 bit 0, output |
+| TMS | J55.3 | B20 | channel 1 bit 1, output |
+| TDI | J55.5 | A22 | channel 1 bit 2, output |
+| TDO | J55.7 | A21 | channel 2 bit 0, input |
+
+J55.2, J55.4, J55.6, and J55.8 are constrained but unused. Leave them open.
+
+On the Nexys A7 (`Nexys-A7-100T-Master.xdc`), `ck_a0` is GPIO channel 1 (`gpio_io_o`) and `ck_b0` is GPIO channel 2 (`gpio2_io_i`):
+
+| Signal | JA pin | FPGA pin | GPIO |
+|---|---|---|---|
+| TCK | JA7 | D17 | channel 2 bit 0, input |
+| TMS | JA8 | E17 | channel 2 bit 1, input |
+| TDI | JA9 | F18 | channel 2 bit 2, input |
+| TDO | JA1 | C17 | channel 1 bit 0, output |
+
+JA10 is an input and is unused. JA2, JA3, and JA4 are outputs and stay low.
+
+Wire the two headers point to point. Do not use a straight ribbon cable: the J55 and JA numberings do not line up, and several unused pins are driven.
+
+| Signal | ZCU102 pin | Direction | Nexys A7 pin |
+|---|---|---|---|
+| TCK | J55.1 | player to verifier | JA7 |
+| TMS | J55.3 | player to verifier | JA8 |
+| TDI | J55.5 | player to verifier | JA9 |
+| TDO | J55.7 | verifier to player | JA1 |
+| GND | J55.9 or J55.10 | common | JA pin 5 or 11 |
 
 ```text
-Player JA1  ------->  Verifier JA7     TCK
-Player JA2  ------->  Verifier JA8     TMS
-Player JA3  ------->  Verifier JA9     TDI
-Player JA7  <-------  Verifier JA1     TDO
-Player GND  <------>  Verifier GND
+ZCU102 J55.1  ------->  Nexys JA7     TCK
+ZCU102 J55.3  ------->  Nexys JA8     TMS
+ZCU102 J55.5  ------->  Nexys JA9     TDI
+ZCU102 J55.7  <-------  Nexys JA1     TDO
+ZCU102 GND    <------>  Nexys GND
 ```
 
-A common ground between the two boards is required. Both headers are 3.3 V logic, so no level shifting is needed between two Nexys A7 boards.
+J55 is on ZCU102 bank 47, powered by `VADJ_FPGA`. The constraints use `LVCMOS33`, and the Nexys JA header is 3.3 V, so set `VADJ_FPGA` to 3.3 V before connecting the boards. The Nexys drives TDO at 3.3 V into J55.7.
+
+Xilinx labels J55 as pin 1, 3, 5, 7 down the signal column, with 2, 4, 6, 8 beside them and ground on pins 9 and 10. Digilent labels the Nexys header as JA1–JA4 on the top row and JA7–JA10 on the bottom row. The incoming JTAG signals are the bottom row: JA7, JA8, JA9.
 
 ## Clock Speed Is A Hard Constraint
 
 The verifier detects TCK edges by polling the AXI GPIO input register from C. It needs real time between the player's falling edge and the player's TDO sample in order to place the TDO bit on the wire.
 
-The player's original `p` command bit-bangs with `edge_delay_us = 0`, which is far too fast for a polling verifier. Two verifier-paced playback commands were added to `app_mb_svf_player` for this reason:
+The ZCU102 player's commands are:
 
-| Player command | SVF | Edge delay | Purpose |
-|---|---|---|---|
-| `l` | short loop-test SVF | 1000 us | fast end-to-end check, finishes in about a second |
-| `s` | embedded `nexys_a7_01.svf` | 20 us | full-file verification, very slow |
+| Player command | SVF | Edge delay | TDO check | Use with the verifier |
+|---|---|---|---|---|
+| `d` | LED demo SVF | 100 ms | ignored | yes, first bring-up |
+| `p` | embedded `nexys_a7_01.svf` | none | enabled | no, clocks faster than the poll loop |
 
-The original `p`, `d`, `t` and `r` commands are unchanged.
+`d` is the command that can be checked end to end today. The LED demo SVF has no `TDO (...)` fields, and the player ignores TDO anyway, so this validates TCK, TMS, and TDI only. The 100 ms edge delay leaves a large timing margin.
 
-Be realistic about `s`. The embedded SVF contains a single `SDR 30606304` command, so full-file verification is roughly 30.6 million JTAG clocks. At three edges per clock and 20 us per edge that is on the order of an hour. Use the verifier's `c` command to print the exact expected clock count before committing to a long run. For day-to-day checking, use the loop-test SVF.
+`p` bit-bangs with `edge_delay_us = 0`. That is too fast for this polling verifier. The player also has no slow playback command for the embedded file, and it does not contain the verifier's loop-test SVF, so the verifier's `l` and `v` commands have nothing on the ZCU102 to pair with yet.
+
+The embedded SVF contains a single `SDR 30606304` command, so a full-file run is roughly 30.6 million JTAG clocks. Use the verifier's `c` command to print the expected clock count before planning that run.
 
 ## Test Sequence
 
 Order matters. The verifier must be armed and polling before the player starts clocking.
 
-1. Wire the two boards as described above, including ground.
+1. Set ZCU102 `VADJ_FPGA` to 3.3 V, then wire the boards as above, including ground.
 2. Open a UART terminal to each board.
 3. On the verifier, run `i` and confirm `TCK(JA7)=0`. If TCK reads 1 while the player is idle, the wiring is wrong.
-4. On the verifier, press `l`. It prints `Armed. Waiting for TCK on JA7.` and starts polling.
-5. On the player, press `l`.
-6. The player prints its usual playback summary. The verifier prints its report.
+4. On the verifier, press `d`. It prints `Armed. Waiting for TCK on JA7.` and starts polling.
+5. On the player, press `d`.
+6. The player prints its playback summary. The verifier prints its report.
 
-A good run looks like this on the verifier:
-
-```text
---- JTAG verifier report ---
-libxsvf rc: 0
-Captured TCK clocks: 148
-TMS compares: 148, mismatches: 0
-TDI compares: 66, mismatches: 0
-TDO bits driven: 48
-TCK edge timeouts: 0
-RESULT: PASS - captured JTAG matches the SVF.
-```
-
-And on the player, `TDO mismatches` is absent, meaning the verifier's TDO drive satisfied the SVF's `TDO (...)` expectations.
-
-Exact counts depend on how `libxsvf` sequences the TAP, so treat the numbers above as illustrative. What matters is that mismatches and timeouts are zero and the clock count agrees with the `c` dry run.
+A good LED-demo run has zero TMS and TDI mismatches and zero TCK edge timeouts. The TDO drive count stays at zero because the demo SVF has no TDO fields. Exact clock counts depend on how `libxsvf` sequences the TAP; confirm them with the verifier's `c` dry run only for the embedded file. The LED demo is a short built-in string, so its clock count is whatever `d` reports.
 
 ## UART Commands
 
@@ -103,17 +116,17 @@ Commands:
 Input:
 ```
 
-### `l`: Loop-Test SVF
-
-Pairs with the player's `l`. This is the recommended end-to-end test. The loop-test SVF is short and contains `TDO (...) MASK (...)` fields, so a pass exercises all four JTAG wires including the return path.
-
 ### `d`: LED Demo SVF
 
-Pairs with the player's existing `d` command at 100 ms per edge, which is slow enough to watch on LEDs. The demo SVF has no TDO fields, so this validates TCK/TMS/TDI capture only. Useful as a first bring-up step because the timing margin is enormous.
+Pairs with the ZCU102 player's `d` command. This is the bring-up test. The demo SVF has no TDO fields, so it validates TCK, TMS, and TDI capture only.
+
+### `l`: Loop-Test SVF
+
+The loop-test SVF is short and contains `TDO (...) MASK (...)` fields, so a pass would exercise all four JTAG wires. The ZCU102 player does not embed this SVF and has no matching command, so `l` cannot be run against the current player.
 
 ### `v`: Embedded SVF
 
-Pairs with the player's `s` command. Verifies the real `nexys_a7_01.svf` bitstream file. Correct but slow; see the timing section above.
+Would pair with a slowed-down playback of `nexys_a7_01.svf`. The ZCU102 `p` command plays that file with no edge delay, which the polling loop cannot follow.
 
 ### `c`: Dry Run
 
@@ -169,8 +182,6 @@ A blocking `xil_printf` between two TCK edges is long enough to miss the player'
 - `report_error` copies the message into a fixed buffer in the context and prints it after playback.
 - Mismatches are recorded into a small array and printed after playback.
 
-This is the main structural difference from `svf_player.c`, which prints status text as it goes.
-
 Mismatch reporting is bounded on both ends:
 
 ```c
@@ -184,21 +195,18 @@ Only the first 16 mismatching clocks are recorded in detail, and the run is abor
 
 | Report | Likely cause |
 |---|---|
-| `no JTAG activity captured` | Wiring, missing common ground, or the player was started before the verifier was armed. |
+| `no JTAG activity captured` | Wiring, missing common ground, `VADJ_FPGA` not at 3.3 V, or the player was started before the verifier was armed. |
 | `TCK edge timeout after 0 clocks` | TCK is not reaching JA7. Check with `i` and `m`. |
-| `TCK edge timeout` after many clocks | The player is clocking faster than the polling loop can follow. Use the player's `l` or `s` commands, not `p`. |
+| `TCK edge timeout` after many clocks | The player is clocking faster than the polling loop can follow. Use the player's `d` command, not `p`. |
 | TMS mismatches from clock 1 | TMS and TDI are probably swapped, or the two boards were built from different SVF text. |
-| Mismatches starting mid-run | Lost lockstep, usually a missed clock. Lower the player's clock rate. |
-| Verifier passes but the player reports TDO mismatch | The TDO wire back from verifier JA1 to player JA7 is broken, or the player's edge delay is too small for the verifier to place TDO in time. Confirm the wire with `t`. |
+| Mismatches starting mid-run | Lost lockstep, usually a missed clock. The player's edge delay is too small. |
+| Verifier passes but the player reports TDO mismatch | The TDO wire from Nexys JA1 to ZCU102 J55.7 is broken, or the player's edge delay is too small for the verifier to place TDO in time. Confirm the wire with `t`. The LED demo does not check TDO. |
 
 ## Keeping The Two Sides In Sync
 
-The built-in SVF strings are duplicated in both applications and must stay byte-identical. `libxsvf` is deterministic, so any difference in the SVF text, even whitespace, changes the generated clock sequence and desyncs the comparison. The duplicated strings are:
+`led_demo_svf` is duplicated in `sw/zcu102/app_svf_player/svf_player.c` and in `jtag_verifier.c`. The two copies must stay byte-identical. `libxsvf` is deterministic, so any difference in the SVF text, even whitespace, changes the generated clock sequence and desyncs the comparison.
 
-- `led_demo_svf`
-- `jtag_loop_svf`
-
-Both are marked with a comment in `svf_player.c` and `jtag_verifier.c`. The large embedded file is shared by pointing both `svf_blob.S` files at the same path, so it cannot drift.
+`jtag_loop_svf` exists only in the verifier. The large embedded file is shared by pointing both `svf_blob.S` files at the same path, so it cannot drift.
 
 ## Source Files
 
@@ -210,7 +218,7 @@ Both are marked with a comment in `svf_player.c` and `jtag_verifier.c`. The larg
 | `src/lscript.ld` | Linker script that maps code/data/SVF/heap/stack into MIG DDR |
 | `platform.c`, `platform.h` | Standard platform initialization and cleanup |
 
-The memory layout, the 32 MiB heap, the `.incbin` mechanism and the `LIBXSVF_WITHOUT_XSVF` / `LIBXSVF_WITHOUT_SCAN` definitions are all identical to `app_mb_svf_player`. See that application's README for the details, since the verifier parses the same file with the same parser and therefore has the same memory requirements.
+The verifier maps code, the SVF blob, a 32 MiB heap, and the stack into MIG DDR. `src/UserConfig.cmake` defines `LIBXSVF_WITHOUT_XSVF` and `LIBXSVF_WITHOUT_SCAN`.
 
 The embedded SVF lives in `assets/nexys_a7_01.svf`. `src/UserConfig.cmake` runs `configure_file` on `svf_blob.S` so the assembler gets an absolute path at build time.
 
@@ -223,12 +231,13 @@ $env:Path = 'C:\AMDDesignTools\2025.2\Vitis\gnu\microblaze\nt\bin;' + $env:Path
 cmake --build build
 ```
 
-As with the player, the `text` size is large because the SVF file is embedded in `.rodata`, and the `bss` size is large because the linker reserves a 32 MiB heap. Warnings from upstream `libxsvf/svf.c` about missing field initializers are expected and harmless.
+The `text` size is large because the SVF file is embedded in `.rodata`, and the `bss` size is large because the linker reserves a 32 MiB heap. Warnings from upstream `libxsvf/svf.c` about missing field initializers are expected and harmless.
 
 ## Current Limitations
 
 - The verifier polls in software, so the player must be slowed down. This is a functional-correctness harness, not a JTAG analyzer.
-- Full verification of the real bitstream SVF takes on the order of an hour. The loop-test SVF is the practical regression test.
+- The ZCU102 player can pace only the LED demo (`d`, 100 ms). `p` has no edge delay, and there is no player command for the loop-test SVF.
+- Full verification of the real bitstream SVF is about 30.6 million clocks and is not runnable against the current player.
 - Verification depends on both boards parsing the same SVF. This is fine as a self-check of the signal path, but it cannot detect an SVF file that is wrong for the target device.
 - The verifier presents TDO from the SVF file. It does not emulate a shift register, so it cannot detect a player that shifts the correct pattern into the wrong data register.
 - TRST is accepted but not wired.

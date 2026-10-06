@@ -18,7 +18,7 @@ This is the path that configures a target Nexys A7-100T from the embedded SVF. T
 | Nexys A7 programmer | USB-UART on J6 | AXI UART Lite rate; board preset is 9600 8N1 |
 | ZCU102 programmer | PS UART | 115200 8N1 |
 
-The banner ends with the blob size. For the SVF in the tree that size is 7,712,741 bytes. Then the menu waits at `Input:`.
+The banner ends with the blob size. For the SVF in the tree that size is 7,682,571 bytes, or 7,712,737 bytes with CRLF line endings. Then the menu waits at `Input:`.
 
 ## 3. Prove the pins before connecting the target
 

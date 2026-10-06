@@ -17,7 +17,7 @@ STATE IDLE;
 SIR 6 TDI (0b) ;
 SIR 6 TDI (14) ;
 // Modify the below delay for config_init operation (0.100000 sec typical, 0.100000 sec maximum)
-RUNTEST 0.100000 SEC;
+RUNTEST 1E-1 SEC;
 // config/jprog/poll
 RUNTEST 10000 TCK;
 SIR 6 TDI (14) TDO (11) MASK (31) ;
