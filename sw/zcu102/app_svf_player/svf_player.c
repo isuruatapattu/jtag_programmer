@@ -11,18 +11,18 @@
 #include "xstatus.h"
 #include "libxsvf.h"
 
-#define JA_GPIO_BASEADDR XPAR_XGPIO_0_BASEADDR
-#define JA_OUT_CHANNEL 1
-#define JA_IN_CHANNEL 2
-#define JA_OUT_MASK 0x0000000F
-#define JA_IN_MASK 0x0000000F
+#define J55_GPIO_BASEADDR XPAR_XGPIO_0_BASEADDR
+#define J55_OUT_CHANNEL 1
+#define J55_IN_CHANNEL 2
+#define J55_OUT_MASK 0x0000000F
+#define J55_IN_MASK 0x0000000F
 
-#define JA_BIT_TCK 0x00000001
-#define JA_BIT_TMS 0x00000002
-#define JA_BIT_TDI 0x00000004
-#define JA_BIT_TDO 0x00000001
+#define J55_BIT_TCK 0x00000001
+#define J55_BIT_TMS 0x00000002
+#define J55_BIT_TDI 0x00000004
+#define J55_BIT_TDO 0x00000001U
 
-#define JA_TEST_DELAY_US 300000
+#define J55_TEST_DELAY_US 300000
 #define LED_DEMO_EDGE_DELAY_US 100000
 #define SLOW_EDGE_DELAY_US 20U
 #define INPUT_SETTLE_US 10U
@@ -84,7 +84,7 @@ static const u8 jtag_probe_svf[] =
     "SDR 32 TDI (ffffffff) RMASK (ffffffff);\n"
     "STATE RESET;\n";
 
-static int mb_svf_pulse_tck(struct libxsvf_host *h, int tms, int tdi, int tdo,
+static int svf_pulse_tck(struct libxsvf_host *h, int tms, int tdi, int tdo,
                             int rmask, int sync);
 
 static u32 get_svf_size(void)
@@ -109,11 +109,11 @@ static void print_limited(const char *message, int max_chars)
     }
 }
 
-static int init_ja_gpio(XGpio *Gpio)
+static int init_j55_gpio(XGpio *Gpio)
 {
     XGpio_Config *CfgPtr;
 
-    CfgPtr = XGpio_LookupConfig(JA_GPIO_BASEADDR);
+    CfgPtr = XGpio_LookupConfig(J55_GPIO_BASEADDR);
     if (CfgPtr == NULL) {
         return XST_FAILURE;
     }
@@ -121,16 +121,16 @@ static int init_ja_gpio(XGpio *Gpio)
     return XGpio_CfgInitialize(Gpio, CfgPtr, CfgPtr->BaseAddress);
 }
 
-static void configure_ja_gpio(XGpio *Gpio)
+static void configure_j55_gpio(XGpio *Gpio)
 {
-    XGpio_SetDataDirection(Gpio, JA_OUT_CHANNEL, 0x00000000);
-    XGpio_SetDataDirection(Gpio, JA_IN_CHANNEL, 0xFFFFFFFF);
-    XGpio_DiscreteWrite(Gpio, JA_OUT_CHANNEL, 0x00000000);
+    XGpio_SetDataDirection(Gpio, J55_OUT_CHANNEL, 0x00000000);
+    XGpio_SetDataDirection(Gpio, J55_IN_CHANNEL, 0xFFFFFFFF);
+    XGpio_DiscreteWrite(Gpio, J55_OUT_CHANNEL, 0x00000000);
 }
 
-static void test_ja_outputs(XGpio *Gpio)
+static void test_j55_outputs(XGpio *Gpio)
 {
-    static const u32 ja_pattern[] = {
+    static const u32 j55_pattern[] = {
         0x1,
         0x2,
         0x4,
@@ -140,9 +140,9 @@ static void test_ja_outputs(XGpio *Gpio)
     };
     int i;
 
-    for (i = 0; i < (int)(sizeof(ja_pattern) / sizeof(ja_pattern[0])); i++) {
-        XGpio_DiscreteWrite(Gpio, JA_OUT_CHANNEL, ja_pattern[i] & JA_OUT_MASK);
-        usleep(JA_TEST_DELAY_US);
+    for (i = 0; i < (int)(sizeof(j55_pattern) / sizeof(j55_pattern[0])); i++) {
+        XGpio_DiscreteWrite(Gpio, J55_OUT_CHANNEL, j55_pattern[i] & J55_OUT_MASK);
+        usleep(J55_TEST_DELAY_US);
     }
 }
 
@@ -158,7 +158,7 @@ static void delay_us_long(long usecs)
 static void svf_write_outputs(struct svf_player_ctx *ctx)
 {
     XGpio_WriteReg(ctx->gpio->BaseAddress, XGPIO_DATA_OFFSET,
-                   ctx->out_shadow & JA_OUT_MASK);
+                   ctx->out_shadow & J55_OUT_MASK);
 }
 
 static int svf_read_tdo(struct svf_player_ctx *ctx)
@@ -166,15 +166,15 @@ static int svf_read_tdo(struct svf_player_ctx *ctx)
     u32 input_value;
 
     input_value = XGpio_ReadReg(ctx->gpio->BaseAddress, XGPIO_DATA2_OFFSET);
-    return ((input_value & JA_BIT_TDO) != 0U) ? 1 : 0;
+    return ((input_value & J55_BIT_TDO) != 0U) ? 1 : 0;
 }
 
-static int mb_svf_setup(struct libxsvf_host *h)
+static int svf_setup(struct libxsvf_host *h)
 {
     struct svf_player_ctx *ctx = (struct svf_player_ctx *)h->user_data;
 
     ctx->svf_pos = 0;
-    ctx->out_shadow = JA_BIT_TCK;
+    ctx->out_shadow = J55_BIT_TCK;
     ctx->clock_count = 0;
     ctx->tdi_bit_count = 0;
     ctx->tdo_check_count = 0;
@@ -184,13 +184,13 @@ static int mb_svf_setup(struct libxsvf_host *h)
     ctx->first_mismatch_actual = -1;
     ctx->capture_count = 0;
 
-    configure_ja_gpio(ctx->gpio);
+    configure_j55_gpio(ctx->gpio);
     svf_write_outputs(ctx);
 
     return 0;
 }
 
-static int mb_svf_shutdown(struct libxsvf_host *h)
+static int svf_shutdown(struct libxsvf_host *h)
 {
     struct svf_player_ctx *ctx = (struct svf_player_ctx *)h->user_data;
 
@@ -200,18 +200,18 @@ static int mb_svf_shutdown(struct libxsvf_host *h)
     return 0;
 }
 
-static void mb_svf_udelay(struct libxsvf_host *h, long usecs, int tms,
+static void svf_udelay(struct libxsvf_host *h, long usecs, int tms,
                           long num_tck)
 {
     while (num_tck > 0) {
-        (void)mb_svf_pulse_tck(h, tms, -1, -1, 0, 0);
+        (void)svf_pulse_tck(h, tms, -1, -1, 0, 0);
         num_tck--;
     }
 
     delay_us_long(usecs);
 }
 
-static int mb_svf_getbyte(struct libxsvf_host *h)
+static int svf_getbyte(struct libxsvf_host *h)
 {
     struct svf_player_ctx *ctx = (struct svf_player_ctx *)h->user_data;
 
@@ -222,13 +222,13 @@ static int mb_svf_getbyte(struct libxsvf_host *h)
     return (int)ctx->svf_data[ctx->svf_pos++];
 }
 
-static int mb_svf_sync(struct libxsvf_host *h)
+static int svf_sync(struct libxsvf_host *h)
 {
     (void)h;
     return 0;
 }
 
-static int mb_svf_pulse_tck(struct libxsvf_host *h, int tms, int tdi, int tdo,
+static int svf_pulse_tck(struct libxsvf_host *h, int tms, int tdi, int tdo,
                             int rmask, int sync)
 {
     struct svf_player_ctx *ctx = (struct svf_player_ctx *)h->user_data;
@@ -238,33 +238,33 @@ static int mb_svf_pulse_tck(struct libxsvf_host *h, int tms, int tdi, int tdo,
     (void)sync;
 
     if (tms != 0) {
-        ctx->out_shadow |= JA_BIT_TMS;
+        ctx->out_shadow |= J55_BIT_TMS;
     } else {
-        ctx->out_shadow &= ~JA_BIT_TMS;
+        ctx->out_shadow &= ~J55_BIT_TMS;
     }
 
     if (tdi >= 0) {
         ctx->tdi_bit_count++;
         if (tdi != 0) {
-            ctx->out_shadow |= JA_BIT_TDI;
+            ctx->out_shadow |= J55_BIT_TDI;
         } else {
-            ctx->out_shadow &= ~JA_BIT_TDI;
+            ctx->out_shadow &= ~J55_BIT_TDI;
         }
     }
 
-    ctx->out_shadow |= JA_BIT_TCK;
+    ctx->out_shadow |= J55_BIT_TCK;
     svf_write_outputs(ctx);
     if (ctx->edge_delay_us != 0U) {
         usleep(ctx->edge_delay_us);
     }
 
-    ctx->out_shadow &= ~JA_BIT_TCK;
+    ctx->out_shadow &= ~J55_BIT_TCK;
     svf_write_outputs(ctx);
     if (ctx->edge_delay_us != 0U) {
         usleep(ctx->edge_delay_us);
     }
 
-    ctx->out_shadow |= JA_BIT_TCK;
+    ctx->out_shadow |= J55_BIT_TCK;
     svf_write_outputs(ctx);
     if (ctx->edge_delay_us != 0U) {
         usleep(ctx->edge_delay_us);
@@ -296,18 +296,18 @@ static int mb_svf_pulse_tck(struct libxsvf_host *h, int tms, int tdi, int tdo,
     return line_tdo;
 }
 
-static void mb_svf_pulse_sck(struct libxsvf_host *h)
+static void svf_pulse_sck(struct libxsvf_host *h)
 {
     (void)h;
 }
 
-static void mb_svf_set_trst(struct libxsvf_host *h, int value)
+static void svf_set_trst(struct libxsvf_host *h, int value)
 {
     (void)h;
     (void)value;
 }
 
-static int mb_svf_set_frequency(struct libxsvf_host *h, int frequency_hz)
+static int svf_set_frequency(struct libxsvf_host *h, int frequency_hz)
 {
     (void)h;
     xil_printf("SVF requested JTAG frequency: %d Hz; using GPIO bit-bang speed.\r\n",
@@ -315,13 +315,13 @@ static int mb_svf_set_frequency(struct libxsvf_host *h, int frequency_hz)
     return 0;
 }
 
-static void mb_svf_report_device(struct libxsvf_host *h, unsigned long idcode)
+static void svf_report_device(struct libxsvf_host *h, unsigned long idcode)
 {
     (void)h;
     xil_printf("JTAG IDCODE: 0x%08x\r\n", (u32)idcode);
 }
 
-static void mb_svf_report_status(struct libxsvf_host *h, const char *message)
+static void svf_report_status(struct libxsvf_host *h, const char *message)
 {
     (void)h;
     xil_printf("[SVF] ");
@@ -329,7 +329,7 @@ static void mb_svf_report_status(struct libxsvf_host *h, const char *message)
     xil_printf("\r\n");
 }
 
-static void mb_svf_report_error(struct libxsvf_host *h, const char *file,
+static void svf_report_error(struct libxsvf_host *h, const char *file,
                                 int line, const char *message)
 {
     (void)h;
@@ -340,7 +340,7 @@ static void mb_svf_report_error(struct libxsvf_host *h, const char *file,
     xil_printf("\r\n");
 }
 
-static void *mb_svf_realloc(struct libxsvf_host *h, void *ptr, int size,
+static void *svf_realloc(struct libxsvf_host *h, void *ptr, int size,
                             enum libxsvf_mem which)
 {
     (void)h;
@@ -358,19 +358,19 @@ static void init_svf_host(struct libxsvf_host *host, struct svf_player_ctx *ctx)
 {
     memset(host, 0, sizeof(*host));
 
-    host->setup = mb_svf_setup;
-    host->shutdown = mb_svf_shutdown;
-    host->udelay = mb_svf_udelay;
-    host->getbyte = mb_svf_getbyte;
-    host->sync = mb_svf_sync;
-    host->pulse_tck = mb_svf_pulse_tck;
-    host->pulse_sck = mb_svf_pulse_sck;
-    host->set_trst = mb_svf_set_trst;
-    host->set_frequency = mb_svf_set_frequency;
-    host->report_device = mb_svf_report_device;
-    host->report_status = mb_svf_report_status;
-    host->report_error = mb_svf_report_error;
-    host->realloc = mb_svf_realloc;
+    host->setup = svf_setup;
+    host->shutdown = svf_shutdown;
+    host->udelay = svf_udelay;
+    host->getbyte = svf_getbyte;
+    host->sync = svf_sync;
+    host->pulse_tck = svf_pulse_tck;
+    host->pulse_sck = svf_pulse_sck;
+    host->set_trst = svf_set_trst;
+    host->set_frequency = svf_set_frequency;
+    host->report_device = svf_report_device;
+    host->report_status = svf_report_status;
+    host->report_error = svf_report_error;
+    host->realloc = svf_realloc;
     host->user_data = ctx;
 }
 
@@ -450,9 +450,9 @@ static int play_led_demo_svf(XGpio *Gpio)
 
 static u32 read_inputs_with_tck(XGpio *Gpio, u32 tck)
 {
-    XGpio_DiscreteWrite(Gpio, JA_OUT_CHANNEL, tck);
+    XGpio_DiscreteWrite(Gpio, J55_OUT_CHANNEL, tck);
     usleep(INPUT_SETTLE_US);
-    return XGpio_DiscreteRead(Gpio, JA_IN_CHANNEL) & JA_IN_MASK;
+    return XGpio_DiscreteRead(Gpio, J55_IN_CHANNEL) & J55_IN_MASK;
 }
 
 static void print_tdo_levels(XGpio *Gpio)
@@ -461,13 +461,13 @@ static void print_tdo_levels(XGpio *Gpio)
     u32 tck_high;
 
     tck_low = read_inputs_with_tck(Gpio, 0x00000000);
-    tck_high = read_inputs_with_tck(Gpio, JA_BIT_TCK);
-    XGpio_DiscreteWrite(Gpio, JA_OUT_CHANNEL, 0x00000000);
+    tck_high = read_inputs_with_tck(Gpio, J55_BIT_TCK);
+    XGpio_DiscreteWrite(Gpio, J55_OUT_CHANNEL, 0x00000000);
 
     xil_printf("J55 inputs with TCK low:  0x%x  TDO(J55.7)=%d\r\n", tck_low,
-               ((tck_low & JA_BIT_TDO) != 0U) ? 1 : 0);
+               ((tck_low & J55_BIT_TDO) != 0U) ? 1 : 0);
     xil_printf("J55 inputs with TCK high: 0x%x  TDO(J55.7)=%d\r\n", tck_high,
-               ((tck_high & JA_BIT_TDO) != 0U) ? 1 : 0);
+               ((tck_high & J55_BIT_TDO) != 0U) ? 1 : 0);
     xil_printf("With a jumper from J55.1 to J55.7, TDO must read 0 then 1.\r\n");
 }
 
@@ -567,17 +567,17 @@ static void print_menu(void)
 int main(void)
 {
     int status;
-    XGpio JaGpio;
+    XGpio J55Gpio;
 
     init_platform();
 
-    status = init_ja_gpio(&JaGpio);
+    status = init_j55_gpio(&J55Gpio);
     if (status != XST_SUCCESS) {
         xil_printf("J55 GPIO init failed\r\n");
         while (1);
     }
 
-    configure_ja_gpio(&JaGpio);
+    configure_j55_gpio(&J55Gpio);
 
     xil_printf("ZCU102 SVF player ready.\r\n");
     xil_printf("J55.1=TCK, J55.3=TMS, J55.5=TDI, J55.7=TDO.\r\n");
@@ -590,20 +590,20 @@ int main(void)
         command = read_uart_command();
 
         if ((command == 'p') || (command == 'P')) {
-            (void)play_embedded_svf(&JaGpio, 0U);
+            (void)play_embedded_svf(&J55Gpio, 0U);
         } else if ((command == 's') || (command == 'S')) {
-            (void)play_embedded_svf(&JaGpio, SLOW_EDGE_DELAY_US);
+            (void)play_embedded_svf(&J55Gpio, SLOW_EDGE_DELAY_US);
         } else if ((command == 'j') || (command == 'J')) {
-            probe_target(&JaGpio);
+            probe_target(&J55Gpio);
         } else if ((command == 'i') || (command == 'I')) {
-            print_tdo_levels(&JaGpio);
+            print_tdo_levels(&J55Gpio);
         } else if ((command == 'd') || (command == 'D')) {
-            (void)play_led_demo_svf(&JaGpio);
+            (void)play_led_demo_svf(&J55Gpio);
         } else if ((command == 't') || (command == 'T')) {
             xil_printf("Running J55 output test once.\r\n");
-            test_ja_outputs(&JaGpio);
+            test_j55_outputs(&J55Gpio);
         } else if ((command == 'r') || (command == 'R')) {
-            configure_ja_gpio(&JaGpio);
+            configure_j55_gpio(&J55Gpio);
             xil_printf("J55 outputs reset low.\r\n");
         } else {
             xil_printf("Unknown command.\r\n");

@@ -1,7 +1,7 @@
 {
   "name": "app_svf_player",
   "type": "HOST",
-  "platform": "/users2/athapatt/my_ws/jtag_programmer/sw/zcu102/ws_20260819/pf_zynq/export/pf_zynq/pf_zynq.xpfm",
+  "platform": "platform_v2",
   "domain": "standalone_psu_cortexa53_0",
   "cpuInstance": "psu_cortexa53_0",
   "cpuType": "cortex-a53",
@@ -12,5 +12,6 @@
   },
   "domainRealName": "standalone_psu_cortexa53_0",
   "useSysrootToolchain": false,
-  "applicationFlow": "EMBEDDED"
+  "applicationFlow": "EMBEDDED",
+  "templateFlow": "VITIS"
 }
