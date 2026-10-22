@@ -11,7 +11,8 @@ enable_language(C ASM CXX)
 # Add any compiler definitions, they will be added as extra definitions
 # Example : Adding VERBOSE=1 will pass -DVERBOSE=1 to the compiler.
 set(USER_COMPILE_DEFINITIONS
-""
+"LIBXSVF_WITHOUT_XSVF"
+"LIBXSVF_WITHOUT_SCAN"
 )
 
 # Undefine any previously specified compiler definitions, either built in or provided with a -D option
@@ -27,6 +28,18 @@ set(USER_UNDEFINED_SYMBOLS
 # Example 3: Adding ${CMAKE_SOURCE_DIR}/data/include to add data/include from this project.
 
 set(USER_INCLUDE_DIRECTORIES
+".."
+"../external/libxsvf"
+)
+
+set(APP_SVF_FILE "${CMAKE_CURRENT_LIST_DIR}/../assets/nexys_a7_01.svf")
+get_filename_component(APP_SVF_FILE "${APP_SVF_FILE}" ABSOLUTE)
+file(TO_CMAKE_PATH "${APP_SVF_FILE}" APP_SVF_FILE)
+set(APP_SVF_ASSEMBLY "${CMAKE_CURRENT_BINARY_DIR}/svf_blob.generated.S")
+configure_file(
+    "${CMAKE_CURRENT_LIST_DIR}/../svf_blob.S"
+    "${APP_SVF_ASSEMBLY}"
+    @ONLY
 )
 
 #Add any source below, they will be added as Compile sources.
@@ -34,6 +47,14 @@ set(USER_INCLUDE_DIRECTORIES
 #Example 2: Adding ../../common/helloworld.c will consider the path as relative to this component directory
 #Example 3: Adding ${MY_ENV}/data/helloworld.c are expanded using project-specific environment settings.
 set(USER_COMPILE_SOURCES
+"../jtag_verifier.c"
+"../platform.c"
+"${APP_SVF_ASSEMBLY}"
+"../external/libxsvf/svf.c"
+"../external/libxsvf/tap.c"
+"../external/libxsvf/play.c"
+"../external/libxsvf/statename.c"
+"../external/libxsvf/memname.c"
 )
 
 # -----------------------------------------
@@ -62,7 +83,7 @@ set(USER_COMPILE_WARNINGS_INHIBIT_ALL )
 # -----------------------------------------
 
 # Optimization level   "-O0" [None], "-O1" [Optimize] , "-O2" [Optimize More], "-O3" [Optimize Most] or "-Os" [Optimize Size]
-set(USER_COMPILE_OPTIMIZATION_LEVEL -O0)
+set(USER_COMPILE_OPTIMIZATION_LEVEL -O2)
 
 # Other flags related to optimization
 set(USER_COMPILE_OPTIMIZATION_OTHER_FLAGS )
