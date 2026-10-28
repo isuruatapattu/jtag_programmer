@@ -35,7 +35,7 @@ set(USER_INCLUDE_DIRECTORIES
 # Generate the assembly input with an absolute SVF path derived from this
 # application's source tree. This keeps the checked-in source portable while
 # allowing GNU as to find the binary input regardless of its working directory.
-set(APP_SVF_FILE "${CMAKE_CURRENT_LIST_DIR}/../assets/nexys_a7_01.svf")
+set(APP_SVF_FILE "${CMAKE_CURRENT_LIST_DIR}/../assets/arty_s7_led_blink.svf")
 get_filename_component(APP_SVF_FILE "${APP_SVF_FILE}" ABSOLUTE)
 file(TO_CMAKE_PATH "${APP_SVF_FILE}" APP_SVF_FILE)
 set(APP_SVF_ASSEMBLY "${CMAKE_CURRENT_BINARY_DIR}/svf_blob.generated.S")

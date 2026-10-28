@@ -9,5 +9,5 @@ set(MEMORY_SECTION "MEMORY
 	mig_7series_0_memory_0 : ORIGIN = 0x80000000, LENGTH = 0x8000000
 	microblaze_0_local_memory_dlmb_bram_if_cntlr_memory_0 : ORIGIN = 0x50, LENGTH = 0x1ffb0
 }")
-set(STACK_SIZE 0x400)
-set(HEAP_SIZE 0x800)
+set(STACK_SIZE 0x4000)
+set(HEAP_SIZE 0x02000000)
