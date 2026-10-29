@@ -1,0 +1,492 @@
+# Reading pref.tcl
+# //  Questa Sim
+# //  Version 2021.3_2 linux Sep 10 2021
+# //
+# //  Copyright 1991-2021 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# ** Warning: License feature 'msimviewer' will expire in 2 days.
+do sim/run_questa.tcl tb_jtag_engine
+# 0
+# /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only
+# /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/build/questa
+# /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/build/questa/work
+# /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/build/questa/logs
+# /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/build/sim/vectors
+# 0
+# tb_jtag_engine
+# Project root: /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only
+# Running filter: tb_jtag_engine
+# reading modelsim.ini
+# /usr/bin/python3
+# 
+#     rtl/crc32.sv
+#     rtl/byte_fifo.sv
+#     sim/models/flash_sck_startup_sim.sv
+#     rtl/spi_flash_reader.sv
+#     rtl/jtag_engine.sv
+#     rtl/jbin_decoder.sv
+#     rtl/debounce.sv
+#     rtl/uart_tx_status.sv
+#     rtl/top_ctrl.sv
+#     rtl/top.sv
+#     sim/models/spi_flash_model.sv
+#     sim/models/tap_model.sv
+#     sim/tb_spi_flash_reader.sv
+#     sim/tb_jtag_engine.sv
+#     sim/tb_jbin_decoder.sv
+#     sim/tb_top.sv
+# 
+# Compiling 16 SystemVerilog files into /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/build/questa/work
+# QuestaSim vlog 2021.3_2 Compiler 2021.09 Sep 10 2021
+# Start time: 17:37:02 on Oct 29,2026
+# vlog -reportprogress 300 -sv -work work /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/rtl/crc32.sv 
+# -- Compiling module crc32
+# 
+# Top level modules:
+# 	crc32
+# End time: 17:37:03 on Oct 29,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim vlog 2021.3_2 Compiler 2021.09 Sep 10 2021
+# Start time: 17:37:03 on Oct 29,2026
+# vlog -reportprogress 300 -sv -work work /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/rtl/byte_fifo.sv 
+# -- Compiling module byte_fifo
+# 
+# Top level modules:
+# 	byte_fifo
+# End time: 17:37:03 on Oct 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim vlog 2021.3_2 Compiler 2021.09 Sep 10 2021
+# Start time: 17:37:03 on Oct 29,2026
+# vlog -reportprogress 300 -sv -work work /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/sim/models/flash_sck_startup_sim.sv 
+# -- Compiling module flash_sck_startup
+# 
+# Top level modules:
+# 	flash_sck_startup
+# End time: 17:37:03 on Oct 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim vlog 2021.3_2 Compiler 2021.09 Sep 10 2021
+# Start time: 17:37:03 on Oct 29,2026
+# vlog -reportprogress 300 -sv -work work /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/rtl/spi_flash_reader.sv 
+# -- Compiling module spi_flash_reader
+# 
+# Top level modules:
+# 	spi_flash_reader
+# End time: 17:37:03 on Oct 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim vlog 2021.3_2 Compiler 2021.09 Sep 10 2021
+# Start time: 17:37:03 on Oct 29,2026
+# vlog -reportprogress 300 -sv -work work /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/rtl/jtag_engine.sv 
+# -- Compiling module jtag_engine
+# 
+# Top level modules:
+# 	jtag_engine
+# End time: 17:37:03 on Oct 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim vlog 2021.3_2 Compiler 2021.09 Sep 10 2021
+# Start time: 17:37:03 on Oct 29,2026
+# vlog -reportprogress 300 -sv -work work /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/rtl/jbin_decoder.sv 
+# -- Compiling module jbin_decoder
+# 
+# Top level modules:
+# 	jbin_decoder
+# End time: 17:37:03 on Oct 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim vlog 2021.3_2 Compiler 2021.09 Sep 10 2021
+# Start time: 17:37:03 on Oct 29,2026
+# vlog -reportprogress 300 -sv -work work /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/rtl/debounce.sv 
+# -- Compiling module debounce
+# 
+# Top level modules:
+# 	debounce
+# End time: 17:37:03 on Oct 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim vlog 2021.3_2 Compiler 2021.09 Sep 10 2021
+# Start time: 17:37:03 on Oct 29,2026
+# vlog -reportprogress 300 -sv -work work /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/rtl/uart_tx_status.sv 
+# -- Compiling module uart_tx_status
+# 
+# Top level modules:
+# 	uart_tx_status
+# End time: 17:37:03 on Oct 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim vlog 2021.3_2 Compiler 2021.09 Sep 10 2021
+# Start time: 17:37:03 on Oct 29,2026
+# vlog -reportprogress 300 -sv -work work /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/rtl/top_ctrl.sv 
+# -- Compiling module top_ctrl
+# 
+# Top level modules:
+# 	top_ctrl
+# End time: 17:37:03 on Oct 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim vlog 2021.3_2 Compiler 2021.09 Sep 10 2021
+# Start time: 17:37:03 on Oct 29,2026
+# vlog -reportprogress 300 -sv -work work /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/rtl/top.sv 
+# -- Compiling module top
+# 
+# Top level modules:
+# 	top
+# End time: 17:37:03 on Oct 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim vlog 2021.3_2 Compiler 2021.09 Sep 10 2021
+# Start time: 17:37:03 on Oct 29,2026
+# vlog -reportprogress 300 -sv -work work /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/sim/models/spi_flash_model.sv 
+# -- Compiling module spi_flash_model
+# 
+# Top level modules:
+# 	spi_flash_model
+# End time: 17:37:03 on Oct 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim vlog 2021.3_2 Compiler 2021.09 Sep 10 2021
+# Start time: 17:37:03 on Oct 29,2026
+# vlog -reportprogress 300 -sv -work work /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/sim/models/tap_model.sv 
+# -- Compiling module tap_model
+# 
+# Top level modules:
+# 	tap_model
+# End time: 17:37:03 on Oct 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim vlog 2021.3_2 Compiler 2021.09 Sep 10 2021
+# Start time: 17:37:03 on Oct 29,2026
+# vlog -reportprogress 300 -sv -work work /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/sim/tb_spi_flash_reader.sv 
+# -- Compiling module tb_spi_flash_reader
+# 
+# Top level modules:
+# 	tb_spi_flash_reader
+# End time: 17:37:03 on Oct 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim vlog 2021.3_2 Compiler 2021.09 Sep 10 2021
+# Start time: 17:37:03 on Oct 29,2026
+# vlog -reportprogress 300 -sv -work work /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/sim/tb_jtag_engine.sv 
+# -- Compiling module tb_jtag_engine
+# 
+# Top level modules:
+# 	tb_jtag_engine
+# End time: 17:37:04 on Oct 29,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim vlog 2021.3_2 Compiler 2021.09 Sep 10 2021
+# Start time: 17:37:04 on Oct 29,2026
+# vlog -reportprogress 300 -sv -work work /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/sim/tb_jbin_decoder.sv 
+# -- Compiling module tb_jbin_decoder
+# 
+# Top level modules:
+# 	tb_jbin_decoder
+# End time: 17:37:04 on Oct 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim vlog 2021.3_2 Compiler 2021.09 Sep 10 2021
+# Start time: 17:37:04 on Oct 29,2026
+# vlog -reportprogress 300 -sv -work work /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/sim/tb_top.sv 
+# -- Compiling module tb_top
+# 
+# Top level modules:
+# 	tb_top
+# End time: 17:37:04 on Oct 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+#     {tb_spi_flash_reader            tb_spi_flash_reader {}              {}}
+#     {tb_spi_flash_reader_slow_flash tb_spi_flash_reader {-gT_V_NS=24.0} {}}
+#     {tb_jtag_engine                 tb_jtag_engine      {}              {}}
+#     {tb_jbin_decoder                tb_jbin_decoder     {}              {}}
+#     {tb_top_SCEN_0                  tb_top              {}              {+SCEN=0}}
+#     {tb_top_SCEN_1                  tb_top              {}              {+SCEN=1}}
+#     {tb_top_SCEN_2                  tb_top              {}              {+SCEN=2}}
+#     {tb_top_SCEN_3                  tb_top              {}              {+SCEN=3}}
+#     {tb_top_SCEN_4                  tb_top              {}              {+SCEN=4}}
+#     {tb_top_SCEN_5                  tb_top              {}              {+SCEN=5}}
+#     {tb_top_SCEN_6                  tb_top              {}              {+SCEN=6}}
+#     {tb_top_SCEN_7                  tb_top              {}              {+SCEN=7}}
+#     {tb_top_SCEN_8                  tb_top              {}              {+SCEN=8}}
+#     {tb_top_SCEN_9                  tb_top              {}              {+SCEN=9}}
+# 
+# Loading tb_jtag_engine for waveform viewing
+# vsim -voptargs="+acc" -onfinish stop -t 1ps work.tb_jtag_engine "+VEC=/userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/build/sim/vectors" 
+# Start time: 17:37:04 on Oct 29,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vopt-143) Recognized 1 FSM in module "jtag_engine(fast)".
+# ** Warning: License feature 'msimhdlsim' will expire in 2 days.
+# Loading sv_std.std
+# Loading work.tb_jtag_engine(fast)
+# Loading work.jtag_engine(fast)
+# run: inject=0 max_half=2 waits=0% stalls=0%: 600 clocks, err=0 @0
+# run: inject=1 max_half=2 waits=0% stalls=0%: 600 clocks, err=1 @202
+# run: inject=0 max_half=9 waits=2% stalls=30%: 585 clocks, err=0 @0
+# run: inject=1 max_half=9 waits=2% stalls=30%: 578 clocks, err=1 @203
+# run: inject=0 max_half=3 waits=0% stalls=70%: 600 clocks, err=0 @0
+# TEST PASSED: tb_jtag_engine
+# ** Note: $finish    : /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/sim/tb_jtag_engine.sv(266)
+#    Time: 289125 ns  Iteration: 1  Instance: /tb_jtag_engine
+# Break in Module tb_jtag_engine at /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/sim/tb_jtag_engine.sv line 266
+# 
+# Simulation is stopped at the end of <R>egisters. Questa stays open.
+# The Wave window shows /tb_jtag_engine. Zoom with the Wave toolbar or:
+#   wave zoom full
+# Drag any other logged signal from Structure/Objects into Wave.
+# Its history is already recorded. To run again:
+#   restart -f
+#   run -all
+restart -f
+run -all
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading work.tb_jtag_engine(fast)
+# Loading work.jtag_engine(fast)
+# run: inject=0 max_half=2 waits=0% stalls=0%: 600 clocks, err=0 @0
+# run: inject=1 max_half=2 waits=0% stalls=0%: 600 clocks, err=1 @202
+# run: inject=0 max_half=9 waits=2% stalls=30%: 585 clocks, err=0 @0
+# run: inject=1 max_half=9 waits=2% stalls=30%: 578 clocks, err=1 @203
+# run: inject=0 max_half=3 waits=0% stalls=70%: 600 clocks, err=0 @0
+# TEST PASSED: tb_jtag_engine
+# ** Note: $finish    : /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/sim/tb_jtag_engine.sv(266)
+#    Time: 289125 ns  Iteration: 1  Instance: /tb_jtag_engine
+# Break in Module tb_jtag_engine at /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/sim/tb_jtag_engine.sv line 266
+wave zoom full
+# {0 ps} {303581250 ps}
+vsim work.top
+# End time: 17:39:29 on Oct 29,2026, Elapsed time: 0:02:25
+# Errors: 0, Warnings: 0
+# vsim work.top 
+# Start time: 17:39:29 on Oct 29,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Error: /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/rtl/byte_fifo.sv(53): Module 'xpm_fifo_sync' is not defined.
+#  For instance 'u_fifo' at path 'top.u_fifo'
+# Optimization failed
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=1, Warnings=0.
+# Error loading design
+# End time: 17:39:29 on Oct 29,2026, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+wave zoom full
+# could not find wave window
+run -all
+# No Design Loaded!
+do sim/run_questa.tcl tb_jtag_engine
+# Cannot open macro file: sim/run_questa.tcl
+pwd
+# /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/build/questa
+cd ..
+# reading /applicsqum/mentor/questasim/2021_3_2/questasim/linux/../modelsim.ini
+cd ..
+do sim/run_questa.tcl tb_jtag_engine
+# 0
+# /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only
+# /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/build/questa
+# /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/build/questa/work
+# /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/build/questa/logs
+# /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/build/sim/vectors
+# 0
+# tb_jtag_engine
+# Project root: /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only
+# Running filter: tb_jtag_engine
+# reading modelsim.ini
+# /usr/bin/python3
+# 
+#     rtl/crc32.sv
+#     rtl/byte_fifo.sv
+#     sim/models/flash_sck_startup_sim.sv
+#     rtl/spi_flash_reader.sv
+#     rtl/jtag_engine.sv
+#     rtl/jbin_decoder.sv
+#     rtl/debounce.sv
+#     rtl/uart_tx_status.sv
+#     rtl/top_ctrl.sv
+#     rtl/top.sv
+#     sim/models/spi_flash_model.sv
+#     sim/models/tap_model.sv
+#     sim/tb_spi_flash_reader.sv
+#     sim/tb_jtag_engine.sv
+#     sim/tb_jbin_decoder.sv
+#     sim/tb_top.sv
+# 
+# Compiling 16 SystemVerilog files into /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/build/questa/work
+# QuestaSim vlog 2021.3_2 Compiler 2021.09 Sep 10 2021
+# Start time: 17:41:02 on Oct 29,2026
+# vlog -reportprogress 300 -sv -work work /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/rtl/crc32.sv 
+# -- Compiling module crc32
+# 
+# Top level modules:
+# 	crc32
+# End time: 17:41:02 on Oct 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim vlog 2021.3_2 Compiler 2021.09 Sep 10 2021
+# Start time: 17:41:02 on Oct 29,2026
+# vlog -reportprogress 300 -sv -work work /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/rtl/byte_fifo.sv 
+# -- Compiling module byte_fifo
+# 
+# Top level modules:
+# 	byte_fifo
+# End time: 17:41:02 on Oct 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim vlog 2021.3_2 Compiler 2021.09 Sep 10 2021
+# Start time: 17:41:02 on Oct 29,2026
+# vlog -reportprogress 300 -sv -work work /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/sim/models/flash_sck_startup_sim.sv 
+# -- Compiling module flash_sck_startup
+# 
+# Top level modules:
+# 	flash_sck_startup
+# End time: 17:41:02 on Oct 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim vlog 2021.3_2 Compiler 2021.09 Sep 10 2021
+# Start time: 17:41:02 on Oct 29,2026
+# vlog -reportprogress 300 -sv -work work /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/rtl/spi_flash_reader.sv 
+# -- Compiling module spi_flash_reader
+# 
+# Top level modules:
+# 	spi_flash_reader
+# End time: 17:41:02 on Oct 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim vlog 2021.3_2 Compiler 2021.09 Sep 10 2021
+# Start time: 17:41:02 on Oct 29,2026
+# vlog -reportprogress 300 -sv -work work /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/rtl/jtag_engine.sv 
+# -- Compiling module jtag_engine
+# 
+# Top level modules:
+# 	jtag_engine
+# End time: 17:41:02 on Oct 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim vlog 2021.3_2 Compiler 2021.09 Sep 10 2021
+# Start time: 17:41:02 on Oct 29,2026
+# vlog -reportprogress 300 -sv -work work /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/rtl/jbin_decoder.sv 
+# -- Compiling module jbin_decoder
+# 
+# Top level modules:
+# 	jbin_decoder
+# End time: 17:41:03 on Oct 29,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim vlog 2021.3_2 Compiler 2021.09 Sep 10 2021
+# Start time: 17:41:03 on Oct 29,2026
+# vlog -reportprogress 300 -sv -work work /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/rtl/debounce.sv 
+# -- Compiling module debounce
+# 
+# Top level modules:
+# 	debounce
+# End time: 17:41:03 on Oct 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim vlog 2021.3_2 Compiler 2021.09 Sep 10 2021
+# Start time: 17:41:03 on Oct 29,2026
+# vlog -reportprogress 300 -sv -work work /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/rtl/uart_tx_status.sv 
+# -- Compiling module uart_tx_status
+# 
+# Top level modules:
+# 	uart_tx_status
+# End time: 17:41:03 on Oct 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim vlog 2021.3_2 Compiler 2021.09 Sep 10 2021
+# Start time: 17:41:03 on Oct 29,2026
+# vlog -reportprogress 300 -sv -work work /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/rtl/top_ctrl.sv 
+# -- Compiling module top_ctrl
+# 
+# Top level modules:
+# 	top_ctrl
+# End time: 17:41:03 on Oct 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim vlog 2021.3_2 Compiler 2021.09 Sep 10 2021
+# Start time: 17:41:03 on Oct 29,2026
+# vlog -reportprogress 300 -sv -work work /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/rtl/top.sv 
+# -- Compiling module top
+# 
+# Top level modules:
+# 	top
+# End time: 17:41:03 on Oct 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim vlog 2021.3_2 Compiler 2021.09 Sep 10 2021
+# Start time: 17:41:03 on Oct 29,2026
+# vlog -reportprogress 300 -sv -work work /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/sim/models/spi_flash_model.sv 
+# -- Compiling module spi_flash_model
+# 
+# Top level modules:
+# 	spi_flash_model
+# End time: 17:41:03 on Oct 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim vlog 2021.3_2 Compiler 2021.09 Sep 10 2021
+# Start time: 17:41:03 on Oct 29,2026
+# vlog -reportprogress 300 -sv -work work /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/sim/models/tap_model.sv 
+# -- Compiling module tap_model
+# 
+# Top level modules:
+# 	tap_model
+# End time: 17:41:03 on Oct 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim vlog 2021.3_2 Compiler 2021.09 Sep 10 2021
+# Start time: 17:41:03 on Oct 29,2026
+# vlog -reportprogress 300 -sv -work work /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/sim/tb_spi_flash_reader.sv 
+# -- Compiling module tb_spi_flash_reader
+# 
+# Top level modules:
+# 	tb_spi_flash_reader
+# End time: 17:41:03 on Oct 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim vlog 2021.3_2 Compiler 2021.09 Sep 10 2021
+# Start time: 17:41:03 on Oct 29,2026
+# vlog -reportprogress 300 -sv -work work /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/sim/tb_jtag_engine.sv 
+# -- Compiling module tb_jtag_engine
+# 
+# Top level modules:
+# 	tb_jtag_engine
+# End time: 17:41:03 on Oct 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim vlog 2021.3_2 Compiler 2021.09 Sep 10 2021
+# Start time: 17:41:03 on Oct 29,2026
+# vlog -reportprogress 300 -sv -work work /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/sim/tb_jbin_decoder.sv 
+# -- Compiling module tb_jbin_decoder
+# 
+# Top level modules:
+# 	tb_jbin_decoder
+# End time: 17:41:03 on Oct 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim vlog 2021.3_2 Compiler 2021.09 Sep 10 2021
+# Start time: 17:41:03 on Oct 29,2026
+# vlog -reportprogress 300 -sv -work work /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/sim/tb_top.sv 
+# -- Compiling module tb_top
+# 
+# Top level modules:
+# 	tb_top
+# End time: 17:41:03 on Oct 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+#     {tb_spi_flash_reader            tb_spi_flash_reader {}              {}}
+#     {tb_spi_flash_reader_slow_flash tb_spi_flash_reader {-gT_V_NS=24.0} {}}
+#     {tb_jtag_engine                 tb_jtag_engine      {}              {}}
+#     {tb_jbin_decoder                tb_jbin_decoder     {}              {}}
+#     {tb_top_SCEN_0                  tb_top              {}              {+SCEN=0}}
+#     {tb_top_SCEN_1                  tb_top              {}              {+SCEN=1}}
+#     {tb_top_SCEN_2                  tb_top              {}              {+SCEN=2}}
+#     {tb_top_SCEN_3                  tb_top              {}              {+SCEN=3}}
+#     {tb_top_SCEN_4                  tb_top              {}              {+SCEN=4}}
+#     {tb_top_SCEN_5                  tb_top              {}              {+SCEN=5}}
+#     {tb_top_SCEN_6                  tb_top              {}              {+SCEN=6}}
+#     {tb_top_SCEN_7                  tb_top              {}              {+SCEN=7}}
+#     {tb_top_SCEN_8                  tb_top              {}              {+SCEN=8}}
+#     {tb_top_SCEN_9                  tb_top              {}              {+SCEN=9}}
+# 
+# Loading tb_jtag_engine for waveform viewing
+# vsim -voptargs="+acc" -onfinish stop -t 1ps work.tb_jtag_engine "+VEC=/userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/build/sim/vectors" 
+# Start time: 17:41:03 on Oct 29,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vopt-143) Recognized 1 FSM in module "jtag_engine(fast)".
+# ** Warning: License feature 'msimhdlsim' will expire in 2 days.
+# Loading sv_std.std
+# Loading work.tb_jtag_engine(fast)
+# Loading work.jtag_engine(fast)
+# run: inject=0 max_half=2 waits=0% stalls=0%: 600 clocks, err=0 @0
+# run: inject=1 max_half=2 waits=0% stalls=0%: 600 clocks, err=1 @202
+# run: inject=0 max_half=9 waits=2% stalls=30%: 585 clocks, err=0 @0
+# run: inject=1 max_half=9 waits=2% stalls=30%: 578 clocks, err=1 @203
+# run: inject=0 max_half=3 waits=0% stalls=70%: 600 clocks, err=0 @0
+# TEST PASSED: tb_jtag_engine
+# ** Note: $finish    : /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/sim/tb_jtag_engine.sv(266)
+#    Time: 289125 ns  Iteration: 1  Instance: /tb_jtag_engine
+# Break in Module tb_jtag_engine at /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/jtag_programmer_fpga_only/sim/tb_jtag_engine.sv line 266
+# 
+# Simulation is stopped at the end of tb_jtag_engine. Questa stays open.
+# The Wave window shows /tb_jtag_engine. Zoom with the Wave toolbar or:
+#   wave zoom full
+# Drag any other logged signal from Structure/Objects into Wave.
+# Its history is already recorded. To run again:
+#   restart -f
+#   run -all

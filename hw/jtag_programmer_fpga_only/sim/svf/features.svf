@@ -1,0 +1,31 @@
+! Converter feature coverage. Every construct here must give the same
+! TCK trace through libxsvf and through svf2jbin + jbin_model.
+// lowercase keywords, '!' and '//' comments
+trst absent;
+endir irpause;
+enddr drpause;
+state reset idle;
+frequency 2.5E6 Hz;
+hir 3 tdi (5);
+tir 2 tdi (2);
+hdr 1 tdi (1);
+tdr 2 tdi (0);
+sir 6 tdi (09) tdo (11) mask (03);
+sdr 32 tdi (12345678) tdo (03631093);   ! TDO without MASK: every bit checked
+sdr 32 tdo (03631093) mask (0fffffff);   ! same length: TDI is sticky
+sdr 32 tdi (ffffffff) smask (0000ffff) tdo (00000000) mask (00000000);
+sdr 16 tdo (abcd);                       ! new length and no TDI: TDI is held
+runtest drpause 20 tck endstate idle;
+runtest 1E-3 SEC;
+runtest 12 tck 2E-6 sec;
+hir 0; tir 0; hdr 0; tdr 0;
+endir idle; enddr idle;
+sir 6 tdi (3f);
+sdr 1 tdi (0);
+sdr 70 tdi (3
+  ffffffff
+  00000001);
+state drpause irpause idle;
+runtest idle 5 tck;
+sdr 300 tdi (0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789a) tdo (0) mask (0);
+state reset;

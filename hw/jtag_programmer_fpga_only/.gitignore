@@ -1,0 +1,8 @@
+build/
+*.jou
+*.log
+*.pb
+*.wdb
+xsim.dir/
+.Xil/
+__pycache__/
