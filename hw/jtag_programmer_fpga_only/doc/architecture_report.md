@@ -118,12 +118,14 @@ programmer bitstream and the JTAG program share one device.
 
 ```text
 top                         rtl/top.sv
+├── reset_gen               rtl/reset_gen.sv        power-on reset and CPU_RESETN sync
 ├── debounce ×8             rtl/debounce.sv         buttons and switches
 ├── spi_flash_reader        rtl/spi_flash_reader.sv
 │   └── flash_sck_startup   rtl/flash_sck_startup.sv (STARTUPE2)
 ├── byte_fifo               rtl/byte_fifo.sv        xpm_fifo_sync or inferred RAM
 ├── jbin_decoder            rtl/jbin_decoder.sv
 │   └── crc32               rtl/crc32.sv
+├── tck_rate_selector       rtl/tck_rate_selector.sv switch/file TCK rate selection
 ├── jtag_engine             rtl/jtag_engine.sv
 ├── top_ctrl                rtl/top_ctrl.sv
 └── uart_tx_status          rtl/uart_tx_status.sv
@@ -131,7 +133,9 @@ top                         rtl/top.sv
 
 | Module | Role |
 |--------|------|
-| `top` | Pin-level wrapper: reset generation, input debouncing, TCK divider selection, tri-state control of the JTAG pins. |
+| `top` | Pin-level wrapper: input debouncing, TCK rate selection wiring, tri-state control of the JTAG pins. |
+| `reset_gen` | System reset: 31-cycle power-on counter plus a 2-FF synchronizer for `CPU_RESETN`, giving a registered active-high `rst`. |
+| `tck_rate_selector` | Converts the debounced switch setting into a TCK half period and applies it as a speed limit to the JBIN/SVF request, unless overridden. |
 | `top_ctrl` | System controller: sequencing of the check pass and the play pass, abort, LEDs, UART messages. |
 | `spi_flash_reader` | Flash bus master: dummy clocks, JEDEC ID check, block-wise streaming read with flow control. |
 | `flash_sck_startup` | Drives the dedicated CCLK pin through `STARTUPE2.USRCCLKO`. |
@@ -151,9 +155,10 @@ top                         rtl/top.sv
 - **Asynchronous inputs.** TDO and flash MISO each pass through an IOB
   register plus one more flip-flop where needed. Buttons and switches pass
   through `debounce`, which has two synchronizer flip-flops.
-- **Reset.** `rst` is synchronous and active high. It is asserted for 31
-  cycles after configuration (power-on counter) and whenever `CPU_RESETN`
-  is low (synchronized).
+- **Reset.** `rst` comes from `reset_gen` and is synchronous and active
+  high. It is asserted for 31 cycles after configuration (power-on counter,
+  `POR_CYCLES`) and whenever `CPU_RESETN` is low (2-FF synchronizer marked
+  `ASYNC_REG`). Assertion and release both happen on a clock edge.
 - **IOB registers.** Every timing-critical pin is driven or sampled by a
   register packed into the I/O block: TCK, TMS, TDI, TDO, CS, MOSI and MISO
   (`(* IOB = "TRUE" *)` and the XDC `IOB TRUE`). Pin timing is then fixed by
@@ -467,7 +472,7 @@ JPROGRAM in the reference SVF. `cancel_wait` ends a wait early on abort.
 
 ### 10.4 TCK frequency selection
 
-`top` computes the half period every cycle:
+`tck_rate_selector` computes and registers the half period every cycle:
 
 ```text
 half = SW15 ? half_sw : max(half_sw, div_file)

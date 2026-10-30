@@ -141,6 +141,8 @@ set sources {
     rtl/debounce.sv
     rtl/uart_tx_status.sv
     rtl/top_ctrl.sv
+    rtl/reset_gen.sv
+    rtl/tck_rate_selector.sv
     rtl/top.sv
     sim/models/spi_flash_model.sv
     sim/models/tap_model.sv

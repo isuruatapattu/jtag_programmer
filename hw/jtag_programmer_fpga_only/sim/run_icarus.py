@@ -22,7 +22,8 @@ BUILD = os.path.join(ROOT, "build", "sim")
 RTL = ["rtl/crc32.sv", "rtl/byte_fifo.sv", "rtl/spi_flash_reader.sv",
        "sim/models/flash_sck_startup_sim.sv", "rtl/jtag_engine.sv",
        "rtl/jbin_decoder.sv", "rtl/debounce.sv", "rtl/uart_tx_status.sv",
-       "rtl/top_ctrl.sv", "rtl/top.sv"]
+       "rtl/top_ctrl.sv", "rtl/reset_gen.sv", "rtl/tck_rate_selector.sv",
+       "rtl/top.sv"]
 MODELS = ["sim/models/spi_flash_model.sv", "sim/models/tap_model.sv"]
 
 # (name, top module, extra sources, parameter overrides, list of plusargs)

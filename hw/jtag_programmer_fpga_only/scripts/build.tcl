@@ -15,7 +15,8 @@ file mkdir $out
 set rtl {
     rtl/crc32.sv rtl/byte_fifo.sv rtl/flash_sck_startup.sv
     rtl/spi_flash_reader.sv rtl/jtag_engine.sv rtl/jbin_decoder.sv
-    rtl/debounce.sv rtl/uart_tx_status.sv rtl/top_ctrl.sv rtl/top.sv
+    rtl/debounce.sv rtl/uart_tx_status.sv rtl/top_ctrl.sv rtl/reset_gen.sv
+    rtl/tck_rate_selector.sv rtl/top.sv
 }
 foreach f $rtl { read_verilog -sv [file join $root $f] }
 read_xdc [file join $root constraints top.xdc]

@@ -51,17 +51,13 @@ module top #(
     assign clk = CLK100MHZ;
 
     // ---------------- reset ----------------
-    logic       rstn_s1, rstn_s2;
-    logic [4:0] por_cnt = 5'd0;
-    logic       rst = 1'b1;
+    logic rst;
 
-    always_ff @(posedge clk) begin
-        rstn_s1 <= CPU_RESETN;
-        rstn_s2 <= rstn_s1;
-        if (por_cnt != 5'h1F)
-            por_cnt <= por_cnt + 5'd1;
-        rst <= (por_cnt != 5'h1F) || !rstn_s2;
-    end
+    reset_gen u_reset (
+        .clk         (clk),
+        .rst_n_async (CPU_RESETN),
+        .rst         (rst)
+    );
 
     // ---------------- inputs ----------------
     logic start_rise, abort_lvl, auto_lvl, skip_lvl, ovr_lvl;
@@ -152,25 +148,15 @@ module top #(
         .e_idle (e_idle), .e_err (e_err), .e_err_tck (e_err_tck)
     );
 
-    // TCK half period: the slower of file and switches, unless overridden.
-    logic [15:0] div_sw;
     logic [15:0] half;
 
-    always_comb begin
-        case (div_lvl)
-            3'd0:    div_sw = 16'd5;
-            3'd1:    div_sw = 16'd50;
-            3'd2:    div_sw = 16'd10;
-            3'd3:    div_sw = 16'd4;
-            3'd4:    div_sw = 16'd3;
-            3'd5:    div_sw = 16'd2;
-            3'd6:    div_sw = 16'd500;
-            default: div_sw = 16'd5000;
-        endcase
-    end
-
-    always_ff @(posedge clk)
-        half <= (ovr_lvl || div_sw > div_file) ? div_sw : div_file;
+    tck_rate_selector u_tck_rate_selector (
+        .clk         (clk),
+        .div_sw_sel  (div_lvl),
+        .override_en (ovr_lvl),
+        .div_file    (div_file),
+        .half        (half)
+    );
 
     logic tck, tms, tdi;
 
