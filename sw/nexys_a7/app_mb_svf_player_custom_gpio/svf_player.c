@@ -6,21 +6,15 @@
 #include "xil_printf.h"
 #include "xil_types.h"
 #include "sleep.h"
-//#include "xgpio.h"
-//#include "xgpio_l.h"
 #include "xil_io.h"
-#include "xstatus.h"
 #include "libxsvf.h"
 
-// For Custom GPIO AXI module
 #define JA_GPIO_BASEADDR 0x40000000U
-#define JA_GPIO_DATA_OFFSET     0x0
-#define JA_GPIO_TRI_OFFSET      0x4
-#define JA_GPIO_DATA2_OFFSET    0x8
-#define JA_GPIO_TRI2_OFFSET     0xC
+#define JA_GPIO_DATA_OFFSET 0x0U
+#define JA_GPIO_TRI_OFFSET 0x4U
+#define JA_GPIO_DATA2_OFFSET 0x8U
+#define JA_GPIO_TRI2_OFFSET 0xCU
 
-#define JA_OUT_CHANNEL 1
-#define JA_IN_CHANNEL 2
 #define JA_OUT_MASK 0x0000000F
 #define JA_IN_MASK 0x0000000F
 
@@ -45,7 +39,6 @@ extern const u8 nexys_a7_01_svf_start[];
 extern const u8 nexys_a7_01_svf_end[];
 
 struct svf_player_ctx {
-    XGpio *gpio;
     const u8 *svf_data;
     u32 svf_size;
     u32 svf_pos;
@@ -116,26 +109,29 @@ static void print_limited(const char *message, int max_chars)
     }
 }
 
-static int init_ja_gpio(XGpio *Gpio)
+static void ja_write_outputs(u32 value)
 {
-    XGpio_Config *CfgPtr;
-
-    CfgPtr = XGpio_LookupConfig(JA_GPIO_BASEADDR);
-    if (CfgPtr == NULL) {
-        return XST_FAILURE;
-    }
-
-    return XGpio_CfgInitialize(Gpio, CfgPtr, CfgPtr->BaseAddress);
+    Xil_Out32(JA_GPIO_BASEADDR + JA_GPIO_DATA_OFFSET, value & JA_OUT_MASK);
 }
 
-static void configure_ja_gpio(XGpio *Gpio)
+static u32 ja_read_inputs(void)
 {
-    XGpio_SetDataDirection(Gpio, JA_OUT_CHANNEL, 0x00000000);
-    XGpio_SetDataDirection(Gpio, JA_IN_CHANNEL, 0xFFFFFFFF);
-    XGpio_DiscreteWrite(Gpio, JA_OUT_CHANNEL, 0x00000000);
+    return Xil_In32(JA_GPIO_BASEADDR + JA_GPIO_DATA2_OFFSET) & JA_IN_MASK;
 }
 
-static void test_ja_outputs(XGpio *Gpio)
+static void configure_ja_gpio(void)
+{
+    Xil_Out32(JA_GPIO_BASEADDR + JA_GPIO_TRI_OFFSET, 0x00000000U);
+    Xil_Out32(JA_GPIO_BASEADDR + JA_GPIO_TRI2_OFFSET, 0xFFFFFFFFU);
+    Xil_Out32(JA_GPIO_BASEADDR + JA_GPIO_DATA_OFFSET, 0x00000000U);
+}
+
+static void init_ja_gpio(void)
+{
+    configure_ja_gpio();
+}
+
+static void test_ja_outputs(void)
 {
     static const u32 ja_pattern[] = {
         0x1,
@@ -148,7 +144,7 @@ static void test_ja_outputs(XGpio *Gpio)
     int i;
 
     for (i = 0; i < (int)(sizeof(ja_pattern) / sizeof(ja_pattern[0])); i++) {
-        XGpio_DiscreteWrite(Gpio, JA_OUT_CHANNEL, ja_pattern[i] & JA_OUT_MASK);
+        ja_write_outputs(ja_pattern[i]);
         usleep(JA_TEST_DELAY_US);
     }
 }
@@ -164,16 +160,13 @@ static void delay_us_long(long usecs)
 
 static void svf_write_outputs(struct svf_player_ctx *ctx)
 {
-    XGpio_WriteReg(ctx->gpio->BaseAddress, XGPIO_DATA_OFFSET,
-                   ctx->out_shadow & JA_OUT_MASK);
+    ja_write_outputs(ctx->out_shadow);
 }
 
 static int svf_read_tdo(struct svf_player_ctx *ctx)
 {
-    u32 input_value;
-
-    input_value = XGpio_ReadReg(ctx->gpio->BaseAddress, XGPIO_DATA2_OFFSET);
-    return ((input_value & JA_BIT_TDO) != 0U) ? 1 : 0;
+    (void)ctx;
+    return ((ja_read_inputs() & JA_BIT_TDO) != 0U) ? 1 : 0;
 }
 
 static int mb_svf_setup(struct libxsvf_host *h)
@@ -191,7 +184,7 @@ static int mb_svf_setup(struct libxsvf_host *h)
     ctx->first_mismatch_actual = -1;
     ctx->capture_count = 0;
 
-    configure_ja_gpio(ctx->gpio);
+    configure_ja_gpio();
     svf_write_outputs(ctx);
 
     return 0;
@@ -396,15 +389,13 @@ static void print_svf_blob_info(void)
     }
 }
 
-static int play_svf_ctx(struct svf_player_ctx *ctx, XGpio *Gpio,
-                        const u8 *svf_data, u32 svf_size, u32 edge_delay_us,
-                        int ignore_tdo)
+static int play_svf_ctx(struct svf_player_ctx *ctx, const u8 *svf_data,
+                        u32 svf_size, u32 edge_delay_us, int ignore_tdo)
 {
     struct libxsvf_host host;
     int rc;
 
     memset(ctx, 0, sizeof(*ctx));
-    ctx->gpio = Gpio;
     ctx->svf_data = svf_data;
     ctx->svf_size = svf_size;
     ctx->edge_delay_us = edge_delay_us;
@@ -427,49 +418,48 @@ static int play_svf_ctx(struct svf_player_ctx *ctx, XGpio *Gpio,
     return rc;
 }
 
-static int play_svf_buffer(XGpio *Gpio, const u8 *svf_data, u32 svf_size,
-                           u32 edge_delay_us, int ignore_tdo)
+static int play_svf_buffer(const u8 *svf_data, u32 svf_size, u32 edge_delay_us,
+                           int ignore_tdo)
 {
     struct svf_player_ctx ctx;
 
-    return play_svf_ctx(&ctx, Gpio, svf_data, svf_size, edge_delay_us,
-                        ignore_tdo);
+    return play_svf_ctx(&ctx, svf_data, svf_size, edge_delay_us, ignore_tdo);
 }
 
-static int play_embedded_svf(XGpio *Gpio, u32 edge_delay_us)
+static int play_embedded_svf(u32 edge_delay_us)
 {
     xil_printf("Starting embedded SVF playback.\r\n");
     if (edge_delay_us != 0U) {
         xil_printf("Edge delay: %u us.\r\n", edge_delay_us);
     }
     print_svf_blob_info();
-    return play_svf_buffer(Gpio, nexys_a7_01_svf_start, get_svf_size(),
-                           edge_delay_us, 0);
+    return play_svf_buffer(nexys_a7_01_svf_start, get_svf_size(), edge_delay_us,
+                           0);
 }
 
-static int play_led_demo_svf(XGpio *Gpio)
+static int play_led_demo_svf(void)
 {
     xil_printf("Starting visible LED SVF demo. TDO checks are ignored.\r\n");
     xil_printf("Connect LEDs to JA1=TCK, JA2=TMS, JA3=TDI.\r\n");
-    return play_svf_buffer(Gpio, led_demo_svf, (u32)(sizeof(led_demo_svf) - 1U),
+    return play_svf_buffer(led_demo_svf, (u32)(sizeof(led_demo_svf) - 1U),
                            LED_DEMO_EDGE_DELAY_US, 1);
 }
 
-static u32 read_inputs_with_tck(XGpio *Gpio, u32 tck)
+static u32 read_inputs_with_tck(u32 tck)
 {
-    XGpio_DiscreteWrite(Gpio, JA_OUT_CHANNEL, tck);
+    ja_write_outputs(tck);
     usleep(INPUT_SETTLE_US);
-    return XGpio_DiscreteRead(Gpio, JA_IN_CHANNEL) & JA_IN_MASK;
+    return ja_read_inputs();
 }
 
-static void print_tdo_levels(XGpio *Gpio)
+static void print_tdo_levels(void)
 {
     u32 tck_low;
     u32 tck_high;
 
-    tck_low = read_inputs_with_tck(Gpio, 0x00000000);
-    tck_high = read_inputs_with_tck(Gpio, JA_BIT_TCK);
-    XGpio_DiscreteWrite(Gpio, JA_OUT_CHANNEL, 0x00000000);
+    tck_low = read_inputs_with_tck(0x00000000);
+    tck_high = read_inputs_with_tck(JA_BIT_TCK);
+    ja_write_outputs(0x00000000);
 
     xil_printf("JA inputs with TCK low:  0x%x  TDO(JA7)=%d\r\n", tck_low,
                ((tck_low & JA_BIT_TDO) != 0U) ? 1 : 0);
@@ -493,7 +483,7 @@ static u32 capture_to_word(const struct svf_player_ctx *ctx, u32 first,
     return value;
 }
 
-static void run_jtag_probe(XGpio *Gpio, u32 edge_delay_us)
+static void run_jtag_probe(u32 edge_delay_us)
 {
     struct svf_player_ctx ctx;
     u32 ir;
@@ -501,8 +491,8 @@ static void run_jtag_probe(XGpio *Gpio, u32 edge_delay_us)
     int rc;
 
     xil_printf("\r\nProbe with %u us edge delay:\r\n", edge_delay_us);
-    rc = play_svf_ctx(&ctx, Gpio, jtag_probe_svf,
-                      (u32)(sizeof(jtag_probe_svf) - 1U), edge_delay_us, 1);
+    rc = play_svf_ctx(&ctx, jtag_probe_svf, (u32)(sizeof(jtag_probe_svf) - 1U),
+                      edge_delay_us, 1);
 
     if ((rc < 0) || (ctx.capture_count != PROBE_CAPTURE_BITS)) {
         xil_printf("Probe incomplete: captured %u of %u TDO bits.\r\n",
@@ -536,11 +526,11 @@ static void run_jtag_probe(XGpio *Gpio, u32 edge_delay_us)
     }
 }
 
-static void probe_target(XGpio *Gpio)
+static void probe_target(void)
 {
     xil_printf("Probing the JA JTAG target at full speed, then slowly.\r\n");
-    run_jtag_probe(Gpio, 0U);
-    run_jtag_probe(Gpio, SLOW_EDGE_DELAY_US);
+    run_jtag_probe(0U);
+    run_jtag_probe(SLOW_EDGE_DELAY_US);
 }
 
 static char read_uart_command(void)
@@ -573,20 +563,10 @@ static void print_menu(void)
 
 int main(void)
 {
-    int status;
-    XGpio JaGpio;
-
     init_platform();
+    init_ja_gpio();
 
-    status = init_ja_gpio(&JaGpio);
-    if (status != XST_SUCCESS) {
-        xil_printf("JA GPIO init failed\r\n");
-        while (1);
-    }
-
-    configure_ja_gpio(&JaGpio);
-
-    xil_printf("MicroBlaze SVF player ready.\r\n");
+    xil_printf("MicroBlaze SVF player (custom GPIO) ready.\r\n");
     xil_printf("JA1=TCK, JA2=TMS, JA3=TDI, JA7=TDO.\r\n");
     print_svf_blob_info();
 
@@ -597,20 +577,20 @@ int main(void)
         command = read_uart_command();
 
         if ((command == 'p') || (command == 'P')) {
-            (void)play_embedded_svf(&JaGpio, 0U);
+            (void)play_embedded_svf(0U);
         } else if ((command == 's') || (command == 'S')) {
-            (void)play_embedded_svf(&JaGpio, SLOW_EDGE_DELAY_US);
+            (void)play_embedded_svf(SLOW_EDGE_DELAY_US);
         } else if ((command == 'j') || (command == 'J')) {
-            probe_target(&JaGpio);
+            probe_target();
         } else if ((command == 'i') || (command == 'I')) {
-            print_tdo_levels(&JaGpio);
+            print_tdo_levels();
         } else if ((command == 'd') || (command == 'D')) {
-            (void)play_led_demo_svf(&JaGpio);
+            (void)play_led_demo_svf();
         } else if ((command == 't') || (command == 'T')) {
             xil_printf("Running JA output test once.\r\n");
-            test_ja_outputs(&JaGpio);
+            test_ja_outputs();
         } else if ((command == 'r') || (command == 'R')) {
-            configure_ja_gpio(&JaGpio);
+            configure_ja_gpio();
             xil_printf("JA outputs reset low.\r\n");
         } else {
             xil_printf("Unknown command.\r\n");
