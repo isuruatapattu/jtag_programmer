@@ -1,5 +1,5 @@
 namespace eval ::optrace {
-  variable script "C:/dev/projects/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.runs/impl_1/design_1_wrapper.tcl"
+  variable script "/userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.runs/impl_1/design_1_wrapper.tcl"
   variable category "vivado_impl"
 }
 
@@ -104,32 +104,32 @@ start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
+  set_param chipscope.maxJobs 15
   set_param general.usePosixSpawnForFork 1
-  set_param chipscope.maxJobs 4
   set_param bd.open.in_stealth_mode 2
-  set_param runs.launchOptions { -jobs 8  }
+  set_param runs.launchOptions { -jobs 16  }
 OPTRACE "create in-memory project" START { }
   create_project -in_memory -part xc7a100tcsg324-1
-  set_property board_part_repo_paths {C:/Users/isuru/AppData/Roaming/Xilinx/Vivado/2025.2/xhub/board_store/xilinx_board_store} [current_project]
+  set_property board_part_repo_paths {/homesqum/athapatt/.Xilinx/Vivado/2025.2/xhub/board_store/xilinx_board_store} [current_project]
   set_property board_part digilentinc.com:nexys-a7-100t:part0:1.3 [current_project]
   set_property design_mode GateLvl [current_fileset]
   set_param project.singleFileAddWarning.threshold 0
 OPTRACE "create in-memory project" END { }
 OPTRACE "set parameters" START { }
-  set_property webtalk.parent_dir C:/dev/projects/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.cache/wt [current_project]
-  set_property parent.project_path C:/dev/projects/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.xpr [current_project]
-  set_property ip_output_repo C:/dev/projects/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.cache/ip [current_project]
+  set_property webtalk.parent_dir /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.cache/wt [current_project]
+  set_property parent.project_path /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.xpr [current_project]
+  set_property ip_output_repo /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
   set_property XPM_LIBRARIES {XPM_CDC XPM_FIFO XPM_MEMORY} [current_project]
 OPTRACE "set parameters" END { }
 OPTRACE "add files" START { }
-  add_files -quiet C:/dev/projects/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.runs/synth_1/design_1_wrapper.dcp
+  add_files -quiet /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.runs/synth_1/design_1_wrapper.dcp
   set_msg_config -source 4 -id {BD 41-1661} -limit 0
   set_param project.isImplRun true
-  add_files C:/dev/projects/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.srcs/sources_1/bd/design_1/design_1.bd
+  add_files /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.srcs/sources_1/bd/design_1/design_1.bd
   set_param project.isImplRun false
 OPTRACE "read constraints: implementation" START { }
-  read_xdc C:/dev/projects/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.srcs/constrs_1/imports/resources/Nexys-A7-100T-Master.xdc
+  read_xdc /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.srcs/constrs_1/imports/resources/Nexys-A7-100T-Master.xdc
 OPTRACE "read constraints: implementation" END { }
 OPTRACE "read constraints: implementation_pre" START { }
 OPTRACE "read constraints: implementation_pre" END { }

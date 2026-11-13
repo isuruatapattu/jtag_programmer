@@ -1,0 +1,946 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  11pt,
+  a4paper,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{caption}
+\captionsetup[table]{skip=6pt}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+% fallback for those not using the hyperref driver hyperxmp:
+\makeatletter
+\@ifundefined{xmpquote}{\newcommand{\xmpquote}[1]{#1}}{}
+\makeatother
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{FPGA JTAG Programmer}\label{fpga-jtag-programmer}
+
+\textbf{Project report}
+
+October 2026
+
+\subsection{Abstract}\label{abstract}
+
+This project turns a general-purpose FPGA board into a JTAG master.
+Embedded software parses a Serial Vector Format (SVF) file with
+\texttt{libxsvf} and bit-bangs the target Test Access Port through an
+AXI GPIO block. There is no JTAG cable IP and no vendor programming pod
+in the data path.
+
+Two programmer platforms share the same player design. A Digilent Nexys
+A7 runs the player on MicroBlaze and drives Pmod JA. A Xilinx ZCU102
+runs the same player on a Cortex-A53 and drives Pmod J55. The checked-in
+SVF configures a second Nexys A7-100T (Artix-7 XC7A100T). A companion
+verifier on a Nexys A7 captures the ZCU102 waveforms and checks them
+against the same SVF.
+
+A completed configuration reports \texttt{rc=0}, a non-zero TDO check
+count, and a lit DONE LED on the target. Playback is slower than a
+USB-JTAG pod because each JTAG clock is several AXI GPIO writes from C.
+
+\subsection{1. Introduction}\label{introduction}
+
+Configuring an FPGA over JTAG normally requires a vendor cable and host
+software. This project replaces that path with a board that is already
+on the bench. The programmer FPGA runs a small standalone application.
+The application reads an SVF file that was recorded from a bitstream,
+and it drives TCK, TMS, and TDI while sampling TDO.
+
+The programmer board and the target board are different boards. The SVF
+configures the target. It does not reconfigure the FPGA that is
+executing the player. Programming the same device that is running the
+player would replace the player and stop the transfer.
+
+The current asset, \texttt{assets/nexys\_a7\_01.svf}, is a Vivado
+configuration SVF for one device:
+
+\begin{itemize}
+\tightlist
+\item
+  The instruction length is 6 bits, which matches a 7-series TAP.
+\item
+  Chain padding is zero (\texttt{HIR\ 0}, \texttt{TIR\ 0},
+  \texttt{HDR\ 0}, \texttt{TDR\ 0}), so the Artix-7 must be the only
+  device on the scan chain.
+\item
+  The IDCODE check expects \texttt{0x03631093} with mask
+  \texttt{0x0FFFFFFF}. That is the XC7A100T on a Nexys A7-100T. The mask
+  ignores the 4-bit revision field.
+\item
+  The configuration payload is one data shift of 30,606,304 bits,
+  followed by the startup and status checks Vivado emits.
+\end{itemize}
+
+\subsection{2. Objectives}\label{objectives}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Drive a standard 4-wire JTAG port from an FPGA GPIO block under
+  software control.
+\item
+  Play a vendor-generated SVF, including a full Artix-7 configuration,
+  without a programming cable in the data path.
+\item
+  Support the same player on a soft-core MicroBlaze system and on a Zynq
+  UltraScale+ Cortex-A53.
+\item
+  Provide bring-up commands that exercise the pins before a target is
+  attached.
+\item
+  Provide a second board that can capture the programmer's waveforms and
+  compare them with the SVF.
+\end{enumerate}
+
+\subsection{3. Background}\label{background}
+
+\subsubsection{3.1 JTAG}\label{jtag}
+
+IEEE 1149.1 defines a Test Access Port of four required signals:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+Signal & Direction from the master & Role \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+TCK & Output & Clock \\
+TMS & Output & TAP state \\
+TDI & Output & Data into the target \\
+TDO & Input & Data out of the target \\
+\end{longtable}
+}
+
+An optional TRST pin is not used. The 7-series TAP is reset by five or
+more TCK pulses with TMS held high. The SVF \texttt{STATE\ RESET}
+sequence already generates that pattern. \texttt{TRST\ OFF} is accepted
+by the player and does not move a wire.
+
+The target TAP on a Nexys A7 is header J10. The same TAP is also reached
+by the onboard USB-JTAG circuit on J6. Two masters on TCK, TMS, and TDI
+will contend, so the target's PROG USB cable stays unplugged for the
+whole SVF run.
+
+\subsubsection{3.2 SVF}\label{svf}
+
+Serial Vector Format is a text record of JTAG operations: state moves,
+instruction shifts (\texttt{SIR}), data shifts (\texttt{SDR}), run-test
+delays, and expected TDO values with masks. \texttt{libxsvf} parses that
+text. It does not know about MicroBlaze, Cortex-A53, AXI, or Pmod pins.
+The application supplies a host: a byte source for the SVF, a function
+that pulses TCK, and a heap allocator.
+
+The player does not read a bitstream. It plays an SVF that already
+contains the JTAG operations for one configuration. Changing the
+bitstream means generating a new SVF, replacing the asset, and
+rebuilding the ELF. There is no runtime download of the file.
+
+\subsection{4. System architecture}\label{system-architecture}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Host PC                         Programmer board                    Target board}
+\NormalTok{Vivado  {-}{-} bitstream / SVF {-}{-}\textgreater{}  CPU + DDR + AXI GPIO  {-}{-} TCK  {-}{-}\textgreater{}   Nexys A7 J10}
+\NormalTok{Vitis   {-}{-} ELF with SVF {-}{-}{-}{-}{-}\textgreater{}  UART console          {-}{-} TMS  {-}{-}\textgreater{}   XC7A100T TAP}
+\NormalTok{                                Pmod pins             {-}{-} TDI  {-}{-}\textgreater{}}
+\NormalTok{                                                      \textless{}{-}{-} TDO {-}{-}}
+\NormalTok{                                                      {-}{-}{-} GND {-}{-}{-}}
+\end{Highlighting}
+\end{Shaded}
+
+Vivado records a program operation into an SVF. The SVF is linked into
+the player ELF. At run time the CPU parses the file and writes a GPIO
+data register. The Pmod pins are the only connection to the target TAP.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Nexys A7 programmer
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+ZCU102 programmer
+\end{minipage} \\ 
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Project & \texttt{hw/nexys\_a7\_jtag\_programmer} and
+\texttt{hw/nexys\_a7\_jtag\_programmer\_2025.01} &
+\texttt{hw/zcu102\_jtag\_programmer} \\
+CPU & MicroBlaze & Cortex-A53, standalone domain \\
+Application & \texttt{sw/nexys\_a7/app\_mb\_svf\_player} &
+\texttt{sw/zcu102/app\_svf\_player} \\
+JTAG connector & Pmod JA & Pmod J55 \\
+Program memory & 128 MiB DDR2 at \texttt{0x80000000} & PS DDR
+(\texttt{psu\_ddr\_0}) \\
+Console & Board USB-UART (AXI UART Lite), preset 9600 8N1 & PS UART,
+115200 8N1 \\
+\end{longtable}
+}
+
+The player source is the same design on both platforms: dual-channel AXI
+GPIO, channel 1 outputs, channel 2 inputs, and the same bit assignment
+(bit 0 TCK, bit 1 TMS, bit 2 TDI, input bit 0 TDO). The ZCU102 binary
+still prints the Nexys pin names (\texttt{JA1}, \texttt{JA2},
+\texttt{JA3}, \texttt{JA7}). On that board those names mean the J55
+pins.
+
+A third application, \texttt{sw/nexys\_a7/app\_mb\_jtag\_verifier}, runs
+on a Nexys A7 and acts as the JTAG target for the ZCU102 player. It
+walks the same SVF with \texttt{libxsvf} and compares the wires against
+the parser's expected bits.
+
+\subsection{5. Hardware design}\label{hardware-design}
+
+\subsubsection{5.1 Nexys A7 programmer}\label{nexys-a7-programmer}
+
+The Nexys A7 programmer is a MicroBlaze system with DDR2, a UART, a
+board GPIO for LEDs and switches, and a second GPIO used only as the
+JTAG port.
+
+The block design uses these IP cores: MicroBlaze 11.0, MIG 7-series 4.2,
+Clocking Wizard 6.0, two AXI GPIO 2.0 cores, AXI UART Lite 2.0,
+SmartConnect 1.0, MDM 3.2, and local-memory LMB with a 128 KiB BRAM.
+MicroBlaze is built with the debug module, a data-side AXI interface,
+and 32 KiB instruction and data caches.
+
+The board clock is \texttt{clk\_100MHz}. The clock wizard produces the
+system clock for MicroBlaze, the LMB, both GPIO cores, the UART, and one
+SmartConnect. A second wizard output, requested at 200 MHz, is the MIG
+reference clock. The MIG user clock has its own reset, and a second
+SmartConnect sits on that domain so the instruction and data caches can
+reach DDR.
+
+MicroBlaze data space:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+Peripheral & Base & Range \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+LMB BRAM & \texttt{0x00000000} & 128 KiB \\
+\texttt{axi\_gpio\_0} (JTAG) & \texttt{0x40000000} & 64 KiB \\
+\texttt{axi\_gpio\_1} (LEDs, switches) & \texttt{0x40010000} & 64 KiB \\
+\texttt{axi\_uartlite\_0} & \texttt{0x40600000} & 64 KiB \\
+MIG DDR2 & \texttt{0x80000000} & 128 MiB \\
+\end{longtable}
+}
+
+Instruction space maps the same LMB and the same DDR window. The linker
+script places the application, including the embedded SVF, in the DDR
+window. Vectors stay in the local BRAM.
+
+\texttt{axi\_gpio\_0} is the programmer port. Both channels are 4 bits
+wide. Channel 1 is all outputs and drives board port \texttt{ck\_a0}.
+Channel 2 is wired from input port \texttt{ck\_b0}. The firmware also
+programs the direction registers: channel 1 all outputs, channel 2 all
+inputs. \texttt{axi\_gpio\_1} is the board LED and switch interface and
+is not used by the SVF player.
+
+Pmod JA pinout:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lllll@{}}
+\toprule\noalign{}
+JA pin & FPGA pin & GPIO & JTAG & Direction \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+JA1 & C17 & channel 1, bit 0 & TCK & output \\
+JA2 & D18 & channel 1, bit 1 & TMS & output \\
+JA3 & E18 & channel 1, bit 2 & TDI & output \\
+JA4 & G17 & channel 1, bit 3 & unused & output \\
+JA7 & D17 & channel 2, bit 0 & TDO & input \\
+JA8 & E17 & channel 2, bit 1 & unused & input \\
+JA9 & F18 & channel 2, bit 2 & unused & input \\
+JA10 & G18 & channel 2, bit 3 & unused & input \\
+\end{longtable}
+}
+
+Pins 5 and 11 are ground. Pins 6 and 12 are 3.3 V and are not connected
+to the target.
+
+\subsubsection{5.2 ZCU102 programmer}\label{zcu102-programmer}
+
+The ZCU102 constraints place the same 4-bit output and 4-bit input buses
+on Pmod J55, all LVCMOS33. The processing system supplies the Cortex-A53
+clock, DDR, and the 115200 baud console. The player looks up
+\texttt{XPAR\_XGPIO\_0\_BASEADDR} and uses channel 1 as the output
+register and channel 2 as the input register.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}llll@{}}
+\toprule\noalign{}
+J55 pin & FPGA pin & JTAG & Direction \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+J55.1 & A20 & TCK & output \\
+J55.3 & B20 & TMS & output \\
+J55.5 & A22 & TDI & output \\
+J55.2 & B21 & unused & output \\
+J55.7 & A21 & TDO & input \\
+J55.4 & C21 & unused & input \\
+J55.6 & C22 & unused & input \\
+J55.8 & D21 & unused & input \\
+\end{longtable}
+}
+
+J55 is on bank 47, powered by \texttt{VADJ\_FPGA}. The constraints use
+LVCMOS33, so \texttt{VADJ\_FPGA} is set to 3.3 V before the header is
+connected to a Nexys A7.
+
+\subsubsection{5.3 Target}\label{target}
+
+The target is a second Nexys A7. Header J10 is a single-device TAP,
+which matches an SVF generated with no header or trailer bits.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Programmer TCK  {-}\textgreater{}  target J10 TCK}
+\NormalTok{Programmer TMS  {-}\textgreater{}  target J10 TMS}
+\NormalTok{Programmer TDI  {-}\textgreater{}  target J10 TDI}
+\NormalTok{Programmer TDO  \textless{}{-}  target J10 TDO}
+\NormalTok{Programmer GND \textless{}{-}\textgreater{}  target J10 GND}
+\end{Highlighting}
+\end{Shaded}
+
+The J10 VREF pin is left open. The programmer does not source or load
+that pin. JP3 selects the barrel jack, the PROG USB plug is out, and JP1
+is in the JTAG position so QSPI, microSD, or USB cannot load a different
+bitstream after the SVF finishes. The target is powered and out of reset
+before playback starts. The DONE LED lights after a successful
+configuration.
+
+Pmod JA on the Nexys A7 and J55 in this ZCU102 design are LVCMOS33. The
+Nexys A7 JTAG bank is 3.3 V, so a Nexys-to-Nexys or ZCU102-to-Nexys
+connection does not need level shifters. Any other target voltage does.
+The grounds are always connected. The programmer's 3.3 V pin is never
+tied to the target.
+
+\subsubsection{5.4 Repository layout}\label{repository-layout}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hw/nexys\_a7\_jtag\_programmer/             Vivado project}
+\NormalTok{hw/nexys\_a7\_jtag\_programmer\_2025.01/     Recreate Tcl for the 2025.1 flow}
+\NormalTok{hw/zcu102\_jtag\_programmer/               ZCU102 project and J55 constraints}
+\NormalTok{sw/nexys\_a7/app\_mb\_svf\_player/           MicroBlaze SVF player}
+\NormalTok{sw/nexys\_a7/app\_mb\_jtag\_verifier/        MicroBlaze JTAG verifier}
+\NormalTok{sw/nexys\_a7/ws\_20260819/                 Vitis workspace and pf\_nexys\_a7 platform}
+\NormalTok{sw/zcu102/app\_svf\_player/                Cortex{-}A53 SVF player}
+\NormalTok{sw/zcu102/app\_hello\_world/               Cortex{-}A53 hello world}
+\NormalTok{sw/zcu102/ws\_20260819/                   Vitis workspace and pf\_zynq platform}
+\NormalTok{docs/                                    Documentation}
+\end{Highlighting}
+\end{Shaded}
+
+Vivado project files (\texttt{.xpr}), exported hardware (\texttt{.xsa}),
+and bitstreams (\texttt{.bit}) are kept in version control. Generated
+implementation directories, Vitis build trees, and ELF files are
+ignored.
+
+\subsection{6. Firmware}\label{firmware}
+
+\subsubsection{6.1 Host callbacks}\label{host-callbacks}
+
+\texttt{libxsvf\_play} is called in SVF mode. The application implements
+\texttt{struct\ libxsvf\_host}:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Callback
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Behavior
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{setup} & Clear counters, park TCK high, set GPIO directions \\
+\texttt{getbyte} & Next byte from the active buffer, or \texttt{-1} at
+the end \\
+\texttt{pulse\_tck} & One JTAG clock, described below \\
+\texttt{udelay} & Extra TCK pulses for \texttt{RUNTEST\ n\ TCK}, then a
+time delay split into 1 s chunks \\
+\texttt{set\_frequency} & Print the requested rate and return success.
+The GPIO path is not retimed \\
+\texttt{set\_trst} & Accept the command. No TRST pin is assigned \\
+\texttt{realloc} & C \texttt{realloc} / \texttt{free} on the application
+heap \\
+\texttt{report\_status}, \texttt{report\_error} & UART text, truncated
+to 96 characters \\
+\texttt{report\_device} & Print the IDCODE \texttt{libxsvf} shifted
+in \\
+\texttt{shutdown} & Outputs low \\
+\end{longtable}
+}
+
+The build compiles \texttt{svf.c}, \texttt{tap.c}, \texttt{play.c},
+\texttt{statename.c}, and \texttt{memname.c} from \texttt{libxsvf}.
+\texttt{LIBXSVF\_WITHOUT\_XSVF} and \texttt{LIBXSVF\_WITHOUT\_SCAN}
+leave XSVF and scan mode out. Optimization is \texttt{-O2}.
+
+\subsubsection{6.2 TCK waveform}\label{tck-waveform}
+
+The GPIO base is \texttt{XPAR\_XGPIO\_0\_BASEADDR}. Channel 1 is the
+output data register at offset \texttt{0x0}. Channel 2 is the input data
+register at offset \texttt{0x8}.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+Bit & Mask & Signal \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+channel 1, bit 0 & \texttt{0x1} & TCK \\
+channel 1, bit 1 & \texttt{0x2} & TMS \\
+channel 1, bit 2 & \texttt{0x4} & TDI \\
+channel 2, bit 0 & \texttt{0x1} & TDO \\
+\end{longtable}
+}
+
+\texttt{out\_shadow} holds the last output word. Each callback updates
+TMS or TDI in that shadow, then writes the whole nibble. Unrelated bits
+stay put.
+
+\texttt{mb\_svf\_pulse\_tck} is called once per JTAG clock.
+\texttt{libxsvf} passes TMS, an optional TDI bit (\texttt{-1} means
+leave TDI alone), an optional expected TDO bit (\texttt{-1} means do not
+check), and a return mask. The pulse is negative, which is the edge
+order this port of \texttt{libxsvf} is written for:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{TCK high  {-}\textgreater{}  write GPIO}
+\NormalTok{TCK low   {-}\textgreater{}  write GPIO}
+\NormalTok{TCK high  {-}\textgreater{}  write GPIO}
+\NormalTok{sample TDO if a check was requested}
+\end{Highlighting}
+\end{Shaded}
+
+Setup starts with TCK already high, so the first edge the target sees is
+the falling edge. Shutdown drives all four output bits low.
+
+In demo mode each of those three writes is followed by
+\texttt{usleep(100000)}. Real playback uses a delay of 0 and runs at the
+speed of the GPIO writes.
+
+TDO is sampled after the pulse when the parser asked for a value or set
+the return mask. If \texttt{ignore\_tdo} is clear and the sampled bit
+differs from the expected bit, the callback records the clock count and
+both bit values, then returns \texttt{-1}. \texttt{libxsvf} stops and
+reports a TDO mismatch. Demo mode sets \texttt{ignore\_tdo}, so a
+floating TDO pin does not fail the run.
+
+\texttt{FREQUENCY\ 1.00E+07\ HZ} in the real SVF is a record of what
+Vivado asked for. AXI GPIO writes from C are far slower than 10 MHz.
+JTAG configuration still completes; it takes longer than a USB-JTAG pod.
+
+\subsubsection{6.3 Where the SVF lives}\label{where-the-svf-lives}
+
+\texttt{svf\_blob.S} is a template:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{.}\BuiltInTok{section} \OperatorTok{.}\NormalTok{rodata}\OperatorTok{.}\NormalTok{svf}\OperatorTok{,} \StringTok{"a"}
+\NormalTok{.incbin }\StringTok{"@APP\_SVF\_FILE@"}
+\end{Highlighting}
+\end{Shaded}
+
+CMake writes \texttt{svf\_blob.generated.S} into the build directory
+with \texttt{@APP\_SVF\_FILE@} replaced by the absolute path of
+\texttt{assets/nexys\_a7\_01.svf}. The checked-in sources do not contain
+a machine-specific path. The C code sees the blob through linker symbols
+\texttt{nexys\_a7\_01\_svf\_start} and \texttt{nexys\_a7\_01\_svf\_end}.
+The size printed at startup is the difference of those addresses.
+
+On the Nexys A7 the linker maps \texttt{.text} and \texttt{.rodata}
+(including \texttt{.rodata.svf}) to DDR at \texttt{0x80000000}, length
+128 MiB. On the ZCU102 the same sections map to \texttt{psu\_ddr\_0} at
+\texttt{0x0}. On both targets the heap is 32 MiB and the stack is 16
+KiB.
+
+The 32 MiB heap is required. \texttt{libxsvf} reads a whole command
+before executing it, and the configuration command is an \texttt{SDR} of
+30,606,304 bits. A default heap cannot hold that command buffer and the
+parsed bit arrays. If a rebuilt SVF is substantially larger,
+\texttt{\_HEAP\_SIZE} in \texttt{src/lscript.ld} is raised, and the heap
+stays inside the DDR region.
+
+\subsubsection{6.4 UART commands}\label{uart-commands}
+
+The UART menu is the whole user interface. The loop never exits.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Key
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Mode
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Target required
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{t} & Walk a 4-bit pattern on the output pins
+(\texttt{1,\ 2,\ 4,\ 8,\ F,\ 0}, 300 ms per step) & No \\
+\texttt{d} & Short SVF, slowed to about 100 ms per edge, TDO ignored &
+No \\
+\texttt{p} & Embedded configuration SVF at GPIO speed, TDO checked &
+Yes \\
+\texttt{r} & Drive the outputs low & No \\
+\end{longtable}
+}
+
+\texttt{t} does not call \texttt{libxsvf}. It is the first check that
+the output wiring and the bitstream are the JTAG design. \texttt{d}
+plays a short string compiled into the ELF: reset, idle, an IDCODE
+instruction, a 32-bit data shift, eight run-test clocks, and a short
+\texttt{0x55AA} shift. \texttt{p} is the programming path. Every TDO
+expectation in the file is enforced. The first one is the IDCODE shift,
+so a missing or wrong target fails immediately and the large
+configuration shift never starts.
+
+Phases inside the configuration file:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+SVF section
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+JTAG effect
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{STATE\ RESET} / \texttt{STATE\ IDLE} & TMS sequences the TAP
+through Test-Logic-Reset into Run-Test/Idle \\
+\texttt{SIR\ 6\ TDI\ (09)} + 32-bit \texttt{SDR} & Shift the IDCODE
+instruction and read 32 bits. Expect \texttt{0x03631093} under mask
+\texttt{0x0FFFFFFF} \\
+\texttt{SIR\ 6\ TDI\ (0b)} & JPROGRAM \\
+\texttt{SIR\ 6\ TDI\ (14)} and the \texttt{RUNTEST} pair &
+Initialization poll, including a 0.1 s wait and 10,000 clocks \\
+\texttt{SIR\ 6\ TDI\ (05)} + \texttt{SDR\ 30606304} & Shift the
+configuration bitstream into the device \\
+\texttt{config/start} & \texttt{JSTART} (\texttt{0x0C}) and clocks that
+complete startup \\
+\texttt{config/status} & Status read. One bit is checked under mask
+\texttt{0x08000000} \\
+\end{longtable}
+}
+
+Status lines on the UART are clipped to 96 characters. The configuration
+\texttt{SDR} is millions of characters, and printing it would dominate
+the runtime.
+
+\subsection{7. SVF generation}\label{svf-generation}
+
+The checked-in file is produced by recording a program operation against
+an SVF target in Vivado Hardware Manager. No cable and no board are
+required. The part is the Nexys A7-100T device,
+\texttt{xc7a100tcsg324-1}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{open\_hw\_manager}
+\NormalTok{connect\_hw\_server {-}url localhost}\OperatorTok{:}\DecValTok{3121}
+\NormalTok{create\_hw\_target nexys\_a7\_svf}
+\NormalTok{open\_hw\_target }\KeywordTok{[lindex} \KeywordTok{[}\NormalTok{get\_hw\_targets {-}regexp .}\OperatorTok{*/}\NormalTok{nexys\_a7\_svf}\KeywordTok{]} \DecValTok{0}\KeywordTok{]}
+\KeywordTok{set}\NormalTok{ dev }\KeywordTok{[}\NormalTok{create\_hw\_device {-}part xc7a100tcsg324{-}1}\KeywordTok{]}
+\NormalTok{set\_property PROGRAM.FILE }\KeywordTok{\{}\NormalTok{C}\OperatorTok{:/}\NormalTok{path}\OperatorTok{/}\NormalTok{to}\OperatorTok{/}\NormalTok{target\_design.bit}\KeywordTok{\}} \DataTypeTok{$dev}
+\NormalTok{program\_hw\_devices }\DataTypeTok{$dev}
+\NormalTok{write\_hw\_svf }\KeywordTok{\{}\NormalTok{C}\OperatorTok{:/}\NormalTok{path}\OperatorTok{/}\NormalTok{to}\OperatorTok{/}\NormalTok{nexys\_a7\_01.svf}\KeywordTok{\}}
+\NormalTok{close\_hw\_target}
+\end{Highlighting}
+\end{Shaded}
+
+The header of the resulting file is a single-device Artix-7 sequence:
+\texttt{TRST\ OFF}, idle end states, \texttt{STATE\ RESET},
+\texttt{STATE\ IDLE}, \texttt{FREQUENCY\ 1.00E+07\ HZ}, zero chain
+padding, then the IDCODE, JPROGRAM, initialization, and configuration
+shifts. Later comments mark \texttt{config/start} and
+\texttt{config/status}.
+
+\texttt{SIR\ 6\ TDI\ (09)} is the 7-series IDCODE instruction.
+\texttt{SIR\ 6\ TDI\ (0b)} is JPROGRAM. The 30,606,304-bit \texttt{SDR}
+is the configuration payload: 3,825,788 bytes of shift data, stored as
+ASCII hex, which is why the file is about 7.7 MB.
+
+Before the file is embedded it is checked for the expected IDCODE, zero
+padding, a configuration shift of tens of millions of bits, and a
+complete startup and status trailer. Vivado writes the init delay as
+\texttt{RUNTEST\ 0.100000\ SEC;}. The bundled \texttt{libxsvf} rejects a
+decimal point in that position. The file is rewritten as
+\texttt{RUNTEST\ 1E-1\ SEC;}, which is the same 0.1 s.
+
+The same asset is installed in all three applications:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sw/nexys\_a7/app\_mb\_svf\_player/assets/nexys\_a7\_01.svf}
+\NormalTok{sw/nexys\_a7/app\_mb\_jtag\_verifier/assets/nexys\_a7\_01.svf}
+\NormalTok{sw/zcu102/app\_svf\_player/assets/nexys\_a7\_01.svf}
+\end{Highlighting}
+\end{Shaded}
+
+Replacing the SVF without rebuilding leaves the previous payload in the
+ELF. The size printed at startup is the check.
+
+\subsection{8. Verification}\label{verification}
+
+\subsubsection{8.1 Bring-up without a
+target}\label{bring-up-without-a-target}
+
+Before J10 is wired, the output pins can drive LEDs through 330 ohm to 1
+kohm resistors. TDO is an input and does not get an LED. The LEDs are
+removed before a real target is connected.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Command
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Result with no target
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{t} & Output nibble walks \texttt{1,\ 2,\ 4,\ 8,\ F,\ 0} with 300
+ms between steps \\
+\texttt{d} & Parser and pin callbacks run the short demo SVF. TDO
+mismatches are ignored. \texttt{rc} is 0 if the parser accepts the
+string \\
+\texttt{p} & Fails at the IDCODE \texttt{SDR}. UART shows a TDO
+mismatch, then \texttt{rc=-1}, and the first failing TCK count plus the
+expected and sampled bits \\
+\end{longtable}
+}
+
+\texttt{p} without a target is a useful negative test. The parser got
+far enough to shift 32 data bits and compare them. It is not a sign that
+the SVF file or the GPIO path is broken.
+
+\subsubsection{8.2 Programming a target}\label{programming-a-target}
+
+The programmer is built and downloaded over its own USB-JTAG port. The
+console banner ends with the blob size, then the menu waits. \texttt{t}
+and \texttt{d} are run with J10 open. Outputs are driven low with
+\texttt{r}, LEDs are removed, and the four JTAG wires plus ground are
+connected. \texttt{p} is sent only after the target is powered.
+
+Success is all of the following:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{SVF\ playback\ finished\ with\ rc=0}
+\item
+  A non-zero TDO check count, and no TDO mismatch line
+\item
+  The target DONE LED is on
+\item
+  The design that was baked into the SVF is the design now running on
+  the target
+\end{itemize}
+
+A mismatch after a long run, with a large TCK count, means IDCODE and
+the init poll passed and a later compare failed. The usual causes are a
+target that lost power during the shift, another master on TMS or TCK,
+or an SVF generated for a different part. A mismatch on the first data
+shift is wiring, power, a second master on J6, a swapped TDI/TDO pair,
+or a device that is not an XC7A100T.
+
+The final status shift compares a single masked bit
+(\texttt{MASK\ (08000000)}). A mismatch there means the device did not
+reach the expected status after startup, so \texttt{rc} is \texttt{-1}
+even if the long shift itself completed.
+
+\subsubsection{8.3 Waveform verifier}\label{waveform-verifier}
+
+The Nexys A7 verifier is the counterpart of the ZCU102 player. It does
+not implement a TAP state machine of its own and it does not write a
+second SVF parser. It runs the same \texttt{libxsvf\_play} over the same
+SVF bytes, with \texttt{pulse\_tck} inverted:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+& ZCU102 player & Nexys A7 verifier \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+TCK & drives the pulse & waits for the pulse \\
+TMS & drives the expected value & samples and compares \\
+TDI & drives the expected value & samples and compares \\
+TDO & samples and compares & drives the expected value \\
+\end{longtable}
+}
+
+Because \texttt{libxsvf} is deterministic, both instances walk the file
+in lockstep. On every clock the verifier receives the TMS and TDI values
+the player should be driving, and the TDO value the SVF says the target
+should return. Driving TDO lets the player's own TDO checks pass, which
+closes the return path.
+
+The verifier detects TCK edges by polling the AXI GPIO input register
+from C. It needs real time between the player's falling edge and the
+player's TDO sample. The player's \texttt{d} command, at about 100 ms
+per edge, leaves that margin and is the bring-up pair. The player's
+\texttt{p} command, with zero edge delay, is faster than the poll loop,
+so the embedded configuration file is not verified this way. The demo
+SVF has no TDO fields, so a \texttt{d} run validates TCK, TMS, and TDI
+only.
+
+Wiring is point to point and is not a straight ribbon. On the verifier,
+TCK, TMS, and TDI are inputs on JA7, JA8, and JA9, and TDO is an output
+on JA1. The verifier is armed before the player starts clocking. The
+first clock waits for TCK high and then for the falling edge, so an
+idle-low TCK is not mistaken for the first pulse.
+
+\subsection{9. Results}\label{results}
+
+These are the outcomes the player and the checked-in SVF are built to
+produce. A bench log of one particular programming session is not stored
+in the repository. The pass and fail text is what the firmware prints,
+and the IDCODE and shift length are what
+\texttt{assets/nexys\_a7\_01.svf} contains.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Check
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Value
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Device & One TAP, no chain padding \\
+Instruction width & 6 \\
+IDCODE & \texttt{0x03631093}, mask \texttt{0x0FFFFFFF} \\
+Requested TCK & 10 MHz, not enforced by the player \\
+Configuration shift & 30,606,304 bits \\
+Embedded file size & 7,682,571 bytes (7,712,737 with CRLF line
+endings) \\
+Recorded Nexys A7 ELF & \texttt{text} 7,747,420, \texttt{data} 1,624,
+\texttt{bss} 33,571,276 \\
+\end{longtable}
+}
+
+The \texttt{text} size tracks the SVF because \texttt{.incbin} places
+the file in \texttt{.rodata}. The \texttt{bss} size tracks the 32 MiB
+heap reservation. Both are expected for this asset.
+
+A completed configuration reports:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{SVF playback finished with rc=0}
+\NormalTok{TCK clocks: \textless{}large count\textgreater{}, TDI bits: \textless{}large count\textgreater{}, TDO checks: \textless{}count\textgreater{}}
+\end{Highlighting}
+\end{Shaded}
+
+The clock count is dominated by the 30,606,304-bit shift plus the
+\texttt{RUNTEST} clocks (10,000 during init, 100,000 at startup, and the
+smaller sequences). Runtime is the cost of those GPIO transactions. The
+10 MHz \texttt{FREQUENCY} command only produces the UART line
+\texttt{using\ GPIO\ bit-bang\ speed.}
+
+\subsection{10. Limitations}\label{limitations}
+
+\begin{itemize}
+\tightlist
+\item
+  TRST is not a pin. TAP reset still happens through TMS and TCK.
+\item
+  The player will not discover extra devices. Padding is fixed in the
+  SVF at zero.
+\item
+  Command \texttt{p} cannot configure the FPGA that is executing the
+  player. That download uses the board's own USB-JTAG, or the usual
+  PS/PL programming path on the ZCU102.
+\item
+  The GPIO path does not honor the SVF frequency. Configuration works
+  and takes longer than a cable.
+\item
+  The polling verifier can follow the slowed demo. It cannot follow a
+  full-speed configuration shift.
+\item
+  The loop-test SVF in the verifier, which would exercise TDO as well as
+  TCK, TMS, and TDI, has no matching command on the current ZCU102
+  player.
+\item
+  Replacing the SVF without rebuilding leaves the previous payload in
+  the ELF.
+\end{itemize}
+
+\subsection{11. Conclusion}\label{conclusion}
+
+A MicroBlaze system on a Nexys A7 and a Cortex-A53 system on a ZCU102
+both play a Vivado configuration SVF through an AXI GPIO port and
+configure a second Nexys A7-100T. The software contract is small:
+\texttt{libxsvf} parses the file, and one callback writes TCK, TMS, and
+TDI and samples TDO. The same callback, inverted, lets a third board
+check the waveform against the file.
+
+The design is sufficient for a single Artix-7 on a 3.3 V TAP. Bring-up
+is separated from programming: \texttt{t} and \texttt{d} prove the pins
+with no target, and \texttt{p} enforces every TDO compare, starting with
+the IDCODE. The cost of the approach is speed. Each bit is several
+register writes, and the 30.6 million bit configuration shift dominates
+the run.
+
+\subsection{References}\label{references}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  IEEE Std 1149.1, IEEE Standard for Test Access Port and Boundary-Scan
+  Architecture.
+\item
+  Clifford Wolf, \texttt{libxsvf},
+  https://github.com/cliffordwolf/libxsvf.
+\item
+  Digilent, Nexys A7 FPGA Board Reference Manual.
+\item
+  AMD, Vivado Design Suite and Vitis embedded tools, 2025.1 / 2025.2
+  flows used by this repository.
+\item
+  AMD, 7 Series FPGAs Configuration User Guide, for the XC7A100T JTAG
+  instructions used by the generated SVF (IDCODE, JPROGRAM, JSTART).
+\end{enumerate}
+
+\end{document}

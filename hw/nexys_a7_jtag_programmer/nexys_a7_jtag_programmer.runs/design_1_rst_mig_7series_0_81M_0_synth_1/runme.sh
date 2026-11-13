@@ -7,14 +7,10 @@
 # Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 # 
 
-echo "This script was generated under a different operating system."
-echo "Please update the PATH and LD_LIBRARY_PATH variables below, before executing this script"
-exit
-
 if [ -z "$PATH" ]; then
-  PATH=C:/AMDDesignTools/2025.2/Vitis/bin;C:/AMDDesignTools/2025.2/Vivado/ids_lite/ISE/bin/nt64;C:/AMDDesignTools/2025.2/Vivado/ids_lite/ISE/lib/nt64:C:/AMDDesignTools/2025.2/Vivado/bin
+  PATH=/applicsqum/xilinx/vivado/2025_2/Vitis/bin:/applicsqum/xilinx/vivado/2025_2/Vivado/ids_lite/ISE/bin/lin64:/applicsqum/xilinx/vivado/2025_2/Vivado/bin
 else
-  PATH=C:/AMDDesignTools/2025.2/Vitis/bin;C:/AMDDesignTools/2025.2/Vivado/ids_lite/ISE/bin/nt64;C:/AMDDesignTools/2025.2/Vivado/ids_lite/ISE/lib/nt64:C:/AMDDesignTools/2025.2/Vivado/bin:$PATH
+  PATH=/applicsqum/xilinx/vivado/2025_2/Vitis/bin:/applicsqum/xilinx/vivado/2025_2/Vivado/ids_lite/ISE/bin/lin64:/applicsqum/xilinx/vivado/2025_2/Vivado/bin:$PATH
 fi
 export PATH
 
@@ -25,7 +21,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/dev/projects/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.runs/design_1_rst_mig_7series_0_81M_0_synth_1'
+HD_PWD='/userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.runs/design_1_rst_mig_7series_0_81M_0_synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

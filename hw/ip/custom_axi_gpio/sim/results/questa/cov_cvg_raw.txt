@@ -1,0 +1,346 @@
+Coverage Report by instance with details
+
+=================================================================================
+=== Instance: /tb_axi_gpio_jtag
+=== Design Unit: work.tb_axi_gpio_jtag
+=================================================================================
+
+Covergroup Coverage:
+    Covergroups                      5        na        na   100.00%
+        Coverpoints/Crosses          8        na        na        na
+            Covergroup Bins         51        51         0   100.00%
+----------------------------------------------------------------------------------------------------------
+Covergroup                                             Metric       Goal       Bins    Status               
+                                                                                                         
+----------------------------------------------------------------------------------------------------------
+ TYPE /tb_axi_gpio_jtag/cg_access                     100.00%        100          -    Covered              
+    covered/total bins:                                    24         24          -                      
+    missing/total bins:                                     0         24          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint cp_kind                                100.00%        100          -    Covered              
+        covered/total bins:                                 5          5          -                      
+        missing/total bins:                                 0          5          -                      
+        % Hit:                                        100.00%        100          -                      
+    Coverpoint cp_dir                                 100.00%        100          -    Covered              
+        covered/total bins:                                 2          2          -                      
+        missing/total bins:                                 0          2          -                      
+        % Hit:                                        100.00%        100          -                      
+    Coverpoint cp_strb0                               100.00%        100          -    Covered              
+        covered/total bins:                                 2          2          -                      
+        missing/total bins:                                 0          2          -                      
+        % Hit:                                        100.00%        100          -                      
+    Cross x_access                                    100.00%        100          -    Covered              
+        covered/total bins:                                15         15          -                      
+        missing/total bins:                                 0         15          -                      
+        % Hit:                                        100.00%        100          -                      
+ Covergroup instance \/tb_axi_gpio_jtag/cov_access  
+                                                      100.00%        100          -    Covered              
+    covered/total bins:                                    24         24          -                      
+    missing/total bins:                                     0         24          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint cp_kind                                100.00%        100          -    Covered              
+        covered/total bins:                                 5          5          -                      
+        missing/total bins:                                 0          5          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin k_data                                      55349          1          -    Covered              
+        bin k_tri                                        3523          1          -    Covered              
+        bin k_data2                                      4200          1          -    Covered              
+        bin k_tri2                                       3113          1          -    Covered              
+        bin k_unmapped                                   2531          1          -    Covered              
+    Coverpoint cp_dir                                 100.00%        100          -    Covered              
+        covered/total bins:                                 2          2          -                      
+        missing/total bins:                                 0          2          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin rd                                           9431          1          -    Covered              
+        bin wr                                          59285          1          -    Covered              
+    Coverpoint cp_strb0                               100.00%        100          -    Covered              
+        covered/total bins:                                 2          2          -                      
+        missing/total bins:                                 0          2          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin off                                          1269          1          -    Covered              
+        bin on                                          67447          1          -    Covered              
+    Cross x_access                                    100.00%        100          -    Covered              
+        covered/total bins:                                15         15          -                      
+        missing/total bins:                                 0         15          -                      
+        % Hit:                                        100.00%        100          -                      
+        Auto, Default and User Defined Bins:
+            bin <k_unmapped,wr,on>                       1109          1          -    Covered              
+            bin <k_unmapped,wr,off>                       152          1          -    Covered              
+            bin <k_tri2,wr,on>                           1297          1          -    Covered              
+            bin <k_tri2,wr,off>                           297          1          -    Covered              
+            bin <k_tri,wr,on>                            1508          1          -    Covered              
+            bin <k_tri,wr,off>                            260          1          -    Covered              
+            bin <k_data2,wr,on>                           813          1          -    Covered              
+            bin <k_data2,wr,off>                          298          1          -    Covered              
+            bin <k_data,wr,on>                          53289          1          -    Covered              
+            bin <k_data,wr,off>                           262          1          -    Covered              
+            bin <k_unmapped,rd,on>                       1270          1          -    Covered              
+            bin <k_tri2,rd,on>                           1519          1          -    Covered              
+            bin <k_tri,rd,on>                            1755          1          -    Covered              
+            bin <k_data2,rd,on>                          3089          1          -    Covered              
+            bin <k_data,rd,on>                           1798          1          -    Covered              
+        Illegal and Ignore Bins:
+            ignore_bin read_no_strobe                       0                     -    ZERO                 
+ TYPE /tb_axi_gpio_jtag/cg_order                      100.00%        100          -    Covered              
+    covered/total bins:                                     3          3          -                      
+    missing/total bins:                                     0          3          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint cp_order                               100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+ Covergroup instance \/tb_axi_gpio_jtag/cov_order     100.00%        100          -    Covered              
+    covered/total bins:                                     3          3          -                      
+    missing/total bins:                                     0          3          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint cp_order                               100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin same                                        19718          1          -    Covered              
+        bin aw_first                                    19710          1          -    Covered              
+        bin w_first                                     19857          1          -    Covered              
+ TYPE /tb_axi_gpio_jtag/cg_stall                      100.00%        100          -    Covered              
+    covered/total bins:                                     3          3          -                      
+    missing/total bins:                                     0          3          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint cp_stall                               100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+ Covergroup instance \/tb_axi_gpio_jtag/cov_stall     100.00%        100          -    Covered              
+    covered/total bins:                                     3          3          -                      
+    missing/total bins:                                     0          3          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint cp_stall                               100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin no_stall                                    51121          1          -    Covered              
+        bin b_stall                                     15073          1          -    Covered              
+        bin r_stall                                      2522          1          -    Covered              
+ TYPE /tb_axi_gpio_jtag/cg_reset                      100.00%        100          -    Covered              
+    covered/total bins:                                     5          5          -                      
+    missing/total bins:                                     0          5          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint cp_point                               100.00%        100          -    Covered              
+        covered/total bins:                                 5          5          -                      
+        missing/total bins:                                 0          5          -                      
+        % Hit:                                        100.00%        100          -                      
+ Covergroup instance \/tb_axi_gpio_jtag/cov_reset     100.00%        100          -    Covered              
+    covered/total bins:                                     5          5          -                      
+    missing/total bins:                                     0          5          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint cp_point                               100.00%        100          -    Covered              
+        covered/total bins:                                 5          5          -                      
+        missing/total bins:                                 0          5          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin idle                                           15          1          -    Covered              
+        bin aw_taken                                       15          1          -    Covered              
+        bin w_taken                                        15          1          -    Covered              
+        bin b_pending                                      15          1          -    Covered              
+        bin r_pending                                      15          1          -    Covered              
+ TYPE /tb_axi_gpio_jtag/cg_inputs                     100.00%        100          -    Covered              
+    covered/total bins:                                    16         16          -                      
+    missing/total bins:                                     0         16          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint cp_value                               100.00%        100          -    Covered              
+        covered/total bins:                                16         16          -                      
+        missing/total bins:                                 0         16          -                      
+        % Hit:                                        100.00%        100          -                      
+ Covergroup instance \/tb_axi_gpio_jtag/cov_inputs  
+                                                      100.00%        100          -    Covered              
+    covered/total bins:                                    16         16          -                      
+    missing/total bins:                                     0         16          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint cp_value                               100.00%        100          -    Covered              
+        covered/total bins:                                16         16          -                      
+        missing/total bins:                                 0         16          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin auto[0]                                       206          1          -    Covered              
+        bin auto[1]                                       224          1          -    Covered              
+        bin auto[2]                                       215          1          -    Covered              
+        bin auto[3]                                       179          1          -    Covered              
+        bin auto[4]                                       171          1          -    Covered              
+        bin auto[5]                                       197          1          -    Covered              
+        bin auto[6]                                       218          1          -    Covered              
+        bin auto[7]                                       226          1          -    Covered              
+        bin auto[8]                                       198          1          -    Covered              
+        bin auto[9]                                       213          1          -    Covered              
+        bin auto[10]                                      180          1          -    Covered              
+        bin auto[11]                                      175          1          -    Covered              
+        bin auto[12]                                      212          1          -    Covered              
+        bin auto[13]                                      197          1          -    Covered              
+        bin auto[14]                                      176          1          -    Covered              
+        bin auto[15]                                      402          1          -    Covered              
+
+COVERGROUP COVERAGE:
+----------------------------------------------------------------------------------------------------------
+Covergroup                                             Metric       Goal       Bins    Status               
+                                                                                                         
+----------------------------------------------------------------------------------------------------------
+ TYPE /tb_axi_gpio_jtag/cg_access                     100.00%        100          -    Covered              
+    covered/total bins:                                    24         24          -                      
+    missing/total bins:                                     0         24          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint cp_kind                                100.00%        100          -    Covered              
+        covered/total bins:                                 5          5          -                      
+        missing/total bins:                                 0          5          -                      
+        % Hit:                                        100.00%        100          -                      
+    Coverpoint cp_dir                                 100.00%        100          -    Covered              
+        covered/total bins:                                 2          2          -                      
+        missing/total bins:                                 0          2          -                      
+        % Hit:                                        100.00%        100          -                      
+    Coverpoint cp_strb0                               100.00%        100          -    Covered              
+        covered/total bins:                                 2          2          -                      
+        missing/total bins:                                 0          2          -                      
+        % Hit:                                        100.00%        100          -                      
+    Cross x_access                                    100.00%        100          -    Covered              
+        covered/total bins:                                15         15          -                      
+        missing/total bins:                                 0         15          -                      
+        % Hit:                                        100.00%        100          -                      
+ Covergroup instance \/tb_axi_gpio_jtag/cov_access  
+                                                      100.00%        100          -    Covered              
+    covered/total bins:                                    24         24          -                      
+    missing/total bins:                                     0         24          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint cp_kind                                100.00%        100          -    Covered              
+        covered/total bins:                                 5          5          -                      
+        missing/total bins:                                 0          5          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin k_data                                      55349          1          -    Covered              
+        bin k_tri                                        3523          1          -    Covered              
+        bin k_data2                                      4200          1          -    Covered              
+        bin k_tri2                                       3113          1          -    Covered              
+        bin k_unmapped                                   2531          1          -    Covered              
+    Coverpoint cp_dir                                 100.00%        100          -    Covered              
+        covered/total bins:                                 2          2          -                      
+        missing/total bins:                                 0          2          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin rd                                           9431          1          -    Covered              
+        bin wr                                          59285          1          -    Covered              
+    Coverpoint cp_strb0                               100.00%        100          -    Covered              
+        covered/total bins:                                 2          2          -                      
+        missing/total bins:                                 0          2          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin off                                          1269          1          -    Covered              
+        bin on                                          67447          1          -    Covered              
+    Cross x_access                                    100.00%        100          -    Covered              
+        covered/total bins:                                15         15          -                      
+        missing/total bins:                                 0         15          -                      
+        % Hit:                                        100.00%        100          -                      
+        Auto, Default and User Defined Bins:
+            bin <k_unmapped,wr,on>                       1109          1          -    Covered              
+            bin <k_unmapped,wr,off>                       152          1          -    Covered              
+            bin <k_tri2,wr,on>                           1297          1          -    Covered              
+            bin <k_tri2,wr,off>                           297          1          -    Covered              
+            bin <k_tri,wr,on>                            1508          1          -    Covered              
+            bin <k_tri,wr,off>                            260          1          -    Covered              
+            bin <k_data2,wr,on>                           813          1          -    Covered              
+            bin <k_data2,wr,off>                          298          1          -    Covered              
+            bin <k_data,wr,on>                          53289          1          -    Covered              
+            bin <k_data,wr,off>                           262          1          -    Covered              
+            bin <k_unmapped,rd,on>                       1270          1          -    Covered              
+            bin <k_tri2,rd,on>                           1519          1          -    Covered              
+            bin <k_tri,rd,on>                            1755          1          -    Covered              
+            bin <k_data2,rd,on>                          3089          1          -    Covered              
+            bin <k_data,rd,on>                           1798          1          -    Covered              
+        Illegal and Ignore Bins:
+            ignore_bin read_no_strobe                       0                     -    ZERO                 
+ TYPE /tb_axi_gpio_jtag/cg_order                      100.00%        100          -    Covered              
+    covered/total bins:                                     3          3          -                      
+    missing/total bins:                                     0          3          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint cp_order                               100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+ Covergroup instance \/tb_axi_gpio_jtag/cov_order     100.00%        100          -    Covered              
+    covered/total bins:                                     3          3          -                      
+    missing/total bins:                                     0          3          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint cp_order                               100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin same                                        19718          1          -    Covered              
+        bin aw_first                                    19710          1          -    Covered              
+        bin w_first                                     19857          1          -    Covered              
+ TYPE /tb_axi_gpio_jtag/cg_stall                      100.00%        100          -    Covered              
+    covered/total bins:                                     3          3          -                      
+    missing/total bins:                                     0          3          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint cp_stall                               100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+ Covergroup instance \/tb_axi_gpio_jtag/cov_stall     100.00%        100          -    Covered              
+    covered/total bins:                                     3          3          -                      
+    missing/total bins:                                     0          3          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint cp_stall                               100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin no_stall                                    51121          1          -    Covered              
+        bin b_stall                                     15073          1          -    Covered              
+        bin r_stall                                      2522          1          -    Covered              
+ TYPE /tb_axi_gpio_jtag/cg_reset                      100.00%        100          -    Covered              
+    covered/total bins:                                     5          5          -                      
+    missing/total bins:                                     0          5          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint cp_point                               100.00%        100          -    Covered              
+        covered/total bins:                                 5          5          -                      
+        missing/total bins:                                 0          5          -                      
+        % Hit:                                        100.00%        100          -                      
+ Covergroup instance \/tb_axi_gpio_jtag/cov_reset     100.00%        100          -    Covered              
+    covered/total bins:                                     5          5          -                      
+    missing/total bins:                                     0          5          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint cp_point                               100.00%        100          -    Covered              
+        covered/total bins:                                 5          5          -                      
+        missing/total bins:                                 0          5          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin idle                                           15          1          -    Covered              
+        bin aw_taken                                       15          1          -    Covered              
+        bin w_taken                                        15          1          -    Covered              
+        bin b_pending                                      15          1          -    Covered              
+        bin r_pending                                      15          1          -    Covered              
+ TYPE /tb_axi_gpio_jtag/cg_inputs                     100.00%        100          -    Covered              
+    covered/total bins:                                    16         16          -                      
+    missing/total bins:                                     0         16          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint cp_value                               100.00%        100          -    Covered              
+        covered/total bins:                                16         16          -                      
+        missing/total bins:                                 0         16          -                      
+        % Hit:                                        100.00%        100          -                      
+ Covergroup instance \/tb_axi_gpio_jtag/cov_inputs  
+                                                      100.00%        100          -    Covered              
+    covered/total bins:                                    16         16          -                      
+    missing/total bins:                                     0         16          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint cp_value                               100.00%        100          -    Covered              
+        covered/total bins:                                16         16          -                      
+        missing/total bins:                                 0         16          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin auto[0]                                       206          1          -    Covered              
+        bin auto[1]                                       224          1          -    Covered              
+        bin auto[2]                                       215          1          -    Covered              
+        bin auto[3]                                       179          1          -    Covered              
+        bin auto[4]                                       171          1          -    Covered              
+        bin auto[5]                                       197          1          -    Covered              
+        bin auto[6]                                       218          1          -    Covered              
+        bin auto[7]                                       226          1          -    Covered              
+        bin auto[8]                                       198          1          -    Covered              
+        bin auto[9]                                       213          1          -    Covered              
+        bin auto[10]                                      180          1          -    Covered              
+        bin auto[11]                                      175          1          -    Covered              
+        bin auto[12]                                      212          1          -    Covered              
+        bin auto[13]                                      197          1          -    Covered              
+        bin auto[14]                                      176          1          -    Covered              
+        bin auto[15]                                      402          1          -    Covered              
+
+TOTAL COVERGROUP COVERAGE: 100.00%  COVERGROUP TYPES: 5
+
+Total Coverage By Instance (filtered view): 100.00%
+

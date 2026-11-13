@@ -1,11 +1,11 @@
 // Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
-// Date        : Tue Aug 18 11:44:45 2026
-// Host        : DESKTOP-SD8DC1R running 64-bit major release  (build 9200)
+// Tool Version: Vivado v.2025.2 (lin64) Build 6299465 Fri Nov 14 12:34:56 MST 2025
+// Date        : Fri Nov 13 12:17:34 2026
+// Host        : hejmsfelpp051.hpcgrid.nesc.nokia.net running 64-bit Red Hat Enterprise Linux release 8.10 (Ootpa)
 // Command     : write_verilog -force -mode funcsim
-//               c:/dev/projects/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.gen/sources_1/bd/design_1/ip/design_1_axi_uartlite_0_0/design_1_axi_uartlite_0_0_sim_netlist.v
+//               /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.gen/sources_1/bd/design_1/ip/design_1_axi_uartlite_0_0/design_1_axi_uartlite_0_0_sim_netlist.v
 // Design      : design_1_axi_uartlite_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -63,8 +63,7 @@ module design_1_axi_uartlite_0_0
 
   wire \<const0> ;
   wire interrupt;
-  (* RTL_KEEP = "yes" *) (* x_interface_info = "xilinx.com:interface:uart:1.0 UART RxD" *) (* x_interface_mode = "master UART" *) 
-  (* x_interface_parameter = "XIL_INTERFACENAME UART, BOARD.ASSOCIATED_PARAM UARTLITE_BOARD_INTERFACE" *) wire rx;
+  wire rx;
   wire s_axi_aclk;
   wire [3:0]s_axi_araddr;
   wire s_axi_aresetn;
@@ -2302,10 +2301,10 @@ endmodule
 
 (* ORIG_REF_NAME = "uartlite_core" *) 
 module design_1_axi_uartlite_0_0_uartlite_core
-   (tx,
-    rx_Buffer_Full,
+   (rx_Buffer_Full,
     tx_Buffer_Full,
     bus2ip_reset,
+    tx,
     interrupt,
     enable_interrupts,
     status_reg_reg,
@@ -2328,10 +2327,10 @@ module design_1_axi_uartlite_0_0_uartlite_core
     fifo_wr,
     \GEN_BKEND_CE_REGISTERS[1].ce_out_i_reg ,
     s_axi_wdata);
-  output tx;
   output rx_Buffer_Full;
   output tx_Buffer_Full;
   output bus2ip_reset;
+  output tx;
   output interrupt;
   output enable_interrupts;
   output status_reg_reg;
@@ -3069,8 +3068,8 @@ endmodule
 
 (* ORIG_REF_NAME = "uartlite_tx" *) 
 module design_1_axi_uartlite_0_0_uartlite_tx
-   (tx,
-    tx_Buffer_Full,
+   (tx_Buffer_Full,
+    tx,
     Q,
     Interrupt0,
     s_axi_aclk,
@@ -3087,8 +3086,8 @@ module design_1_axi_uartlite_0_0_uartlite_tx
     rx_Data_Present_Pre,
     Interrupt_reg,
     s_axi_wdata);
-  output tx;
   output tx_Buffer_Full;
+  output tx;
   output [0:0]Q;
   output Interrupt0;
   input s_axi_aclk;
@@ -3137,7 +3136,7 @@ module design_1_axi_uartlite_0_0_uartlite_tx
   wire s_axi_aresetn;
   wire [7:0]s_axi_wdata;
   wire serial_Data;
-  (* RTL_KEEP = "yes" *) wire tx;
+  wire tx;
   wire tx_Buffer_Empty_Pre;
   wire tx_Buffer_Full;
   wire tx_DataBits;
@@ -3178,7 +3177,6 @@ module design_1_axi_uartlite_0_0_uartlite_tx
         .I1(tx_DataBits),
         .I2(tx_Start),
         .O(TX0));
-  (* KEEP = "yes" *) 
   FDSE TX_reg
        (.C(s_axi_aclk),
         .CE(1'b1),

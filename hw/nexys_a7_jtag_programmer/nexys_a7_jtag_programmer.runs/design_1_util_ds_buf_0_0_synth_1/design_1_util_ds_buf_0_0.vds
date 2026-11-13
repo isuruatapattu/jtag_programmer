@@ -1,39 +1,42 @@
 #-----------------------------------------------------------
 # Vivado v2025.2 (64-bit)
-# SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
+# SW Build 6299465 on Fri Nov 14 12:34:56 MST 2025
 # IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
 # SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
-# Start of session at: Tue Aug 18 11:44:44 2026
-# Process ID         : 13960
-# Current directory  : C:/dev/projects/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.runs/design_1_util_ds_buf_0_0_synth_1
-# Command line       : vivado.exe -log design_1_util_ds_buf_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_util_ds_buf_0_0.tcl
-# Log file           : C:/dev/projects/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.runs/design_1_util_ds_buf_0_0_synth_1/design_1_util_ds_buf_0_0.vds
-# Journal file       : C:/dev/projects/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.runs/design_1_util_ds_buf_0_0_synth_1\vivado.jou
-# Running On         : DESKTOP-SD8DC1R
-# Platform           : Windows Server 2016 or Windows 10
-# Operating System   : 19045
-# Processor Detail   : AMD Ryzen 7 5800X3D 8-Core Processor           
-# CPU Frequency      : 3400 MHz
-# CPU Physical cores : 8
-# CPU Logical cores  : 16
-# Host memory        : 34264 MB
-# Swap memory        : 5100 MB
-# Total Virtual      : 39364 MB
-# Available Virtual  : 11858 MB
+# Start of session at: Fri Nov 13 12:14:04 2026
+# Process ID         : 724503
+# Current directory  : /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.runs/design_1_util_ds_buf_0_0_synth_1
+# Command line       : vivado -log design_1_util_ds_buf_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_util_ds_buf_0_0.tcl
+# Log file           : /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.runs/design_1_util_ds_buf_0_0_synth_1/design_1_util_ds_buf_0_0.vds
+# Journal file       : /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.runs/design_1_util_ds_buf_0_0_synth_1/vivado.jou
+# Running On         : hejmsfelpp051.hpcgrid.nesc.nokia.net
+# Platform           : RedHatEnterprise
+# Operating System   : Red Hat Enterprise Linux release 8.10 (Ootpa)
+# Processor Detail   : AMD EPYC 9375F 32-Core Processor
+# CPU Frequency      : 3794.691 MHz
+# CPU Physical cores : 64
+# CPU Logical cores  : 64
+# Host memory        : 810876 MB
+# Swap memory        : 274877 MB
+# Total Virtual      : 1085754 MB
+# Available Virtual  : 812493 MB
 #-----------------------------------------------------------
 source design_1_util_ds_buf_0_0.tcl -notrace
+WARNING: [IP_Flow 19-5242] IP Cache entry (cache-ID a06f411337e6f8de) does not have the required number of cached files and is not valid. Please delete this entry using the TCL command: 'config_ip_cache -remove [get_ips design_1_util_ds_buf_0_0]'
 Command: synth_design -top design_1_util_ds_buf_0_0 -part xc7a100tcsg324-1 -incremental_mode off -mode out_of_context
 Starting synth_design
+INFO: [IP_Flow 19-2162] IP 'design_1_util_ds_buf_0_0' is locked:
+* This IP has board specific outputs. Current project board 'unset' and the board 'digilentinc.com:nexys-a7-100t:part0:1.3' used to customize the IP 'design_1_util_ds_buf_0_0' do not match.
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
 INFO: [Device 21-403] Loading part xc7a100tcsg324-1
-INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 7 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 32368
+INFO: [Synth 8-7075] Helper process launched with PID 735738
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1131.371 ; gain = 541.633
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 2562.055 ; gain = 480.875 ; free physical = 298763 ; free virtual = 773180
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'design_1_util_ds_buf_0_0' [c:/dev/projects/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.gen/sources_1/bd/design_1/ip/design_1_util_ds_buf_0_0/synth/design_1_util_ds_buf_0_0.vhd:63]
+INFO: [Synth 8-638] synthesizing module 'design_1_util_ds_buf_0_0' [/userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.gen/sources_1/bd/design_1/ip/design_1_util_ds_buf_0_0/synth/design_1_util_ds_buf_0_0.vhd:63]
 	Parameter C_SIZE bound to: 1 - type: integer 
 	Parameter C_BUF_TYPE bound to: BUFG - type: string 
 	Parameter C_BUFGCE_DIV bound to: 1 - type: integer 
@@ -42,11 +45,11 @@ INFO: [Synth 8-638] synthesizing module 'design_1_util_ds_buf_0_0' [c:/dev/proje
 	Parameter C_REFCLK_ICNTL_TX bound to: 5'b00000 
 	Parameter C_SIM_DEVICE bound to: VERSAL_AI_CORE_ES1 - type: string 
 	Parameter C_DIVBY2 bound to: 0 - type: integer 
-INFO: [Synth 8-3491] module 'util_ds_buf' declared at 'c:/dev/projects/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.gen/sources_1/bd/design_1/ip/design_1_util_ds_buf_0_0/util_ds_buf.vhd:73' bound to instance 'U0' of component 'util_ds_buf' [c:/dev/projects/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.gen/sources_1/bd/design_1/ip/design_1_util_ds_buf_0_0/synth/design_1_util_ds_buf_0_0.vhd:244]
-INFO: [Synth 8-638] synthesizing module 'util_ds_buf' [c:/dev/projects/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.gen/sources_1/bd/design_1/ip/design_1_util_ds_buf_0_0/util_ds_buf.vhd:303]
-INFO: [Synth 8-113] binding component instance 'BUFG_U' to cell 'BUFG' [c:/dev/projects/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.gen/sources_1/bd/design_1/ip/design_1_util_ds_buf_0_0/util_ds_buf.vhd:918]
-INFO: [Synth 8-256] done synthesizing module 'util_ds_buf' (0#1) [c:/dev/projects/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.gen/sources_1/bd/design_1/ip/design_1_util_ds_buf_0_0/util_ds_buf.vhd:303]
-INFO: [Synth 8-256] done synthesizing module 'design_1_util_ds_buf_0_0' (0#1) [c:/dev/projects/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.gen/sources_1/bd/design_1/ip/design_1_util_ds_buf_0_0/synth/design_1_util_ds_buf_0_0.vhd:63]
+INFO: [Synth 8-3491] module 'util_ds_buf' declared at '/userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.gen/sources_1/bd/design_1/ip/design_1_util_ds_buf_0_0/util_ds_buf.vhd:73' bound to instance 'U0' of component 'util_ds_buf' [/userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.gen/sources_1/bd/design_1/ip/design_1_util_ds_buf_0_0/synth/design_1_util_ds_buf_0_0.vhd:244]
+INFO: [Synth 8-638] synthesizing module 'util_ds_buf' [/userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.gen/sources_1/bd/design_1/ip/design_1_util_ds_buf_0_0/util_ds_buf.vhd:303]
+INFO: [Synth 8-113] binding component instance 'BUFG_U' to cell 'BUFG' [/userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.gen/sources_1/bd/design_1/ip/design_1_util_ds_buf_0_0/util_ds_buf.vhd:918]
+INFO: [Synth 8-256] done synthesizing module 'util_ds_buf' (0#1) [/userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.gen/sources_1/bd/design_1/ip/design_1_util_ds_buf_0_0/util_ds_buf.vhd:303]
+INFO: [Synth 8-256] done synthesizing module 'design_1_util_ds_buf_0_0' (0#1) [/userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.gen/sources_1/bd/design_1/ip/design_1_util_ds_buf_0_0/synth/design_1_util_ds_buf_0_0.vhd:63]
 INFO: [Synth 8-7129] Port IOBUF_IO_IO[0] in module util_ds_buf is either unconnected or has no load
 INFO: [Synth 8-7129] Port IBUF_DS_P[0] in module util_ds_buf is either unconnected or has no load
 INFO: [Synth 8-7129] Port IBUF_DS_N[0] in module util_ds_buf is either unconnected or has no load
@@ -149,55 +152,55 @@ INFO: [Synth 8-7129] Port MBUFGCTRL_S1[0] in module util_ds_buf is either unconn
 INFO: [Synth 8-7129] Port IBUFDS_GTM2_I[0] in module util_ds_buf is either unconnected or has no load
 INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 1258.371 ; gain = 668.633
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2653.992 ; gain = 572.812 ; free physical = 298673 ; free virtual = 773091
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 1258.371 ; gain = 668.633
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2668.836 ; gain = 587.656 ; free physical = 298663 ; free virtual = 773081
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 1258.371 ; gain = 668.633
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2668.836 ; gain = 587.656 ; free physical = 298663 ; free virtual = 773081
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1258.371 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2674.773 ; gain = 0.000 ; free physical = 298658 ; free virtual = 773076
 WARNING: [Netlist 29-1115] Found multi-term driver net: U0/<const0>.
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [c:/dev/projects/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.gen/sources_1/bd/design_1/ip/design_1_util_ds_buf_0_0/design_1_util_ds_buf_0_0_ooc.xdc] for cell 'U0'
-Finished Parsing XDC File [c:/dev/projects/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.gen/sources_1/bd/design_1/ip/design_1_util_ds_buf_0_0/design_1_util_ds_buf_0_0_ooc.xdc] for cell 'U0'
-Parsing XDC File [c:/dev/projects/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.gen/sources_1/bd/design_1/ip/design_1_util_ds_buf_0_0/design_1_util_ds_buf_0_0_board.xdc] for cell 'U0'
-Finished Parsing XDC File [c:/dev/projects/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.gen/sources_1/bd/design_1/ip/design_1_util_ds_buf_0_0/design_1_util_ds_buf_0_0_board.xdc] for cell 'U0'
-Parsing XDC File [C:/dev/projects/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.runs/design_1_util_ds_buf_0_0_synth_1/dont_touch.xdc]
-Finished Parsing XDC File [C:/dev/projects/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.runs/design_1_util_ds_buf_0_0_synth_1/dont_touch.xdc]
+Parsing XDC File [/userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.gen/sources_1/bd/design_1/ip/design_1_util_ds_buf_0_0/design_1_util_ds_buf_0_0_ooc.xdc] for cell 'U0'
+Finished Parsing XDC File [/userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.gen/sources_1/bd/design_1/ip/design_1_util_ds_buf_0_0/design_1_util_ds_buf_0_0_ooc.xdc] for cell 'U0'
+Parsing XDC File [/userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.gen/sources_1/bd/design_1/ip/design_1_util_ds_buf_0_0/design_1_util_ds_buf_0_0_board.xdc] for cell 'U0'
+Finished Parsing XDC File [/userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.gen/sources_1/bd/design_1/ip/design_1_util_ds_buf_0_0/design_1_util_ds_buf_0_0_board.xdc] for cell 'U0'
+Parsing XDC File [/userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.runs/design_1_util_ds_buf_0_0_synth_1/dont_touch.xdc]
+Finished Parsing XDC File [/userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.runs/design_1_util_ds_buf_0_0_synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1266.270 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2714.793 ; gain = 0.000 ; free physical = 298672 ; free virtual = 773091
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.020 . Memory (MB): peak = 1266.270 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.03 . Memory (MB): peak = 2714.828 ; gain = 0.000 ; free physical = 298672 ; free virtual = 773090
 INFO: [Designutils 20-5008] Incremental synthesis strategy off
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1266.270 ; gain = 676.531
+Finished Constraint Validation : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2714.828 ; gain = 633.648 ; free physical = 298669 ; free virtual = 773087
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a100tcsg324-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1266.270 ; gain = 676.531
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2722.797 ; gain = 641.617 ; free physical = 298669 ; free virtual = 773087
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1266.270 ; gain = 676.531
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2722.797 ; gain = 641.617 ; free physical = 298669 ; free virtual = 773087
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1266.270 ; gain = 676.531
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2722.797 ; gain = 641.617 ; free physical = 298669 ; free virtual = 773088
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -219,25 +222,25 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 1266.270 ; gain = 676.531
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2722.797 ; gain = 641.617 ; free physical = 298671 ; free virtual = 773090
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 1425.211 ; gain = 835.473
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2810.797 ; gain = 729.617 ; free physical = 298622 ; free virtual = 773039
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 1425.211 ; gain = 835.473
+Finished Timing Optimization : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2810.797 ; gain = 729.617 ; free physical = 298622 ; free virtual = 773039
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 1434.785 ; gain = 845.047
+Finished Technology Mapping : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2820.812 ; gain = 739.633 ; free physical = 298614 ; free virtual = 773031
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -255,37 +258,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:35 ; elapsed = 00:00:36 . Memory (MB): peak = 1684.691 ; gain = 1094.953
+Finished IO Insertion : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 3007.625 ; gain = 926.445 ; free physical = 298389 ; free virtual = 772806
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:35 ; elapsed = 00:00:36 . Memory (MB): peak = 1684.691 ; gain = 1094.953
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 3007.625 ; gain = 926.445 ; free physical = 298389 ; free virtual = 772806
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:35 ; elapsed = 00:00:36 . Memory (MB): peak = 1684.691 ; gain = 1094.953
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 3007.625 ; gain = 926.445 ; free physical = 298389 ; free virtual = 772806
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:35 ; elapsed = 00:00:36 . Memory (MB): peak = 1684.691 ; gain = 1094.953
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 3007.625 ; gain = 926.445 ; free physical = 298389 ; free virtual = 772806
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:35 ; elapsed = 00:00:36 . Memory (MB): peak = 1684.691 ; gain = 1094.953
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 3007.625 ; gain = 926.445 ; free physical = 298389 ; free virtual = 772806
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:35 ; elapsed = 00:00:36 . Memory (MB): peak = 1684.691 ; gain = 1094.953
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 3007.625 ; gain = 926.445 ; free physical = 298389 ; free virtual = 772806
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -304,27 +307,28 @@ Report Cell Usage:
 |1     |BUFG |     1|
 +------+-----+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:35 ; elapsed = 00:00:36 . Memory (MB): peak = 1684.691 ; gain = 1094.953
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 3007.625 ; gain = 926.445 ; free physical = 298389 ; free virtual = 772806
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:23 ; elapsed = 00:00:34 . Memory (MB): peak = 1684.691 ; gain = 1087.055
-Synthesis Optimization Complete : Time (s): cpu = 00:00:36 ; elapsed = 00:00:37 . Memory (MB): peak = 1684.691 ; gain = 1094.953
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 3007.625 ; gain = 880.453 ; free physical = 298390 ; free virtual = 772807
+Synthesis Optimization Complete : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 3007.633 ; gain = 926.445 ; free physical = 298390 ; free virtual = 772807
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1684.691 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3007.633 ; gain = 0.000 ; free physical = 298504 ; free virtual = 772921
 WARNING: [Netlist 29-1115] Found multi-term driver net: U0/<const0>.
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1697.629 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3007.633 ; gain = 0.000 ; free physical = 298556 ; free virtual = 772973
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 Synth Design complete | Checksum: 147b1fb8
 INFO: [Common 17-83] Releasing license: Synthesis
-120 Infos, 2 Warnings, 0 Critical Warnings and 0 Errors encountered.
+121 Infos, 3 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:41 ; elapsed = 00:00:43 . Memory (MB): peak = 1697.629 ; gain = 1315.039
-INFO: [Common 17-1381] The checkpoint 'C:/dev/projects/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.runs/design_1_util_ds_buf_0_0_synth_1/design_1_util_ds_buf_0_0.dcp' has been generated.
-INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP design_1_util_ds_buf_0_0, cache-ID = a06f411337e6f8de
-INFO: [Common 17-1381] The checkpoint 'C:/dev/projects/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.runs/design_1_util_ds_buf_0_0_synth_1/design_1_util_ds_buf_0_0.dcp' has been generated.
+synth_design: Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 3007.660 ; gain = 1083.805 ; free physical = 298556 ; free virtual = 772973
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1807.548; main = 1807.548; forked = 245.188
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 4385.035; main = 3007.629; forked = 1641.234
+INFO: [Common 17-1381] The checkpoint '/userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.runs/design_1_util_ds_buf_0_0_synth_1/design_1_util_ds_buf_0_0.dcp' has been generated.
+INFO: [Common 17-1381] The checkpoint '/userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.runs/design_1_util_ds_buf_0_0_synth_1/design_1_util_ds_buf_0_0.dcp' has been generated.
 INFO: [Vivado 12-24828] Executing command : report_utilization -file design_1_util_ds_buf_0_0_utilization_synth.rpt -pb design_1_util_ds_buf_0_0_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Tue Aug 18 11:45:37 2026...
+INFO: [Common 17-206] Exiting Vivado at Fri Nov 13 12:17:02 2026...

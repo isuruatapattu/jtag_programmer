@@ -1,0 +1,5 @@
+date: Thu Nov 12 14:58:48 EET 2026
+host: hejmsfelpp052.hpcgrid.nesc.nokia.net
+Questa Sim  vsim 2021.3_2 Simulator 2021.09 Sep 10 2021
+
+tclsh: 8.6.8

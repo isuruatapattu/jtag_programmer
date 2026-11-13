@@ -1,0 +1,16 @@
+Testbench Group List
+
+Total Groups Coverage Summary 
+SCORE  WEIGHT 
+100.00 1      
+
+
+Total groups in report: 5
+-------------------------------------------------------------------------------
+SCORE  WEIGHT GOAL   AT LEAST PER INSTANCE AUTO BIN MAX PRINT MISSING COMMENT NAME                        
+100.00 1      100    1        0            64           64                    tb_axi_gpio_jtag::cg_stall  
+100.00 1      100    1        0            64           64                    tb_axi_gpio_jtag::cg_inputs 
+100.00 1      100    1        0            64           64                    tb_axi_gpio_jtag::cg_reset  
+100.00 1      100    1        0            64           64                    tb_axi_gpio_jtag::cg_order  
+100.00 1      100    1        0            64           64                    tb_axi_gpio_jtag::cg_access 
+

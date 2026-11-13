@@ -1,11 +1,11 @@
 -- Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
--- Tool Version: Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
--- Date        : Tue Aug 18 11:44:45 2026
--- Host        : DESKTOP-SD8DC1R running 64-bit major release  (build 9200)
+-- Tool Version: Vivado v.2025.2 (lin64) Build 6299465 Fri Nov 14 12:34:56 MST 2025
+-- Date        : Fri Nov 13 12:17:34 2026
+-- Host        : hejmsfelpp051.hpcgrid.nesc.nokia.net running 64-bit Red Hat Enterprise Linux release 8.10 (Ootpa)
 -- Command     : write_vhdl -force -mode funcsim
---               c:/dev/projects/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.gen/sources_1/bd/design_1/ip/design_1_axi_uartlite_0_0/design_1_axi_uartlite_0_0_sim_netlist.vhdl
+--               /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/nexys_a7_jtag_programmer/nexys_a7_jtag_programmer.gen/sources_1/bd/design_1/ip/design_1_axi_uartlite_0_0/design_1_axi_uartlite_0_0_sim_netlist.vhdl
 -- Design      : design_1_axi_uartlite_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -2436,8 +2436,8 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity design_1_axi_uartlite_0_0_uartlite_tx is
   port (
-    tx : out STD_LOGIC;
     tx_Buffer_Full : out STD_LOGIC;
+    tx : out STD_LOGIC;
     Q : out STD_LOGIC_VECTOR ( 0 to 0 );
     Interrupt0 : out STD_LOGIC;
     s_axi_aclk : in STD_LOGIC;
@@ -2482,8 +2482,6 @@ architecture STRUCTURE of design_1_axi_uartlite_0_0_uartlite_tx is
   signal tx_Data_Enable_reg_n_0 : STD_LOGIC;
   signal tx_Start : STD_LOGIC;
   signal tx_Start0 : STD_LOGIC;
-  attribute KEEP : string;
-  attribute KEEP of TX_reg : label is "yes";
   attribute srl_bus_name : string;
   attribute srl_bus_name of \data_shift_reg[13]_srl13___UARTLITE_CORE_I_UARTLITE_RX_I_data_shift_reg_r_11\ : label is "U0/\UARTLITE_CORE_I/UARTLITE_TX_I/data_shift_reg ";
   attribute srl_name : string;
@@ -3163,10 +3161,10 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity design_1_axi_uartlite_0_0_uartlite_core is
   port (
-    tx : out STD_LOGIC;
     rx_Buffer_Full : out STD_LOGIC;
     tx_Buffer_Full : out STD_LOGIC;
     bus2ip_reset : out STD_LOGIC;
+    tx : out STD_LOGIC;
     interrupt : out STD_LOGIC;
     enable_interrupts : out STD_LOGIC;
     status_reg_reg : out STD_LOGIC;

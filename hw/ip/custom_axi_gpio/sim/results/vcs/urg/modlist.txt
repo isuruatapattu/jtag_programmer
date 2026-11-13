@@ -1,0 +1,16 @@
+Design Module List
+
+Total Module Definition Coverage Summary 
+SCORE  LINE   COND   TOGGLE BRANCH ASSERT 
+ 93.55 100.00  94.12  73.62 100.00 100.00 
+
+
+Total modules in report: 5
+-------------------------------------------------------------------------------
+SCORE  LINE   COND   TOGGLE BRANCH ASSERT NAME             
+ 69.54 --     --      69.54 --     --     axi_gpio_jtag    
+ 92.34 100.00  93.75  75.61 100.00 --     axi_lite_slave   
+ 94.07 100.00 100.00  76.27 100.00 --     gpio_jtag_regs   
+100.00 --     --     --     --     100.00 axi_lite_checker 
+--     --     --     --     --     --     tb_axi_gpio_jtag 
+

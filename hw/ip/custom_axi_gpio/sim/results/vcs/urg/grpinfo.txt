@@ -1,0 +1,369 @@
+Group : tb_axi_gpio_jtag::cg_stall
+
+===============================================================================
+Group : tb_axi_gpio_jtag::cg_stall
+===============================================================================
+SCORE  WEIGHT GOAL   AT LEAST AUTO BIN MAX PRINT MISSING 
+100.00 1      100    1        64           64            
+
+
+Source File(s) : 
+
+/userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/tb_axi_gpio_jtag.sv
+
+
+
+-------------------------------------------------------------------------------
+
+Summary for Group   tb_axi_gpio_jtag::cg_stall
+
+
+
+CATEGORY  EXPECTED UNCOVERED COVERED PERCENT 
+Variables 3        0         3       100.00  
+
+
+Variables for Group  tb_axi_gpio_jtag::cg_stall
+
+
+VARIABLE EXPECTED UNCOVERED COVERED PERCENT GOAL WEIGHT AT LEAST AUTO BIN MAX COMMENT 
+cp_stall 3        0         3       100.00  100  1      1        0                    
+
+
+-------------------------------------------------------------------------------
+
+Summary for Variable cp_stall
+
+
+CATEGORY          EXPECTED UNCOVERED COVERED PERCENT 
+User Defined Bins 3        0         3       100.00  
+
+
+User Defined Bins for cp_stall
+
+
+Bins
+
+NAME     COUNT AT LEAST 
+r_stall  2524  1        
+b_stall  14902 1        
+no_stall 51290 1        
+
+
+Group : tb_axi_gpio_jtag::cg_inputs
+
+===============================================================================
+Group : tb_axi_gpio_jtag::cg_inputs
+===============================================================================
+SCORE  WEIGHT GOAL   AT LEAST AUTO BIN MAX PRINT MISSING 
+100.00 1      100    1        64           64            
+
+
+Source File(s) : 
+
+/userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/tb_axi_gpio_jtag.sv
+
+
+
+-------------------------------------------------------------------------------
+
+Summary for Group   tb_axi_gpio_jtag::cg_inputs
+
+
+
+CATEGORY  EXPECTED UNCOVERED COVERED PERCENT 
+Variables 16       0         16      100.00  
+
+
+Variables for Group  tb_axi_gpio_jtag::cg_inputs
+
+
+VARIABLE EXPECTED UNCOVERED COVERED PERCENT GOAL WEIGHT AT LEAST AUTO BIN MAX COMMENT 
+cp_value 16       0         16      100.00  100  1      1        16                   
+
+
+-------------------------------------------------------------------------------
+
+Summary for Variable cp_value
+
+
+CATEGORY                     EXPECTED UNCOVERED COVERED PERCENT 
+Automatically Generated Bins 16       0         16      100.00  
+
+
+Automatically Generated Bins for cp_value
+
+
+Bins
+
+NAME     COUNT AT LEAST 
+auto[0]  208   1        
+auto[1]  226   1        
+auto[2]  200   1        
+auto[3]  172   1        
+auto[4]  197   1        
+auto[5]  199   1        
+auto[6]  199   1        
+auto[7]  236   1        
+auto[8]  179   1        
+auto[9]  208   1        
+auto[10] 187   1        
+auto[11] 170   1        
+auto[12] 218   1        
+auto[13] 211   1        
+auto[14] 168   1        
+auto[15] 411   1        
+
+
+Group : tb_axi_gpio_jtag::cg_reset
+
+===============================================================================
+Group : tb_axi_gpio_jtag::cg_reset
+===============================================================================
+SCORE  WEIGHT GOAL   AT LEAST AUTO BIN MAX PRINT MISSING 
+100.00 1      100    1        64           64            
+
+
+Source File(s) : 
+
+/userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/tb_axi_gpio_jtag.sv
+
+
+
+-------------------------------------------------------------------------------
+
+Summary for Group   tb_axi_gpio_jtag::cg_reset
+
+
+
+CATEGORY  EXPECTED UNCOVERED COVERED PERCENT 
+Variables 5        0         5       100.00  
+
+
+Variables for Group  tb_axi_gpio_jtag::cg_reset
+
+
+VARIABLE EXPECTED UNCOVERED COVERED PERCENT GOAL WEIGHT AT LEAST AUTO BIN MAX COMMENT 
+cp_point 5        0         5       100.00  100  1      1        0                    
+
+
+-------------------------------------------------------------------------------
+
+Summary for Variable cp_point
+
+
+CATEGORY          EXPECTED UNCOVERED COVERED PERCENT 
+User Defined Bins 5        0         5       100.00  
+
+
+User Defined Bins for cp_point
+
+
+Bins
+
+NAME      COUNT AT LEAST 
+r_pending 15    1        
+b_pending 15    1        
+w_taken   15    1        
+aw_taken  15    1        
+idle      15    1        
+
+
+Group : tb_axi_gpio_jtag::cg_order
+
+===============================================================================
+Group : tb_axi_gpio_jtag::cg_order
+===============================================================================
+SCORE  WEIGHT GOAL   AT LEAST AUTO BIN MAX PRINT MISSING 
+100.00 1      100    1        64           64            
+
+
+Source File(s) : 
+
+/userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/tb_axi_gpio_jtag.sv
+
+
+
+-------------------------------------------------------------------------------
+
+Summary for Group   tb_axi_gpio_jtag::cg_order
+
+
+
+CATEGORY  EXPECTED UNCOVERED COVERED PERCENT 
+Variables 3        0         3       100.00  
+
+
+Variables for Group  tb_axi_gpio_jtag::cg_order
+
+
+VARIABLE EXPECTED UNCOVERED COVERED PERCENT GOAL WEIGHT AT LEAST AUTO BIN MAX COMMENT 
+cp_order 3        0         3       100.00  100  1      1        0                    
+
+
+-------------------------------------------------------------------------------
+
+Summary for Variable cp_order
+
+
+CATEGORY          EXPECTED UNCOVERED COVERED PERCENT 
+User Defined Bins 3        0         3       100.00  
+
+
+User Defined Bins for cp_order
+
+
+Bins
+
+NAME     COUNT AT LEAST 
+w_first  19578 1        
+aw_first 19879 1        
+same     19828 1        
+
+
+Group : tb_axi_gpio_jtag::cg_access
+
+===============================================================================
+Group : tb_axi_gpio_jtag::cg_access
+===============================================================================
+SCORE  WEIGHT GOAL   AT LEAST AUTO BIN MAX PRINT MISSING 
+100.00 1      100    1        64           64            
+
+
+Source File(s) : 
+
+/userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/tb_axi_gpio_jtag.sv
+
+
+
+-------------------------------------------------------------------------------
+
+Summary for Group   tb_axi_gpio_jtag::cg_access
+
+
+
+CATEGORY  EXPECTED UNCOVERED COVERED PERCENT 
+Variables 9        0         9       100.00  
+Crosses   15       0         15      100.00  
+
+
+Variables for Group  tb_axi_gpio_jtag::cg_access
+
+
+VARIABLE EXPECTED UNCOVERED COVERED PERCENT GOAL WEIGHT AT LEAST AUTO BIN MAX COMMENT 
+cp_kind  5        0         5       100.00  100  1      1        0                    
+cp_dir   2        0         2       100.00  100  1      1        0                    
+cp_strb0 2        0         2       100.00  100  1      1        0                    
+
+
+Crosses for Group  tb_axi_gpio_jtag::cg_access
+
+
+CROSS    EXPECTED UNCOVERED COVERED PERCENT GOAL WEIGHT AT LEAST PRINT MISSING COMMENT 
+x_access 15       0         15      100.00  100  1      1        0                     
+
+
+-------------------------------------------------------------------------------
+
+Summary for Variable cp_kind
+
+
+CATEGORY          EXPECTED UNCOVERED COVERED PERCENT 
+User Defined Bins 5        0         5       100.00  
+
+
+User Defined Bins for cp_kind
+
+
+Bins
+
+NAME       COUNT AT LEAST 
+k_unmapped 2531  1        
+k_tri2     3105  1        
+k_data2    4200  1        
+k_tri      3553  1        
+k_data     55327 1        
+
+
+-------------------------------------------------------------------------------
+
+Summary for Variable cp_dir
+
+
+CATEGORY          EXPECTED UNCOVERED COVERED PERCENT 
+User Defined Bins 2        0         2       100.00  
+
+
+User Defined Bins for cp_dir
+
+
+Bins
+
+NAME COUNT AT LEAST 
+wr   59285 1        
+rd   9431  1        
+
+
+-------------------------------------------------------------------------------
+
+Summary for Variable cp_strb0
+
+
+CATEGORY          EXPECTED UNCOVERED COVERED PERCENT 
+User Defined Bins 2        0         2       100.00  
+
+
+User Defined Bins for cp_strb0
+
+
+Bins
+
+NAME COUNT AT LEAST 
+on   67447 1        
+off  1269  1        
+
+
+-------------------------------------------------------------------------------
+
+Summary for Cross x_access
+
+
+Samples crossed: cp_kind cp_dir cp_strb0
+CATEGORY                           EXPECTED UNCOVERED COVERED PERCENT MISSING 
+TOTAL                              15       0         15      100.00          
+Automatically Generated Cross Bins 15       0         15      100.00          
+User Defined Cross Bins            0        0         0                       
+
+
+Automatically Generated Cross Bins for x_access
+
+
+Bins
+
+cp_kind    cp_dir cp_strb0 COUNT AT LEAST 
+k_unmapped wr     on       1109  1        
+k_unmapped wr     off      152   1        
+k_unmapped rd     on       1270  1        
+k_tri2     wr     on       1293  1        
+k_tri2     wr     off      297   1        
+k_tri2     rd     on       1515  1        
+k_data2    wr     on       813   1        
+k_data2    wr     off      298   1        
+k_data2    rd     on       3089  1        
+k_tri      wr     on       1523  1        
+k_tri      wr     off      260   1        
+k_tri      rd     on       1770  1        
+k_data     wr     on       53278 1        
+k_data     wr     off      262   1        
+k_data     rd     on       1787  1        
+
+
+User Defined Cross Bins for x_access
+
+
+Excluded/Illegal bins
+
+NAME           COUNT STATUS   
+read_no_strobe 0     Excluded 
+
+

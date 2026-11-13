@@ -1,0 +1,8 @@
+m01_rdata_follows KILLED fail=15 assert_fail=421 | rdata follows the register file while R is stalled (GPIO-AXI-011)
+m02_live_awaddr KILLED fail=16 assert_fail=0 | write uses the live AWADDR instead of the captured one (GPIO-AXI-002)
+m03_wstrb_ignored KILLED fail=2 assert_fail=0 | wstrb[0] = 0 still writes (GPIO-STB-001)
+m04_unmapped_alias KILLED fail=2 assert_fail=0 | unmapped offsets read DATA (GPIO-ADR-003)
+m05_tri2_reset KILLED fail=4 assert_fail=0 | TRI2 resets to 0x0 (GPIO-RST-003)
+m06_sync_one_stage KILLED fail=1 assert_fail=0 | DATA2 reads the first synchronizer stage (GPIO-SYN-001)
+m07_bvalid_pulse KILLED fail=16 assert_fail=16 | bvalid drops before bready (GPIO-AXI-004)
+m08_same_cycle_write_lost KILLED fail=15 assert_fail=0 | write lost when AW and W arrive in the same cycle (GPIO-AXI-001)

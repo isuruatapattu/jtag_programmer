@@ -1,0 +1,119 @@
+# //  Questa Sim
+# //  Version 2021.3_2 linux Sep 10 2021
+# //
+# //  Copyright 1991-2021 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+do run.do
+# .
+# reading modelsim.ini
+# ./../rtl
+# QuestaSim vmap 2021.3_2 Lib Mapping Utility 2021.09 Sep 10 2021
+# vmap work work 
+# Modifying modelsim.ini
+# QuestaSim vlog 2021.3_2 Compiler 2021.09 Sep 10 2021
+# Start time: 13:30:09 on Nov 11,2026
+# vlog -reportprogress 300 -sv -work work -lint ./../rtl/axi_write_logic.sv ./../rtl/axi_read_logic.sv ./../rtl/axi_mapped_registers.sv ./../rtl/axi_mapped_registers_tb.sv 
+# -- Compiling module axi_write_logic
+# -- Compiling module axi_read_logic
+# -- Compiling module axi_mapped_registers
+# -- Compiling module axi_mapped_registers_tb
+# 
+# Top level modules:
+# 	axi_mapped_registers_tb
+# End time: 13:30:09 on Nov 11,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -voptargs="+acc" work.axi_mapped_registers_tb 
+# Start time: 13:30:09 on Nov 11,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# Loading sv_std.std
+# Loading work.axi_mapped_registers_tb(fast)
+# Loading work.axi_mapped_registers(fast)
+# Loading work.axi_write_logic(fast)
+# Loading work.axi_read_logic(fast)
+# /axi_mapped_registers_tb
+# /axi_mapped_registers_tb/dut/wrinst
+# --- Test 1: registers are zero after reset
+# [75000] PASS : rfile[0] = 0x00000000
+# [75000] PASS : rfile[1] = 0x00000000
+# [75000] PASS : rfile[2] = 0x00000000
+# [75000] PASS : rfile[3] = 0x00000000
+# --- Test 2: write each register
+# [315000] PASS : rfile[0] = 0xdeadbeef
+# [315000] PASS : rfile[1] = 0xcafebabe
+# [315000] PASS : rfile[2] = 0x12345678
+# [315000] PASS : rfile[3] = 0xa5a5a5a5
+# --- Test 3: overwrite a register, others unchanged
+# [375000] PASS : rfile[0] = 0xdeadbeef
+# [375000] PASS : rfile[1] = 0xcafebabe
+# [375000] PASS : rfile[2] = 0x0badf00d
+# [375000] PASS : rfile[3] = 0xa5a5a5a5
+# --- Test 4: back-to-back writes
+# [555000] PASS : rfile[0] = 0x00000002
+# [555000] PASS : rfile[1] = 0xcafebabe
+# [555000] PASS : rfile[2] = 0x0badf00d
+# [555000] PASS : rfile[3] = 0xffffffff
+# --- Test 5: address first, data 4 cycles later
+# [675000] PASS : rfile[0] = 0x00000002
+# [675000] PASS : rfile[1] = 0x11111111
+# [675000] PASS : rfile[2] = 0x0badf00d
+# [675000] PASS : rfile[3] = 0xffffffff
+# --- Test 6: data first, address 4 cycles later
+# [795000] PASS : rfile[0] = 0x00000002
+# [795000] PASS : rfile[1] = 0x11111111
+# [795000] PASS : rfile[2] = 0x22222222
+# [795000] PASS : rfile[3] = 0xffffffff
+# --- Test 7: staggered channels with overlapping delays
+# [1165000] PASS : rfile[0] = 0x33333333
+# [1165000] PASS : rfile[1] = 0x55555555
+# [1165000] PASS : rfile[2] = 0x66666666
+# [1165000] PASS : rfile[3] = 0x44444444
+# --- Test 8: read back every register over AXI
+# [1215000] PASS : read[0] = 0x33333333
+# [1285000] PASS : read[1] = 0x55555555
+# [1355000] PASS : read[2] = 0x66666666
+# [1425000] PASS : read[3] = 0x44444444
+# --- Test 9: read with RREADY delayed 5 cycles (RDATA must stay stable)
+# [1545000] PASS : read[0] = 0x33333333
+# [1665000] PASS : read[3] = 0x44444444
+# --- Test 10: RREADY already high before RVALID
+# [1725000] PASS : read[0] = 0x33333333
+# [1785000] PASS : read[1] = 0x55555555
+# [1845000] PASS : read[2] = 0x66666666
+# [1905000] PASS : read[3] = 0x44444444
+# --- Test 11: second AR is held off while a read is outstanding
+# [2035000] PASS : read[1] = 0x55555555
+# [2085000] PASS : read[2] = 0x66666666
+# --- Test 12: write then read back the same register
+# [2215000] PASS : read[0] = 0xa0000000
+# [2345000] PASS : read[1] = 0xa0000001
+# [2475000] PASS : read[2] = 0xa0000002
+# [2605000] PASS : read[3] = 0xa0000003
+# --- Test 13: reset clears registers
+# [2665000] PASS : rfile[0] = 0x00000000
+# [2665000] PASS : rfile[1] = 0x00000000
+# [2665000] PASS : rfile[2] = 0x00000000
+# [2665000] PASS : rfile[3] = 0x00000000
+# --- Test 14: registers read as zero over AXI after reset
+# [2715000] PASS : read[0] = 0x00000000
+# [2785000] PASS : read[1] = 0x00000000
+# [2855000] PASS : read[2] = 0x00000000
+# [2925000] PASS : read[3] = 0x00000000
+# *** TEST PASSED ***
+# ** Note: $finish    : ./../rtl/axi_mapped_registers_tb.sv(392)
+#    Time: 2945 ns  Iteration: 1  Instance: /axi_mapped_registers_tb
+# 1
+# Break in Module axi_mapped_registers_tb at ./../rtl/axi_mapped_registers_tb.sv line 392
+# 0 ps
+# 3092250 ps
+quit
+# End time: 14:52:19 on Nov 11,2026, Elapsed time: 1:22:10
+# Errors: 0, Warnings: 0

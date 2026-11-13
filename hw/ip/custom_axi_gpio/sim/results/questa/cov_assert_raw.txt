@@ -1,0 +1,154 @@
+Coverage Report by instance with details
+
+=================================================================================
+=== Instance: /tb_axi_gpio_jtag/u_chk
+=== Design Unit: work.axi_lite_checker
+=================================================================================
+
+Assertion Coverage:
+    Assertions                      17        17         0   100.00%
+--------------------------------------------------------------------
+Name                 File(Line)                   Failure      Pass 
+                                                  Count        Count
+--------------------------------------------------------------------
+/tb_axi_gpio_jtag/u_chk/a_axi_003
+                     /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/axi_lite_checker.sv(83)
+                                                        0          5
+/tb_axi_gpio_jtag/u_chk/a_axi_004
+                     /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/axi_lite_checker.sv(87)
+                                                        0          5
+/tb_axi_gpio_jtag/u_chk/a_axi_005_count
+                     /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/axi_lite_checker.sv(91)
+                                                        0          5
+/tb_axi_gpio_jtag/u_chk/a_axi_005_ready
+                     /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/axi_lite_checker.sv(95)
+                                                        0          5
+/tb_axi_gpio_jtag/u_chk/a_axi_006_aw
+                     /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/axi_lite_checker.sv(99)
+                                                        0          5
+/tb_axi_gpio_jtag/u_chk/a_axi_006_w
+                     /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/axi_lite_checker.sv(103)
+                                                        0          5
+/tb_axi_gpio_jtag/u_chk/a_axi_007
+                     /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/axi_lite_checker.sv(107)
+                                                        0          5
+/tb_axi_gpio_jtag/u_chk/a_axi_010
+                     /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/axi_lite_checker.sv(113)
+                                                        0          5
+/tb_axi_gpio_jtag/u_chk/a_axi_011
+                     /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/axi_lite_checker.sv(117)
+                                                        0          5
+/tb_axi_gpio_jtag/u_chk/a_axi_012_count
+                     /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/axi_lite_checker.sv(121)
+                                                        0          5
+/tb_axi_gpio_jtag/u_chk/a_axi_012_ready
+                     /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/axi_lite_checker.sv(125)
+                                                        0          5
+/tb_axi_gpio_jtag/u_chk/a_axi_013
+                     /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/axi_lite_checker.sv(129)
+                                                        0          5
+/tb_axi_gpio_jtag/u_chk/a_axi_014
+                     /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/axi_lite_checker.sv(133)
+                                                        0          5
+/tb_axi_gpio_jtag/u_chk/a_axi_022_b
+                     /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/axi_lite_checker.sv(139)
+                                                        0          5
+/tb_axi_gpio_jtag/u_chk/a_axi_022_r
+                     /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/axi_lite_checker.sv(143)
+                                                        0          5
+/tb_axi_gpio_jtag/u_chk/a_rst_002
+                     /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/axi_lite_checker.sv(148)
+                                                        0          5
+/tb_axi_gpio_jtag/u_chk/a_rst_003_known
+                     /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/axi_lite_checker.sv(154)
+                                                        0          5
+
+Directive Coverage:
+    Directives                       3         3         0   100.00%
+
+DIRECTIVE COVERAGE:
+--------------------------------------------------------------------------------------------
+Name                                     Design Design   Lang File(Line)      Hits Status    
+                                         Unit   UnitType                                     
+--------------------------------------------------------------------------------------------
+/tb_axi_gpio_jtag/u_chk/c_b_stall        axi_lite_checker Verilog  SVA  /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/axi_lite_checker.sv(158)
+                                                                              30550 Covered   
+/tb_axi_gpio_jtag/u_chk/c_r_stall        axi_lite_checker Verilog  SVA  /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/axi_lite_checker.sv(159)
+                                                                              5404 Covered   
+/tb_axi_gpio_jtag/u_chk/c_same_cycle     axi_lite_checker Verilog  SVA  /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/axi_lite_checker.sv(160)
+                                                                              19718 Covered   
+
+
+DIRECTIVE COVERAGE:
+--------------------------------------------------------------------------------------------
+Name                                     Design Design   Lang File(Line)      Hits Status    
+                                         Unit   UnitType                                     
+--------------------------------------------------------------------------------------------
+/tb_axi_gpio_jtag/u_chk/c_b_stall        axi_lite_checker Verilog  SVA  /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/axi_lite_checker.sv(158)
+                                                                              30550 Covered   
+/tb_axi_gpio_jtag/u_chk/c_r_stall        axi_lite_checker Verilog  SVA  /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/axi_lite_checker.sv(159)
+                                                                              5404 Covered   
+/tb_axi_gpio_jtag/u_chk/c_same_cycle     axi_lite_checker Verilog  SVA  /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/axi_lite_checker.sv(160)
+                                                                              19718 Covered   
+
+TOTAL DIRECTIVE COVERAGE: 100.00%  COVERS: 3
+
+ASSERTION RESULTS:
+--------------------------------------------------------------------
+Name                 File(Line)                   Failure      Pass 
+                                                  Count        Count
+--------------------------------------------------------------------
+/tb_axi_gpio_jtag/u_chk/a_axi_003
+                     /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/axi_lite_checker.sv(83)
+                                                        0          5
+/tb_axi_gpio_jtag/u_chk/a_axi_004
+                     /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/axi_lite_checker.sv(87)
+                                                        0          5
+/tb_axi_gpio_jtag/u_chk/a_axi_005_count
+                     /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/axi_lite_checker.sv(91)
+                                                        0          5
+/tb_axi_gpio_jtag/u_chk/a_axi_005_ready
+                     /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/axi_lite_checker.sv(95)
+                                                        0          5
+/tb_axi_gpio_jtag/u_chk/a_axi_006_aw
+                     /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/axi_lite_checker.sv(99)
+                                                        0          5
+/tb_axi_gpio_jtag/u_chk/a_axi_006_w
+                     /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/axi_lite_checker.sv(103)
+                                                        0          5
+/tb_axi_gpio_jtag/u_chk/a_axi_007
+                     /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/axi_lite_checker.sv(107)
+                                                        0          5
+/tb_axi_gpio_jtag/u_chk/a_axi_010
+                     /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/axi_lite_checker.sv(113)
+                                                        0          5
+/tb_axi_gpio_jtag/u_chk/a_axi_011
+                     /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/axi_lite_checker.sv(117)
+                                                        0          5
+/tb_axi_gpio_jtag/u_chk/a_axi_012_count
+                     /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/axi_lite_checker.sv(121)
+                                                        0          5
+/tb_axi_gpio_jtag/u_chk/a_axi_012_ready
+                     /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/axi_lite_checker.sv(125)
+                                                        0          5
+/tb_axi_gpio_jtag/u_chk/a_axi_013
+                     /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/axi_lite_checker.sv(129)
+                                                        0          5
+/tb_axi_gpio_jtag/u_chk/a_axi_014
+                     /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/axi_lite_checker.sv(133)
+                                                        0          5
+/tb_axi_gpio_jtag/u_chk/a_axi_022_b
+                     /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/axi_lite_checker.sv(139)
+                                                        0          5
+/tb_axi_gpio_jtag/u_chk/a_axi_022_r
+                     /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/axi_lite_checker.sv(143)
+                                                        0          5
+/tb_axi_gpio_jtag/u_chk/a_rst_002
+                     /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/axi_lite_checker.sv(148)
+                                                        0          5
+/tb_axi_gpio_jtag/u_chk/a_rst_003_known
+                     /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/axi_lite_checker.sv(154)
+                                                        0          5
+
+Total Coverage By Instance (filtered view): 100.00%
+

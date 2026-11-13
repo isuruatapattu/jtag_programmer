@@ -1,0 +1,133 @@
+# //  Questa Sim
+# //  Version 2021.3_2 linux Sep 10 2021
+# //
+# //  Copyright 1991-2021 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# do sim/run_questa.tcl
+# /mtitcl/vsim/vsim
+# 0
+# /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/jtag_shifter/sim
+# /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/jtag_shifter/rtl
+# /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/jtag_shifter/sim/questa_work
+# /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/jtag_shifter/sim/questa_work/work
+# /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/jtag_shifter/sim/wave.do
+# /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/jtag_shifter/rtl/jtag_shifter_fifo.sv /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/jtag_shifter/rtl/jtag_shifter_core.sv /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/jtag_shifter/rtl/jtag_shifter_axil.sv /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/jtag_shifter/sim/tb_jtag_shifter.sv
+# QuestaSim vlog 2021.3_2 Compiler 2021.09 Sep 10 2021
+# Start time: 17:30:32 on Nov 06,2026
+# vlog -reportprogress 300 -sv -work work /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/jtag_shifter/rtl/jtag_shifter_fifo.sv 
+# -- Compiling module jtag_shifter_fifo
+# 
+# Top level modules:
+# 	jtag_shifter_fifo
+# End time: 17:30:32 on Nov 06,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim vlog 2021.3_2 Compiler 2021.09 Sep 10 2021
+# Start time: 17:30:32 on Nov 06,2026
+# vlog -reportprogress 300 -sv -work work /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/jtag_shifter/rtl/jtag_shifter_core.sv 
+# -- Compiling module jtag_shifter_core
+# 
+# Top level modules:
+# 	jtag_shifter_core
+# End time: 17:30:32 on Nov 06,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim vlog 2021.3_2 Compiler 2021.09 Sep 10 2021
+# Start time: 17:30:32 on Nov 06,2026
+# vlog -reportprogress 300 -sv -work work /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/jtag_shifter/rtl/jtag_shifter_axil.sv 
+# -- Compiling module jtag_shifter_axil
+# 
+# Top level modules:
+# 	jtag_shifter_axil
+# End time: 17:30:33 on Nov 06,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim vlog 2021.3_2 Compiler 2021.09 Sep 10 2021
+# Start time: 17:30:33 on Nov 06,2026
+# vlog -reportprogress 300 -sv -work work /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/jtag_shifter/sim/tb_jtag_shifter.sv 
+# -- Compiling module tap_model
+# -- Compiling module tb_jtag_shifter
+# 
+# Top level modules:
+# 	tb_jtag_shifter
+# End time: 17:30:33 on Nov 06,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim vlog 2021.3_2 Compiler 2021.09 Sep 10 2021
+# Start time: 17:30:33 on Nov 06,2026
+# vlog -reportprogress 300 -work work /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/jtag_shifter/rtl/jtag_shifter_top.v 
+# -- Compiling module jtag_shifter_top
+# 
+# Top level modules:
+# 	jtag_shifter_top
+# End time: 17:30:33 on Nov 06,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# -voptargs=+acc -onfinish stop -t 1ps work.tb_jtag_shifter
+# vsim -voptargs="+acc" -onfinish stop -t 1ps work.tb_jtag_shifter 
+# Start time: 17:30:33 on Nov 06,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Note: (vopt-143) Recognized 1 FSM in module "jtag_shifter_core(fast)".
+# Loading sv_std.std
+# Loading work.tb_jtag_shifter(fast)
+# Loading work.jtag_shifter_top(fast)
+# Loading work.jtag_shifter_axil(fast)
+# Loading work.jtag_shifter_core(fast)
+# Loading work.jtag_shifter_fifo(fast)
+# Loading work.jtag_shifter_fifo(fast__1)
+# Loading work.tap_model(fast)
+# .main_pane.wave.interior.cs.body.pw.wf
+# 0
+# /tb_jtag_shifter
+# /tb_jtag_shifter/u_tap
+# /tb_jtag_shifter/dut/u_axil
+# /tb_jtag_shifter/dut/u_axil/u_core
+# PASS ID = 0x4a534831
+# PASS CLKDIV reset = 0x00000005
+# PASS CFG reset = 0x0000001f
+# PASS STATUS reset = 0x0000000c
+# PASS TDO read when empty = 0x00000000
+# PASS bypass = 0x00000000
+# PASS bypass = 0x00000001
+# PASS bypass = 0x00000002
+# PASS bypass = 0x00000003
+# PASS bypass = 0x00000004
+# PASS bypass = 0x00000005
+# PASS bypass = 0x00000006
+# PASS bypass = 0x00000007
+# PASS bypass = 0x00000008
+# PASS bypass = 0x00000009
+# PASS bypass = 0x0000000a
+# PASS bypass = 0x0000000b
+# PASS bypass = 0x0000000c
+# PASS bypass = 0x0000000d
+# PASS bypass = 0x0000000e
+# PASS bypass = 0x0000000f
+# PASS TAP reset walk (6 TMS bits)
+# PASS TAP state RTI = 0x00000001
+# PASS TCK high ns = 0x00000032
+# PASS TCK low ns = 0x00000032
+# PASS IR capture = 0x00000001
+# PASS IR scan TMS incl. TMS_LAST (12 TMS bits)
+# PASS IDCODE = 0x03631093
+# PASS TAP state Shift-DR = 0x00000004
+# PASS TDI bit order over 528 bits
+# PASS TDO capture over 528 bits
+# PASS TDI held in MODE 1 = 0x0000000f
+# PASS TX_FULL = 0x00000001
+# PASS TX level saturated = 0x000000ff
+# PASS DATA write stalled 43520000 ns
+# PASS FLUSH empties = 0x0000000c
+# PASS bypass after engine = 0x00000005
+# TB RESULT: PASS
+# ** Note: $finish    : /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/jtag_shifter/sim/tb_jtag_shifter.sv(472)
+#    Time: 91210 ns  Iteration: 1  Instance: /tb_jtag_shifter
+# Break in Module tb_jtag_shifter at /userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/jtag_shifter/sim/tb_jtag_shifter.sv line 472
+# 0 ps
+# 95770500 ps
+# End time: 12:18:02 on Nov 10,2026, Elapsed time: 90:47:29
+# Errors: 0, Warnings: 0

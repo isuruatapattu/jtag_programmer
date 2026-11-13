@@ -1,0 +1,20 @@
+Design Hierarchy
+
+
+----------------
+SCORE  LINE   COND   TOGGLE BRANCH ASSERT                  
+ 93.55 100.00  94.12  73.62 100.00 100.00 tb_axi_gpio_jtag 
+  
+  ----------------
+  SCORE  LINE   COND   TOGGLE BRANCH ASSERT     
+   91.93 100.00  94.12  73.62 100.00 --     dut 
+    
+    ----------------
+    SCORE  LINE   COND   TOGGLE BRANCH ASSERT         
+     94.07 100.00 100.00  76.27 100.00 --     u_regs  
+     92.34 100.00  93.75  75.61 100.00 --     u_slave 
+  
+  ----------------
+  SCORE  LINE   COND   TOGGLE BRANCH ASSERT       
+  100.00 --     --     --     --     100.00 u_chk 
+

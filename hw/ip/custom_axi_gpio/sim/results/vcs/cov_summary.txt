@@ -1,0 +1,67 @@
+== dashboard (dashboard.txt)
+Dashboard
+Date: Thu Nov 12 15:08:36 2026
+User: athapatt
+Version: Y-2026.03-SP2
+Command line: urg -full64 -format text -dir simv.vdb -report urgReport
+Number of tests: 5
+-------------------------------------------------------------------------------
+Total Coverage Summary
+SCORE  LINE   COND   TOGGLE BRANCH ASSERT GROUP
+ 94.62 100.00  94.12  73.62 100.00 100.00 100.00
+-------------------------------------------------------------------------------
+Hierarchical coverage data for top-level instances
+SCORE  LINE   COND   TOGGLE BRANCH ASSERT NAME
+ 93.55 100.00  94.12  73.62 100.00 100.00 tb_axi_gpio_jtag
+-------------------------------------------------------------------------------
+Total Module Definition Coverage Summary
+SCORE  LINE   COND   TOGGLE BRANCH ASSERT
+ 93.55 100.00  94.12  73.62 100.00 100.00
+-------------------------------------------------------------------------------
+Total Groups Coverage Summary
+SCORE  WEIGHT
+100.00 1
+== hierarchy, DUT rows (hierarchy.txt)
+SCORE  LINE   COND   TOGGLE BRANCH ASSERT
+  SCORE  LINE   COND   TOGGLE BRANCH ASSERT
+   91.93 100.00  94.12  73.62 100.00 --     dut
+    SCORE  LINE   COND   TOGGLE BRANCH ASSERT
+     94.07 100.00 100.00  76.27 100.00 --     u_regs
+     92.34 100.00  93.75  75.61 100.00 --     u_slave
+  SCORE  LINE   COND   TOGGLE BRANCH ASSERT
+== covergroups (groups.txt)
+Testbench Group List
+Total Groups Coverage Summary
+SCORE  WEIGHT
+Total groups in report: 5
+SCORE  WEIGHT GOAL   AT LEAST PER INSTANCE AUTO BIN MAX PRINT MISSING COMMENT NAME
+100.00 1      100    1        0            64           64                    tb_axi_gpio_jtag::cg_stall
+100.00 1      100    1        0            64           64                    tb_axi_gpio_jtag::cg_inputs
+100.00 1      100    1        0            64           64                    tb_axi_gpio_jtag::cg_reset
+100.00 1      100    1        0            64           64                    tb_axi_gpio_jtag::cg_order
+100.00 1      100    1        0            64           64                    tb_axi_gpio_jtag::cg_access
+== assertions (asserts.txt)
+Assertions
+Assertions by Category
+           ASSERT PROPERTIES SEQUENCES
+Total          17          3         0
+Assertions by Severity
+           ASSERT PROPERTIES SEQUENCES
+Total          17          3         0
+Summary for Assertions
+Total Number         17  100.00
+Uncovered             0    0.00
+Success              17  100.00
+Failure               0    0.00
+Summary for Cover Properties
+Total Number      3  100.00
+Uncovered         0    0.00
+Detail Report for Assertions
+Assertions Success:
+              ASSERTIONS               CATEGORY SEVERITY ATTEMPTS REAL SUCCESSES FAILURES INCOMPLETE
+Detail Report for Cover Properties
+Cover Properties Matches:
+          COVER PROPERTIES          CATEGORY SEVERITY ATTEMPTS MATCHES INCOMPLETE
+tb_axi_gpio_jtag.u_chk.c_b_stall           0        0   338673   30064          0
+tb_axi_gpio_jtag.u_chk.c_r_stall           0        0   338673    5424          0
+tb_axi_gpio_jtag.u_chk.c_same_cycle        0        0   338673   19843          0

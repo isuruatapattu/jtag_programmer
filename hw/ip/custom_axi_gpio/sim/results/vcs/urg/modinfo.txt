@@ -1,0 +1,935 @@
+===============================================================================
+Module : axi_gpio_jtag
+===============================================================================
+SCORE  LINE   COND   TOGGLE BRANCH ASSERT 
+ 69.54 --     --      69.54 --     --     
+
+Source File(s) : 
+
+/userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/rtl/axi_gpio_jtag.v
+
+Module self-instances :
+
+SCORE  LINE   COND   TOGGLE BRANCH ASSERT NAME                 
+ 69.54 --     --      69.54 --     --     tb_axi_gpio_jtag.dut 
+
+
+
+-------------------------------------------------------------------------------
+Toggle Coverage for Module : axi_gpio_jtag
+                Total Covered Percent 
+Totals          27    23      85.19   
+Total Bits      394   274     69.54   
+Total Bits 0->1 197   137     69.54   
+Total Bits 1->0 197   137     69.54   
+
+                              
+Ports          21  18  85.71  
+Port Bits      220 156 70.91  
+Port Bits 0->1 110 78  70.91  
+Port Bits 1->0 110 78  70.91  
+
+                                
+Signals          6   5   83.33  
+Signal Bits      174 118 67.82  
+Signal Bits 0->1 87  59  67.82  
+Signal Bits 1->0 87  59  67.82  
+
+Port Details
+                  Toggle Toggle 1->0 Toggle 0->1 Direction 
+s_axi_aclk        Yes    Yes         Yes         INPUT     
+s_axi_aresetn     Yes    Yes         Yes         INPUT     
+s_axi_awaddr[8:0] Yes    Yes         Yes         INPUT     
+s_axi_awvalid     Yes    Yes         Yes         INPUT     
+s_axi_awready     Yes    Yes         Yes         OUTPUT    
+s_axi_wdata[31:0] Yes    Yes         Yes         INPUT     
+s_axi_wstrb[3:0]  Yes    Yes         Yes         INPUT     
+s_axi_wvalid      Yes    Yes         Yes         INPUT     
+s_axi_wready      Yes    Yes         Yes         OUTPUT    
+s_axi_bresp[1:0]  No     No          No          OUTPUT    
+s_axi_bvalid      Yes    Yes         Yes         OUTPUT    
+s_axi_bready      Yes    Yes         Yes         INPUT     
+s_axi_araddr[8:0] Yes    Yes         Yes         INPUT     
+s_axi_arvalid     Yes    Yes         Yes         INPUT     
+s_axi_arready     Yes    Yes         Yes         OUTPUT    
+s_axi_rdata[3:0]  Yes    Yes         Yes         OUTPUT    
+s_axi_rdata[31:4] No     No          No          OUTPUT    
+s_axi_rresp[1:0]  No     No          No          OUTPUT    
+s_axi_rvalid      Yes    Yes         Yes         OUTPUT    
+s_axi_rready      Yes    Yes         Yes         INPUT     
+gpio_io_o[3:0]    Yes    Yes         Yes         OUTPUT    
+gpio2_io_i[3:0]   Yes    Yes         Yes         INPUT     
+
+Signal Details
+                  Toggle Toggle 1->0 Toggle 0->1 
+reg_wr_en         Yes    Yes         Yes         
+reg_wr_addr[8:0]  Yes    Yes         Yes         
+reg_wr_data[31:0] Yes    Yes         Yes         
+reg_wr_strb[3:0]  Yes    Yes         Yes         
+reg_rd_addr[8:0]  Yes    Yes         Yes         
+reg_rd_data[3:0]  Yes    Yes         Yes         
+reg_rd_data[31:4] No     No          No          
+
+
+-------------------------------------------------------------------------------
+===============================================================================
+Module Instance : tb_axi_gpio_jtag.dut
+===============================================================================
+
+Instance :
+
+SCORE  LINE   COND   TOGGLE BRANCH ASSERT 
+ 69.54 --     --      69.54 --     --     
+
+
+Instance's subtree :
+
+SCORE  LINE   COND   TOGGLE BRANCH ASSERT 
+ 91.93 100.00  94.12  73.62 100.00 --     
+
+
+Module : 
+
+SCORE  LINE   COND   TOGGLE BRANCH ASSERT NAME          
+ 69.54 --     --      69.54 --     --     axi_gpio_jtag 
+
+
+Parent : 
+
+SCORE  LINE   COND   TOGGLE BRANCH ASSERT NAME             
+--     --     --     --     --     --     tb_axi_gpio_jtag 
+
+
+Subtrees :
+
+SCORE  LINE   COND   TOGGLE BRANCH ASSERT NAME    
+ 94.07 100.00 100.00  76.27 100.00 --     u_regs  
+ 92.34 100.00  93.75  75.61 100.00 --     u_slave 
+
+
+
+-------------------------------------------------------------------------------
+Since this is the module's only instance, the coverage report is the same as for the module.
+===============================================================================
+Module : axi_lite_slave
+===============================================================================
+SCORE  LINE   COND   TOGGLE BRANCH ASSERT 
+ 92.34 100.00  93.75  75.61 100.00 --     
+
+Source File(s) : 
+
+/userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/rtl/axi_lite_slave.v
+
+Module self-instances :
+
+SCORE  LINE   COND   TOGGLE BRANCH ASSERT NAME                         
+ 92.34 100.00  93.75  75.61 100.00 --     tb_axi_gpio_jtag.dut.u_slave 
+
+
+
+-------------------------------------------------------------------------------
+Line Coverage for Module : axi_lite_slave
+
+             Line No.   Total   Covered  Percent
+TOTAL                       27       27   100.00
+ALWAYS             90       19       19   100.00
+ALWAYS            124        8        8   100.00
+
+89                          always @(posedge aclk) begin
+90         1/1                  if (!aresetn) begin
+91         1/1                      aw_seen  <= 1'b0;
+92         1/1                      w_seen   <= 1'b0;
+93         1/1                      awaddr_q <= 9'd0;
+94         1/1                      wdata_q  <= 32'd0;
+95         1/1                      wstrb_q  <= 4'd0;
+96         1/1                      bvalid   <= 1'b0;
+97         1/1                      awready  <= 1'b0;
+98         1/1                      wready   <= 1'b0;
+99                              end else begin
+100        1/1                      aw_seen <= aw_seen_n;
+101        1/1                      w_seen  <= w_seen_n;
+102        1/1                      bvalid  <= bvalid_n;
+103                     
+104        2/2                      if (aw_hs) awaddr_q <= awaddr;
+                        MISSING_ELSE
+105        1/1                      if (w_hs) begin
+106        1/1                          wdata_q <= wdata;
+107        1/1                          wstrb_q <= wstrb;
+108                                 end
+                        MISSING_ELSE
+109                     
+110        1/1                      awready <= ~aw_seen_n & ~bvalid_n;
+111        1/1                      wready  <= ~w_seen_n  & ~bvalid_n;
+112                             end
+113                         end
+114                     
+115                         // ------------------------------------------------------------------
+116                         // Read channel
+117                         // ------------------------------------------------------------------
+118                         wire ar_hs    = arvalid & arready;
+119                         wire rvalid_n = ar_hs | (rvalid & ~rready);
+120                     
+121                         assign reg_rd_addr = araddr;
+122                     
+123                         always @(posedge aclk) begin
+124        1/1                  if (!aresetn) begin
+125        1/1                      rvalid  <= 1'b0;
+126        1/1                      arready <= 1'b0;
+127        1/1                      rdata   <= 32'd0;
+128                             end else begin
+129        1/1                      rvalid  <= rvalid_n;
+130        1/1                      arready <= ~rvalid_n;
+131        2/2                      if (ar_hs) rdata <= reg_rd_data;
+                        MISSING_ELSE
+
+-------------------------------------------------------------------------------
+Cond Coverage for Module : axi_lite_slave
+
+               Total   Covered  Percent
+Conditions         48       45    93.75
+Logical            48       45    93.75
+Non-Logical         0        0
+Event               0        0
+
+ LINE       110
+ EXPRESSION (((~aw_seen_n)) & ((~bvalid_n)))
+             -------1------   ------2------
+
+-1- -2- Status
+ 0   1  Covered
+ 1   0  Covered
+ 1   1  Covered
+
+ LINE       111
+ EXPRESSION (((~w_seen_n)) & ((~bvalid_n)))
+             ------1------   ------2------
+
+-1- -2- Status
+ 0   1  Covered
+ 1   0  Covered
+ 1   1  Covered
+
+ LINE       72
+ EXPRESSION (awvalid & awready)
+             ---1---   ---2---
+
+-1- -2- Status
+ 0   1  Covered
+ 1   0  Not Covered
+ 1   1  Covered
+
+ LINE       73
+ EXPRESSION (wvalid & wready)
+             ---1--   ---2--
+
+-1- -2- Status
+ 0   1  Covered
+ 1   0  Not Covered
+ 1   1  Covered
+
+ LINE       74
+ EXPRESSION (aw_seen | aw_hs)
+             ---1---   --2--
+
+-1- -2- Status
+ 0   0  Covered
+ 0   1  Covered
+ 1   0  Covered
+
+ LINE       75
+ EXPRESSION (w_seen | w_hs)
+             ---1--   --2-
+
+-1- -2- Status
+ 0   0  Covered
+ 0   1  Covered
+ 1   0  Covered
+
+ LINE       76
+ EXPRESSION (aw_have & w_have)
+             ---1---   ---2--
+
+-1- -2- Status
+ 0   1  Covered
+ 1   0  Covered
+ 1   1  Covered
+
+ LINE       81
+ EXPRESSION (aw_seen ? awaddr_q : awaddr)
+             ---1---
+
+-1- Status
+ 0  Covered
+ 1  Covered
+
+ LINE       82
+ EXPRESSION (w_seen ? wdata_q : wdata)
+             ---1--
+
+-1- Status
+ 0  Covered
+ 1  Covered
+
+ LINE       83
+ EXPRESSION (w_seen ? wstrb_q : wstrb)
+             ---1--
+
+-1- Status
+ 0  Covered
+ 1  Covered
+
+ LINE       85
+ EXPRESSION (aw_have & ((~commit)))
+             ---1---   -----2-----
+
+-1- -2- Status
+ 0   1  Covered
+ 1   0  Covered
+ 1   1  Covered
+
+ LINE       86
+ EXPRESSION (w_have & ((~commit)))
+             ---1--   -----2-----
+
+-1- -2- Status
+ 0   1  Covered
+ 1   0  Covered
+ 1   1  Covered
+
+ LINE       87
+ EXPRESSION (commit | (bvalid & ((~bready))))
+             ---1--   -----------2----------
+
+-1- -2- Status
+ 0   0  Covered
+ 0   1  Covered
+ 1   0  Covered
+
+ LINE       87
+ SUB-EXPRESSION (bvalid & ((~bready)))
+                 ---1--   -----2-----
+
+-1- -2- Status
+ 0   1  Covered
+ 1   0  Covered
+ 1   1  Covered
+
+ LINE       118
+ EXPRESSION (arvalid & arready)
+             ---1---   ---2---
+
+-1- -2- Status
+ 0   1  Covered
+ 1   0  Not Covered
+ 1   1  Covered
+
+ LINE       119
+ EXPRESSION (ar_hs | (rvalid & ((~rready))))
+             --1--   -----------2----------
+
+-1- -2- Status
+ 0   0  Covered
+ 0   1  Covered
+ 1   0  Covered
+
+ LINE       119
+ SUB-EXPRESSION (rvalid & ((~rready)))
+                 ---1--   -----2-----
+
+-1- -2- Status
+ 0   1  Covered
+ 1   0  Covered
+ 1   1  Covered
+
+-------------------------------------------------------------------------------
+Toggle Coverage for Module : axi_lite_slave
+                Total Covered Percent 
+Totals          40    36      90.00   
+Total Bits      492   372     75.61   
+Total Bits 0->1 246   186     75.61   
+Total Bits 1->0 246   186     75.61   
+
+                              
+Ports          25  21  84.00  
+Port Bits      378 258 68.25  
+Port Bits 0->1 189 129 68.25  
+Port Bits 1->0 189 129 68.25  
+
+                                
+Signals          15  15  100.00 
+Signal Bits      114 114 100.00 
+Signal Bits 0->1 57  57  100.00 
+Signal Bits 1->0 57  57  100.00 
+
+Port Details
+                  Toggle Toggle 1->0 Toggle 0->1 Direction 
+aclk              Yes    Yes         Yes         INPUT     
+aresetn           Yes    Yes         Yes         INPUT     
+awaddr[8:0]       Yes    Yes         Yes         INPUT     
+awvalid           Yes    Yes         Yes         INPUT     
+awready           Yes    Yes         Yes         OUTPUT    
+wdata[31:0]       Yes    Yes         Yes         INPUT     
+wstrb[3:0]        Yes    Yes         Yes         INPUT     
+wvalid            Yes    Yes         Yes         INPUT     
+wready            Yes    Yes         Yes         OUTPUT    
+bresp[1:0]        No     No          No          OUTPUT    
+bvalid            Yes    Yes         Yes         OUTPUT    
+bready            Yes    Yes         Yes         INPUT     
+araddr[8:0]       Yes    Yes         Yes         INPUT     
+arvalid           Yes    Yes         Yes         INPUT     
+arready           Yes    Yes         Yes         OUTPUT    
+rdata[3:0]        Yes    Yes         Yes         OUTPUT    
+rdata[31:4]       No     No          No          OUTPUT    
+rresp[1:0]        No     No          No          OUTPUT    
+rvalid            Yes    Yes         Yes         OUTPUT    
+rready            Yes    Yes         Yes         INPUT     
+reg_wr_en         Yes    Yes         Yes         OUTPUT    
+reg_wr_addr[8:0]  Yes    Yes         Yes         OUTPUT    
+reg_wr_data[31:0] Yes    Yes         Yes         OUTPUT    
+reg_wr_strb[3:0]  Yes    Yes         Yes         OUTPUT    
+reg_rd_addr[8:0]  Yes    Yes         Yes         OUTPUT    
+reg_rd_data[3:0]  Yes    Yes         Yes         INPUT     
+reg_rd_data[31:4] No     No          No          INPUT     
+
+Signal Details
+              Toggle Toggle 1->0 Toggle 0->1 
+aw_seen       Yes    Yes         Yes         
+w_seen        Yes    Yes         Yes         
+awaddr_q[8:0] Yes    Yes         Yes         
+wdata_q[31:0] Yes    Yes         Yes         
+wstrb_q[3:0]  Yes    Yes         Yes         
+aw_hs         Yes    Yes         Yes         
+w_hs          Yes    Yes         Yes         
+aw_have       Yes    Yes         Yes         
+w_have        Yes    Yes         Yes         
+commit        Yes    Yes         Yes         
+aw_seen_n     Yes    Yes         Yes         
+w_seen_n      Yes    Yes         Yes         
+bvalid_n      Yes    Yes         Yes         
+ar_hs         Yes    Yes         Yes         
+rvalid_n      Yes    Yes         Yes         
+
+
+-------------------------------------------------------------------------------
+Branch Coverage for Module : axi_lite_slave
+         Line No. Total Covered Percent 
+Branches          14    14      100.00  
+TERNARY  81       2     2       100.00  
+TERNARY  82       2     2       100.00  
+TERNARY  83       2     2       100.00  
+IF       90       5     5       100.00  
+IF       124      3     3       100.00  
+
+
+81             assign reg_wr_addr = aw_seen ? awaddr_q : awaddr;
+                                            -1-  
+                                            ==>  
+                                            ==>  
+
+Branches:
+
+-1- Status  
+1   Covered 
+0   Covered 
+
+
+82             assign reg_wr_data = w_seen  ? wdata_q  : wdata;
+                                            -1-  
+                                            ==>  
+                                            ==>  
+
+Branches:
+
+-1- Status  
+1   Covered 
+0   Covered 
+
+
+83             assign reg_wr_strb = w_seen  ? wstrb_q  : wstrb;
+                                            -1-  
+                                            ==>  
+                                            ==>  
+
+Branches:
+
+-1- Status  
+1   Covered 
+0   Covered 
+
+
+90                 if (!aresetn) begin
+                   -1-  
+91                     aw_seen  <= 1'b0;
+                       ==>
+92                     w_seen   <= 1'b0;
+93                     awaddr_q <= 9'd0;
+94                     wdata_q  <= 32'd0;
+95                     wstrb_q  <= 4'd0;
+96                     bvalid   <= 1'b0;
+97                     awready  <= 1'b0;
+98                     wready   <= 1'b0;
+99                 end else begin
+100                    aw_seen <= aw_seen_n;
+101                    w_seen  <= w_seen_n;
+102                    bvalid  <= bvalid_n;
+103        
+104                    if (aw_hs) awaddr_q <= awaddr;
+                       -2-  
+                       ==>
+                       MISSING_ELSE
+                       ==>
+105                    if (w_hs) begin
+                       -3-  
+106                        wdata_q <= wdata;
+                           ==>
+107                        wstrb_q <= wstrb;
+108                    end
+                       MISSING_ELSE
+                       ==>
+
+Branches:
+
+-1- -2- -3- Status  
+1   -   -   Covered 
+0   1   -   Covered 
+0   0   -   Covered 
+0   -   1   Covered 
+0   -   0   Covered 
+
+
+124                if (!aresetn) begin
+                   -1-  
+125                    rvalid  <= 1'b0;
+                       ==>
+126                    arready <= 1'b0;
+127                    rdata   <= 32'd0;
+128                end else begin
+129                    rvalid  <= rvalid_n;
+130                    arready <= ~rvalid_n;
+131                    if (ar_hs) rdata <= reg_rd_data;
+                       -2-  
+                       ==>
+                       MISSING_ELSE
+                       ==>
+
+Branches:
+
+-1- -2- Status  
+1   -   Covered 
+0   1   Covered 
+0   0   Covered 
+
+
+-------------------------------------------------------------------------------
+===============================================================================
+Module Instance : tb_axi_gpio_jtag.dut.u_slave
+===============================================================================
+
+Instance :
+
+SCORE  LINE   COND   TOGGLE BRANCH ASSERT 
+ 92.34 100.00  93.75  75.61 100.00 --     
+
+
+Instance's subtree :
+
+SCORE  LINE   COND   TOGGLE BRANCH ASSERT 
+ 92.34 100.00  93.75  75.61 100.00 --     
+
+
+Module : 
+
+SCORE  LINE   COND   TOGGLE BRANCH ASSERT NAME           
+ 92.34 100.00  93.75  75.61 100.00 --     axi_lite_slave 
+
+
+Parent : 
+
+SCORE  LINE   COND   TOGGLE BRANCH ASSERT NAME 
+ 69.54 --     --      69.54 --     --     dut  
+
+
+Subtrees :
+
+
+no children
+----------------
+
+
+-------------------------------------------------------------------------------
+Since this is the module's only instance, the coverage report is the same as for the module.
+===============================================================================
+Module : gpio_jtag_regs
+===============================================================================
+SCORE  LINE   COND   TOGGLE BRANCH ASSERT 
+ 94.07 100.00 100.00  76.27 100.00 --     
+
+Source File(s) : 
+
+/userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/rtl/gpio_jtag_regs.v
+
+Module self-instances :
+
+SCORE  LINE   COND   TOGGLE BRANCH ASSERT NAME                        
+ 94.07 100.00 100.00  76.27 100.00 --     tb_axi_gpio_jtag.dut.u_regs 
+
+
+
+-------------------------------------------------------------------------------
+Line Coverage for Module : gpio_jtag_regs
+
+             Line No.   Total   Covered  Percent
+TOTAL                       18       18   100.00
+ALWAYS             50       10       10   100.00
+ALWAYS             65        2        2   100.00
+ALWAYS             70        6        6   100.00
+
+49                          always @(posedge clk) begin
+50         1/1                  if (!aresetn) begin
+51         1/1                      data_q <= 4'h0;
+52         1/1                      tri_q  <= 4'h0;
+53         1/1                      tri2_q <= 4'hF;
+54         1/1                  end else if (wr_ok) begin
+55         1/1                      case (wr_addr[8:2])
+56         1/1                          IDX_DATA: data_q <= wr_data[3:0];
+57         1/1                          IDX_TRI:  tri_q  <= wr_data[3:0];
+58         1/1                          IDX_TRI2: tri2_q <= wr_data[3:0];
+59         1/1                          default: ;  // DATA2 and unmapped offsets ignore writes
+60                                  endcase
+61                              end
+                        MISSING_ELSE
+62                          end
+63                      
+64                          always @(posedge clk) begin
+65         1/1                  sync_q1 <= gpio2_io_i;
+66         1/1                  sync_q2 <= sync_q1;
+67                          end
+68                      
+69                          always @(*) begin
+70         1/1                  case (rd_addr[8:2])
+71         1/1                      IDX_DATA:  rd_data = {28'd0, data_q};
+72         1/1                      IDX_TRI:   rd_data = {28'd0, tri_q};
+73         1/1                      IDX_DATA2: rd_data = {28'd0, sync_q2};
+74         1/1                      IDX_TRI2:  rd_data = {28'd0, tri2_q};
+75         1/1                      default:   rd_data = 32'd0;
+
+-------------------------------------------------------------------------------
+Cond Coverage for Module : gpio_jtag_regs
+
+               Total   Covered  Percent
+Conditions          3        3   100.00
+Logical             3        3   100.00
+Non-Logical         0        0
+Event               0        0
+
+ LINE       47
+ EXPRESSION (wr_en & wr_strb[0])
+             --1--   -----2----
+
+-1- -2- Status
+ 0   1  Covered
+ 1   0  Covered
+ 1   1  Covered
+
+-------------------------------------------------------------------------------
+Toggle Coverage for Module : gpio_jtag_regs
+                Total Covered Percent 
+Totals          16    15      93.75   
+Total Bits      236   180     76.27   
+Total Bits 0->1 118   90      76.27   
+Total Bits 1->0 118   90      76.27   
+
+                              
+Ports          10  9   90.00  
+Port Bits      194 138 71.13  
+Port Bits 0->1 97  69  71.13  
+Port Bits 1->0 97  69  71.13  
+
+                              
+Signals          6  6  100.00 
+Signal Bits      42 42 100.00 
+Signal Bits 0->1 21 21 100.00 
+Signal Bits 1->0 21 21 100.00 
+
+Port Details
+                Toggle Toggle 1->0 Toggle 0->1 Direction 
+clk             Yes    Yes         Yes         INPUT     
+aresetn         Yes    Yes         Yes         INPUT     
+wr_en           Yes    Yes         Yes         INPUT     
+wr_addr[8:0]    Yes    Yes         Yes         INPUT     
+wr_data[31:0]   Yes    Yes         Yes         INPUT     
+wr_strb[3:0]    Yes    Yes         Yes         INPUT     
+rd_addr[8:0]    Yes    Yes         Yes         INPUT     
+rd_data[3:0]    Yes    Yes         Yes         OUTPUT    
+rd_data[31:4]   No     No          No          OUTPUT    
+gpio_io_o[3:0]  Yes    Yes         Yes         OUTPUT    
+gpio2_io_i[3:0] Yes    Yes         Yes         INPUT     
+
+Signal Details
+             Toggle Toggle 1->0 Toggle 0->1 
+data_q[3:0]  Yes    Yes         Yes         
+tri_q[3:0]   Yes    Yes         Yes         
+tri2_q[3:0]  Yes    Yes         Yes         
+sync_q1[3:0] Yes    Yes         Yes         
+sync_q2[3:0] Yes    Yes         Yes         
+wr_ok        Yes    Yes         Yes         
+
+
+-------------------------------------------------------------------------------
+Branch Coverage for Module : gpio_jtag_regs
+         Line No. Total Covered Percent 
+Branches          11    11      100.00  
+IF       50       6     6       100.00  
+CASE     70       5     5       100.00  
+
+
+50                 if (!aresetn) begin
+                   -1-  
+51                     data_q <= 4'h0;
+                       ==>
+52                     tri_q  <= 4'h0;
+53                     tri2_q <= 4'hF;
+54                 end else if (wr_ok) begin
+                            -2-  
+55                     case (wr_addr[8:2])
+                       -3-  
+56                         IDX_DATA: data_q <= wr_data[3:0];
+                           ==>
+57                         IDX_TRI:  tri_q  <= wr_data[3:0];
+                           ==>
+58                         IDX_TRI2: tri2_q <= wr_data[3:0];
+                           ==>
+59                         default: ;  // DATA2 and unmapped offsets ignore writes
+                           ==>
+60                     endcase
+61                 end
+                   MISSING_ELSE
+                   ==>
+
+Branches:
+
+-1- -2- -3-       Status  
+1   -   -         Covered 
+0   1   IDX_DATA  Covered 
+0   1   IDX_TRI   Covered 
+0   1   IDX_TRI2  Covered 
+0   1   default   Covered 
+0   0   -         Covered 
+
+
+70                 case (rd_addr[8:2])
+                   -1-  
+71                     IDX_DATA:  rd_data = {28'd0, data_q};
+                       ==>
+72                     IDX_TRI:   rd_data = {28'd0, tri_q};
+                       ==>
+73                     IDX_DATA2: rd_data = {28'd0, sync_q2};
+                       ==>
+74                     IDX_TRI2:  rd_data = {28'd0, tri2_q};
+                       ==>
+75                     default:   rd_data = 32'd0;
+                       ==>
+
+Branches:
+
+-1-        Status  
+IDX_DATA   Covered 
+IDX_TRI    Covered 
+IDX_DATA2  Covered 
+IDX_TRI2   Covered 
+default    Covered 
+
+
+-------------------------------------------------------------------------------
+===============================================================================
+Module Instance : tb_axi_gpio_jtag.dut.u_regs
+===============================================================================
+
+Instance :
+
+SCORE  LINE   COND   TOGGLE BRANCH ASSERT 
+ 94.07 100.00 100.00  76.27 100.00 --     
+
+
+Instance's subtree :
+
+SCORE  LINE   COND   TOGGLE BRANCH ASSERT 
+ 94.07 100.00 100.00  76.27 100.00 --     
+
+
+Module : 
+
+SCORE  LINE   COND   TOGGLE BRANCH ASSERT NAME           
+ 94.07 100.00 100.00  76.27 100.00 --     gpio_jtag_regs 
+
+
+Parent : 
+
+SCORE  LINE   COND   TOGGLE BRANCH ASSERT NAME 
+ 69.54 --     --      69.54 --     --     dut  
+
+
+Subtrees :
+
+
+no children
+----------------
+
+
+-------------------------------------------------------------------------------
+Since this is the module's only instance, the coverage report is the same as for the module.
+===============================================================================
+Module : axi_lite_checker
+===============================================================================
+SCORE  LINE   COND   TOGGLE BRANCH ASSERT 
+100.00 --     --     --     --     100.00 
+
+Source File(s) : 
+
+/userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/axi_lite_checker.sv
+
+Module self-instances :
+
+SCORE  LINE   COND   TOGGLE BRANCH ASSERT NAME                   
+100.00 --     --     --     --     100.00 tb_axi_gpio_jtag.u_chk 
+
+
+
+-------------------------------------------------------------------------------
+Assert Coverage for Module : axi_lite_checker
+                 Total Attempted Percent Succeeded/Matched Percent 
+Assertions       17    17        100.00  17                100.00  
+Cover properties 3     3         100.00  3                 100.00  
+Cover sequences  0     0                 0                         
+Total            20    20        100.00  20                100.00  
+
+
+
+-------------------------------------------------------------------------------
+
+Assertion Details
+
+Name            Attempts Real Successes Failures Incomplete 
+a_axi_003       338673   89349          0        0          
+a_axi_004       338673   30049          0        0          
+a_axi_005_count 338673   337973         0        0          
+a_axi_005_ready 338673   89349          0        0          
+a_axi_006_aw    338673   59315          0        0          
+a_axi_006_w     338673   59315          0        0          
+a_axi_007       338673   59300          0        0          
+a_axi_010       338673   15955          0        0          
+a_axi_011       338673   5409           0        0          
+a_axi_012_count 338673   337973         0        0          
+a_axi_012_ready 338673   15955          0        0          
+a_axi_013       338673   10546          0        0          
+a_axi_014       338673   10546          0        0          
+a_axi_022_b     338673   89349          0        0          
+a_axi_022_r     338673   15955          0        0          
+a_rst_002       338673   705            0        0          
+a_rst_003_known 338673   337968         0        0          
+
+
+-------------------------------------------------------------------------------
+
+Cover Directives for Properties: Details
+
+Name         Attempts Matches Incomplete 
+c_b_stall    338673   30064   0          
+c_r_stall    338673   5424    0          
+c_same_cycle 338673   19843   0          
+
+
+-------------------------------------------------------------------------------
+===============================================================================
+Module Instance : tb_axi_gpio_jtag.u_chk
+===============================================================================
+
+Instance :
+
+SCORE  LINE   COND   TOGGLE BRANCH ASSERT 
+100.00 --     --     --     --     100.00 
+
+
+Instance's subtree :
+
+SCORE  LINE   COND   TOGGLE BRANCH ASSERT 
+100.00 --     --     --     --     100.00 
+
+
+Module : 
+
+SCORE  LINE   COND   TOGGLE BRANCH ASSERT NAME             
+100.00 --     --     --     --     100.00 axi_lite_checker 
+
+
+Parent : 
+
+SCORE  LINE   COND   TOGGLE BRANCH ASSERT NAME             
+--     --     --     --     --     --     tb_axi_gpio_jtag 
+
+
+Subtrees :
+
+
+no children
+----------------
+
+
+-------------------------------------------------------------------------------
+Since this is the module's only instance, the coverage report is the same as for the module.
+===============================================================================
+Module : tb_axi_gpio_jtag
+===============================================================================
+SCORE  LINE   COND   TOGGLE BRANCH ASSERT 
+--     --     --     --     --     --     
+
+Source File(s) : 
+
+/userworkqum/athapatt/improvement_track/fpga/jtag_programmer/hw/ip/custom_axi_gpio/sim/tb/tb_axi_gpio_jtag.sv
+
+Module self-instances :
+
+SCORE  LINE   COND   TOGGLE BRANCH ASSERT NAME             
+--     --     --     --     --     --     tb_axi_gpio_jtag 
+
+
+
+-------------------------------------------------------------------------------
+===============================================================================
+Module Instance : tb_axi_gpio_jtag
+===============================================================================
+
+Instance :
+
+SCORE  LINE   COND   TOGGLE BRANCH ASSERT 
+--     --     --     --     --     --     
+
+
+Instance's subtree :
+
+SCORE  LINE   COND   TOGGLE BRANCH ASSERT 
+ 93.55 100.00  94.12  73.62 100.00 100.00 
+
+
+Module : 
+
+SCORE  LINE   COND   TOGGLE BRANCH ASSERT NAME             
+--     --     --     --     --     --     tb_axi_gpio_jtag 
+
+
+Parent : 
+
+none
+----------------
+
+
+Subtrees :
+
+SCORE  LINE   COND   TOGGLE BRANCH ASSERT NAME  
+ 91.93 100.00  94.12  73.62 100.00 --     dut   
+100.00 --     --     --     --     100.00 u_chk 
+
+
+
+-------------------------------------------------------------------------------
+Since this is the module's only instance, the coverage report is the same as for the module.
