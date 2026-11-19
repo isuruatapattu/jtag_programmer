@@ -1,7 +1,7 @@
 sdt: hw_artifacts/microblaze_0_baremetal.dts
 family: artix7
-path: C:\dev\soc\jtag_programmer\sw\nexys_a7\platform_custom_gpio\microblaze_0\standalone_microblaze_0\bsp
-config: default
+path: C:/dev/soc/jtag_programmer/sw/nexys_a7/platform_custom_gpio/microblaze_0/standalone_microblaze_0/bsp
+config: None
 os: standalone
 os_info:
   standalone:

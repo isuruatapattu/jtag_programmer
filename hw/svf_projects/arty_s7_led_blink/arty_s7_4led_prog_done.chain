@@ -1,0 +1,15 @@
+{
+    "target_type": "svf",
+    "devices": [
+        {
+            "name": "xc7s25"
+        }
+    ],
+    "operations": [
+        {
+            "operation_type": "program",
+            "device": "xc7s25_0",
+            "file": "C:/dev/soc/jtag_programmer/hw/svf_projects/arty_s7_led_blink/build/leb_blink.bit"
+        }
+    ]
+}

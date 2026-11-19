@@ -8,3 +8,38 @@ platform = client.create_platform_component(name = "platform_custom_gpio",hw_des
 
 comp = client.clone_component(name="app_mb_svf_player",new_name="app_mb_svf_player_custom_gpio")
 
+platform = client.get_component(name="platform_custom_gpio")
+status = platform.build()
+
+platform = client.get_component(name="platform")
+status = platform.build()
+
+comp = client.get_component(name="app_mb_svf_player_custom_gpio")
+comp.build()
+
+status = platform.build()
+
+comp.build()
+
+status = platform.build()
+
+comp.build()
+
+status = platform.build()
+
+comp.build()
+
+status = comp.clean()
+
+status = platform.build()
+
+comp.build()
+
+status = comp.clean()
+
+status = platform.build()
+
+comp.build()
+
+vitis.dispose()
+
